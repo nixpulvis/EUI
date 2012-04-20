@@ -1,0 +1,10 @@
+## Interface: 40300
+## Author: Epicgrim
+## Credits: Tukz, Hydra, Smelly
+## Version: 0.1
+## Title: EUI
+## Notes: EUI (formerly EpicUI) User Interface.
+## SavedVariables: EUIData
+## SavedVariablesPerCharacter: EUIToonData
+
+EUI.xml
