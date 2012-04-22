@@ -81,15 +81,3 @@ function EUI:CreateButton(name, parent, width, height)
 	
 	return button
 end
-
-local test = EUI:CreateButton("TEST", UIParent, 20, 20)
-test:SetPoint("CENTER")
-
-
-
-
-
-
-
-
-
