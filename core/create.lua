@@ -13,18 +13,15 @@ EUI:CreatePanel
 			height - the height of the new frame
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 ]]
-function E:CreatePanel(name, parent, width, height)
+function E:CreatePanel(name, parent)
 	local frame = CreateFrame("Frame", name, parent)
 	frame:SetBackdrop({ 
 	  bgFile = [[Interface\AddOns\EUI\media\blank]], 
 	  edgeFile = [[Interface\AddOns\EUI\media\blank]], tile = false, tileSize = 0, edgeSize = 1, 
-	  insets = { left = 0, right = 0, top = 0, bottom = 0 }
+	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	frame:SetBackdropColor(unpack(S.General.background_color))
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
-	
-	frame:SetWidth(width)
-	frame:SetHeight(height)
 	
 	return frame
 end
