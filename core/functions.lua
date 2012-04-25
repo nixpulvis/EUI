@@ -1,10 +1,10 @@
 local E, S = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- These are tools used for development.
+-- EUI Utility Functions
 -----------------------------------------------------------------------
 
--- Best slash cmd ever!
-SLASH_RELOAD1 = '/rl'
-function SlashCmdList.RELOAD(msg, editbox)
-	ReloadUI()
+local function Test()
+	
+	print("SHIT")
+	
 end
