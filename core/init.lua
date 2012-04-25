@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------
--- Initialize EUI, storing values globaly
+-- Initialize EUI
 -----------------------------------------------------------------------
 
-local EUI = { }
+local addon, ns = ...
 
-_G.EUI = EUI
+ns.EUI = {}
+ns.settings = {}
