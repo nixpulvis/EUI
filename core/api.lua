@@ -17,6 +17,14 @@ local function StripTextures(frame)
 	end		
 end
 
+-- Set a frames points to it's parent 
+local function SetAllPointsOffset(frame, offset, anchor_frame)
+	anchor_frame = anchor_frame or frame:GetParent()
+	
+	frame:SetPoint("TOPLEFT", anchor_frame, "TOPLEFT", -offset, offset)
+	frame:SetPoint("BOTTOMRIGHT", anchor_frame, "BOTTOMRIGHT", offset, -offset)
+end	
+
 -----------------------------------------------------------------------
 -- Integrate EUI functions to the frames
 -----------------------------------------------------------------------
@@ -27,6 +35,7 @@ local function AddFunctionsTo(frame)
 	--for k,v in pairs(FUNCTIONS) do
 		if not frame.StyleFrame then meta.StyleFrame = StyleFrame end
 		if not frame.StripTextures then meta.StripTextures = StripTextures end
+		if not frame.SetAllPointsOffset then meta.SetAllPointsOffset = SetAllPointsOffset end
 	--end	
 end
 
