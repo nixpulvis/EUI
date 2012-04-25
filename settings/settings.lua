@@ -1,10 +1,9 @@
 local E, S = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- These are tools used for development.
+-- Base Settings
 -----------------------------------------------------------------------
 
--- Best slash cmd ever!
-SLASH_RELOAD1 = '/rl'
-function SlashCmdList.RELOAD(msg, editbox)
-	ReloadUI()
-end
+S['General'] = {
+	['background_color'] = { .075, .075, .075, .8 },
+	['border_color'] = { .15, .15, .15, .8 },
+}
