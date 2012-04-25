@@ -47,6 +47,8 @@ EUI:CreateButton
 ]]
 function EUI:CreateButton(name, parent, width, height)
 	local button = CreateFrame("Button", name, parent)
+	button.hover = false
+
 	button:SetBackdrop({ 
 	  bgFile = [[Interface\AddOns\EUI\media\blank]], 
 	  edgeFile = [[Interface\AddOns\EUI\media\blank]], tile = false, tileSize = 0, edgeSize = 1, 
@@ -60,7 +62,6 @@ function EUI:CreateButton(name, parent, width, height)
 	
 	local hover_color = { .5, .5, .5, select(4, unpack(background_color)) }
 	local mousedown_color = { .3, .3, .3, select(4, unpack(background_color)) }
-	button.hover = false
 	button:SetScript("OnEnter", function(self) 
 		self:SetBackdropColor(unpack(hover_color))
 		button.hover = true
