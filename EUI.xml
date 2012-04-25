@@ -1,10 +1,15 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 
-	<Script file="core\init.lua"/>
-	<Script file="core\style.lua"/>
+	<Script file="init.lua"/>
+	
+	<Script file="settings\settings.lua"/>	
+
+	<Script file="core\api.lua"/>	
+	<Script file="core\create.lua"/>
+	<Script file="core\functions.lua"/>
 	<Script file="core\dev.lua"/>
 	
 	
-	<Script file="modules\chat.lua"/>
+	<Script file="elements\chat.lua"/>
 
 </Ui>
