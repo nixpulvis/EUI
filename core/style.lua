@@ -1,4 +1,5 @@
-local EUI = _G.EUI
+local addon, ns = ...
+local EUI = ns.EUI
 -----------------------------------------------------------------------
 -- These are the functions that make the frames & other elements of the 
 -- user interface.
