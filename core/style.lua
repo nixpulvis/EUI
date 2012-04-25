@@ -1,4 +1,5 @@
-local EUI = _G.EUI
+local addon, ns = ...
+local EUI = ns.EUI
 -----------------------------------------------------------------------
 -- These are the functions that make the frames & other elements of the 
 -- user interface.
@@ -81,15 +82,3 @@ function EUI:CreateButton(name, parent, width, height)
 	
 	return button
 end
-
-local test = EUI:CreateButton("TEST", UIParent, 20, 20)
-test:SetPoint("CENTER")
-
-
-
-
-
-
-
-
-

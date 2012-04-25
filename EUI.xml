@@ -2,5 +2,6 @@
 
 	<Script file="core\init.lua"/>
 	<Script file="core\style.lua"/>
+	<Script file="core\dev.lua"/>
 
 </Ui>
