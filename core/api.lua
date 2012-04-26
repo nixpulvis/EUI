@@ -1,18 +1,21 @@
-local E, S, V = unpack(select(2, ...))
+local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Frame Functions
 -----------------------------------------------------------------------
 
+-- Set the style of the frame to EUI
 local function StyleFrame(frame)
 	frame:SetBackdropColor(unpack(S.General.background_color))
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
 end
 
+-- Really Really Kill something
 local function Kill(frame)
 	frame:Hide()
 	_G[frame:GetName()] = nil
 end
 
+-- Remove all Textures from a frame. Usefull for stripping Blizz / Other addons style.
 local function StripTextures(frame)
 	for i=1, frame:GetNumRegions() do
 		local region = select(i, frame:GetRegions())
