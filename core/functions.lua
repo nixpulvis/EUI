@@ -1,9 +1,9 @@
-local E, S = unpack(select(2, ...))
+local E, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Utility Functions
 -----------------------------------------------------------------------
 
-local function Test()
+function E:Test()
 	
 	print("SHIT")
 	
