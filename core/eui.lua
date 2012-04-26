@@ -75,10 +75,7 @@ function EUI:CreateButton(name, parent)
 	return button
 end
 
-function EUI:NewModule(name, enabled)
-	if enabled then
-		M[name] = { }
-	else
-		M[name] = nil
-	end
+function EUI:LoadModule(name)
+	M[name] = { }
+	if V
 end

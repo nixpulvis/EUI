@@ -2,7 +2,7 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Chat
 -----------------------------------------------------------------------
-EUI:NewModule("Chat", true)
+EUI:LoadModule("Chat", true)
 
 local function EUI_Chat()
 	local chat = EUI:CreatePanel("EUIChatFrame", UIParent)
