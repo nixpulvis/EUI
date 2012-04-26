@@ -1,8 +1,8 @@
-local M, S, V = unpack(select(2, ...))
+local E, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Chat
 -----------------------------------------------------------------------
-local chat = EUI:NewModule(name)
+local chat = EUI:NewElement("chat")
 
 function chat:load()
 	local chatframe = EUI:CreatePanel("EUIChatFrame", UIParent)
@@ -48,5 +48,5 @@ function chat:load()
 	local function install()
 		setDefault()
 	end
-	chat.install = install
+	self.install = install
 end

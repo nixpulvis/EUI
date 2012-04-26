@@ -1,4 +1,4 @@
-local M, S, V = unpack(select(2, ...))
+local E, S, V = unpack(select(2, ...))
 
 --[[
 EUI:CreatePanel
@@ -71,14 +71,14 @@ function EUI:CreateButton(name, parent)
 	return button
 end
 
-function EUI:NewModule(name)
-	M[name] = { }
-	M[name].loader = CreateFrame("Frame")
-	M[name].loader:RegisterEvent("ADDON_LOADED")
-	M[name].loader:SetScript("OnEvent", function(self, event, ...)
+function EUI:NewElement(name)
+	E[name] = { }
+	E[name].loader = CreateFrame("Frame")
+	E[name].loader:RegisterEvent("ADDON_LOADED")
+	E[name].loader:SetScript("OnEvent", function(self, event, ...)
 		if not tContains(V.saved.noload, name) then
-			M[name]:load()
+			E[name]:load()
 		end
 	end)
-	return M[name]
+	return E[name]
 end

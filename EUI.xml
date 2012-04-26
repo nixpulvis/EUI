@@ -1,14 +1,16 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 
 	<Script file="init\init.lua"/>
+	<Script file="init\constants.lua"/>
 	<Script file="init\savedvars.lua"/>
-	<Script file="init\constants.lua"/>	
+	
 		
 	<Script file="settings\settings.lua"/>	
 
 	<Script file="core\api.lua"/>	
 	<Script file="core\create.lua"/>
 	<Script file="core\functions.lua"/>
+	<Script file="core\install.lua"/>
 	<Script file="core\dev.lua"/>
 	
 	
