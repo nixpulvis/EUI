@@ -19,6 +19,7 @@ This UI is all about minimalism, without sacrifice. As a hardcore WoW player mys
 
 ### Customization
 
+---
 
 ## Installation
 The easiest way to get the latest stable version of EUI is to goto [epicgrim.github.com/EUI](http://epicgrim.github.com/EUI) and click "Download Version X.X"
@@ -26,8 +27,12 @@ Alternatively you can view and download all versions of EUI from the [downloads 
 
 If you want you can also [download the git repository](https://github.com/Epicgrim/EUI/zipball/master) and use that. This has it's advantages and disadvantages. With this method you will have the absolute newest version I have committed, which means for you the newest features and bug fixes. It also means however that I have not tested it to my full liking, and it may have more issues then you would like. The choice is yours.
 
+---
+
 ## Support
 If you have a github account or can take the few seconds it takes to make one, submitted issues on github are my preferred method of reporting bugs. However, there is also a forum open for Bugs on tukui.org __NOTE TO SELF: Make Forum When version 1.0 is released__
+
+---
 
 ## Credits
 Core Code By: Epicgrim (Nathan Lilienthal)
