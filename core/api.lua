@@ -1,4 +1,4 @@
-local E, S = unpack(select(2, ...))
+local E, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Frame Functions
 -----------------------------------------------------------------------
@@ -6,6 +6,11 @@ local E, S = unpack(select(2, ...))
 local function StyleFrame(frame)
 	frame:SetBackdropColor(unpack(S.General.background_color))
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
+end
+
+local function Kill(frame)
+	frame:Hide()
+	_G[frame:GetName()] = nil
 end
 
 local function StripTextures(frame)
@@ -31,12 +36,11 @@ end
 
 local function AddFunctionsTo(frame)
 	local meta = getmetatable(frame).__index
-	
-	--for k,v in pairs(FUNCTIONS) do
-		if not frame.StyleFrame then meta.StyleFrame = StyleFrame end
-		if not frame.StripTextures then meta.StripTextures = StripTextures end
-		if not frame.SetAllPointsOffset then meta.SetAllPointsOffset = SetAllPointsOffset end
-	--end	
+
+	if not frame.StyleFrame then meta.StyleFrame = StyleFrame end
+	if not frame.Kill then meta.Kill = Kill end
+	if not frame.StripTextures then meta.StripTextures = StripTextures end
+	if not frame.SetAllPointsOffset then meta.SetAllPointsOffset = SetAllPointsOffset end	
 end
 
 

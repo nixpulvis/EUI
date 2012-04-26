@@ -5,3 +5,4 @@ local addon, ns = ...
 
 ns[1] = { }			-- Addon
 ns[2] = { }			-- Settings
+ns[3] = { }			-- Variables
