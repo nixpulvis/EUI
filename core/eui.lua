@@ -71,6 +71,10 @@ function EUI:CreateButton(name, parent)
 	return button
 end
 
+--[[
+This needs to be at the beginning of every element. It loads the Element and holds sets up the table for the 
+Element's data.
+]]
 function EUI:NewElement(name)
 	E[name] = { }
 	E[name].loader = CreateFrame("Frame")
