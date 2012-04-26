@@ -29,7 +29,7 @@ local function events:ADDON_LOADED(...)
 	end
 end
 for k, v in pairs(events) do
-	frame:RegisterEvent(k)
+	handler:RegisterEvent(k)
 end
 handler:SetScript("OnEvent", function(self, event, ...) 
 	events[event](self, ...)
