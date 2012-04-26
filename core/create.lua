@@ -1,4 +1,4 @@
-local E, S, V = unpack(select(2, ...))
+local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- These are the functions that make the frames & other elements of the 
 -- user interface.
@@ -13,7 +13,7 @@ EUI:CreatePanel
 			height - the height of the new frame
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 ]]
-function E:CreatePanel(name, parent)
+function EUI:CreatePanel(name, parent)
 	local frame = CreateFrame("Frame", name, parent)
 	frame:SetBackdrop({ 
 	  bgFile = [[Interface\AddOns\EUI\media\blank]], 
@@ -36,7 +36,7 @@ EUI:CreateButton
 	NOTE : BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 	adding functionality shouls be done with a HookScript.
 ]]
-function E:CreateButton(name, parent)
+function EUI:CreateButton(name, parent)
 	local button = CreateFrame("Button", name, parent)
 	button.hover = false
 
@@ -73,4 +73,12 @@ function E:CreateButton(name, parent)
 	end)
 	
 	return button
+end
+
+function EUI:NewModule(name, enabled)
+	if enabled then
+		M[name] = { }
+	else
+		M[name] = nil
+	end
 end
