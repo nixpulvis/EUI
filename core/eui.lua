@@ -75,7 +75,14 @@ function EUI:CreateButton(name, parent)
 	return button
 end
 
-function EUI:LoadModule(name)
+function EUI:NewModule(name)
 	M[name] = { }
-	if V
+	M[name].loader = CreateFrame("Frame")
+	M[name].loader:RegisterEvent("ADDON_LOADED")
+	M[name].loader:SetScript("OnEvent", function(self, event, ...)
+		if not tContains(V.saved.noload, name) then
+			M[name]:load()
+		end
+	end)
+	return M[name]
 end

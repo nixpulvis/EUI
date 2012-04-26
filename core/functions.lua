@@ -5,6 +5,6 @@ local M, S, V = unpack(select(2, ...))
 
 function V:Test()
 	
-	print("SHIT")
+	print("test")
 	
 end
