@@ -6,6 +6,6 @@ V.myrace = UnitRace("player")
 V.myfaction = UnitFactionGroup("player")
 V.mylevel = UnitLevel("player")
 V.myrealm = GetRealmName()
+V.incombat = UnitAffectingCombat("player")
 
 V.versionnumber = tonumber(GetAddOnMetadata("EUI", "Version"))
-V.incombat = UnitAffectingCombat("player")
