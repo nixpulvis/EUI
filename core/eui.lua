@@ -1,8 +1,4 @@
 local M, S, V = unpack(select(2, ...))
------------------------------------------------------------------------
--- These are the functions that make the frames & other elements of the 
--- user interface.
------------------------------------------------------------------------
 
 --[[
 EUI:CreatePanel

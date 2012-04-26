@@ -2,6 +2,7 @@
 
 	<Script file="init\init.lua"/>
 	<Script file="init\savedvars.lua"/>
+	<Script file="init\constants.lua"/>	
 		
 	<Script file="settings\settings.lua"/>	
 
