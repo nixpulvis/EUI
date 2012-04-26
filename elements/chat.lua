@@ -2,28 +2,28 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Chat
 -----------------------------------------------------------------------
-EUI:LoadModule("Chat", true)
+local chat = EUI:NewModule(name)
 
-local function EUI_Chat()
-	local chat = EUI:CreatePanel("EUIChatFrame", UIParent)
-	chat:SetFrameStrata("BACKGROUND")
-	chat:SetFrameLevel(0)
-	chat:SetAllPointsOffset(4, ChatFrame1)
+function chat:load()
+	local chatframe = EUI:CreatePanel("EUIChatFrame", UIParent)
+	chatframe:SetFrameStrata("BACKGROUND")
+	chatframe:SetFrameLevel(0)
+	chatframe:SetAllPointsOffset(4, ChatFrame1)
 
 	--Skinning
 	for i = 1, NUM_CHAT_WINDOWS do
-		local chat_frame = _G["ChatFrame"..i]
+		local blizzcf = _G["ChatFrame"..i]
 		local editbox = _G["ChatFrame"..i.."EditBox"]
 	
 		-- Remove Blizz Style
-		chat_frame:StripTextures()
+		blizzcf:StripTextures()
 		editbox:StripTextures()
 	
 		-- Skin Editbox
 		editbox:StyleFrame()
 		editbox:ClearAllPoints()
-		editbox:SetPoint("BOTTOMLEFT", chat, "BOTTOMLEFT")
-		editbox:SetPoint("BOTTOMRIGHT", chat, "BOTTOMRIGHT")
+		editbox:SetPoint("BOTTOMLEFT", chatframe, "BOTTOMLEFT")
+		editbox:SetPoint("BOTTOMRIGHT", chatframe, "BOTTOMRIGHT")
 		editbox:SetHeight(24)
 	
 		-- Hide the chat arrow buttons.
@@ -48,5 +48,5 @@ local function EUI_Chat()
 	local function install()
 		setDefault()
 	end
-	M["Chat"].install = install
+	chat.install = install
 end
