@@ -19,10 +19,10 @@ local function savevars()
 end
 
 local handler, events = CreateFrame("Frame"), { }
-local function events:PLAYER_LOGOUT(...)
+function events:PLAYER_LOGOUT(...)
 	savevars()
 end
-local function events:ADDON_LOADED(...)
+function events:ADDON_LOADED(...)
 	local name = ...
 	if name == "EUI" then
 		loadvars()

@@ -2,10 +2,10 @@ local E, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Chat (needs install)
 -----------------------------------------------------------------------
-local chat = EUI:NewElement("chat")
+local chat = V:NewElement("chat")
 
 function chat:load()
-	local chatframe = EUI:CreatePanel("EUIChatFrame", UIParent)
+	local chatframe = V:CreatePanel("EUIChatFrame", UIParent)
 	chatframe:SetFrameStrata("BACKGROUND")
 	chatframe:SetFrameLevel(0)
 	chatframe:SetAllPointsOffset(4, ChatFrame1)
@@ -31,22 +31,27 @@ function chat:load()
 	end
 	ChatFrameMenuButton:Kill()
 	FriendsMicroButton:Hide()
+end
 
-	-- Setting the Default Position and Size
-	local function setDefault()	
+-- Code to be called on install
+function chat:install()
+	local handler = CreateFrame("Frame")
+	handler:RegisterEvent("UPDATE_CHAT_WINDOWS")
+	handler:SetScript("OnEvent", function(self, event, ...)
+		local frame = _G["ChatFrame".."1"]
+		local id = frame:GetID()
+		
 		-- default position
-		ChatFrame1:ClearAllPoints()
-		ChatFrame1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 10, 10)
-	
-		-- default chat size
-		ChatFrame1:SetSize(300, 200)
-	
-		FCF_SavePositionAndDimensions(ChatFrame1)
-	end
+		frame:ClearAllPoints()
+		frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 10, 10)
 
-	-- Code to be called on install
-	local function install()
-		setDefault()
-	end
-	self.install = install
+		-- default chat size
+		local width, height = 300, 200
+		frame:SetSize(width, height)
+		SetChatWindowSavedDimensions(id, width, height)
+		FCF_SavePositionAndDimensions(frame)
+		
+		-- Never call this again
+		self:SetScript("OnEvent", nil)
+	end)
 end
