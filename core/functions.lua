@@ -11,14 +11,14 @@ function V:Test()
 end
 
 -- Keep V.mylevel updated
-local function events:PLAYER_LEVEL_UP()
+function events:PLAYER_LEVEL_UP()
 	V.mylevel = UnitLevel("player")
 end
 -- Keep V.incombat updated
-local function events:PLAYER_REGEN_DISABLED()
+function events:PLAYER_REGEN_DISABLED()
 	V.incombat = true
 end
-local function events:PLAYER_REGEN_ENABLED()
+function events:PLAYER_REGEN_ENABLED()
 	V.incombat = false
 end
 

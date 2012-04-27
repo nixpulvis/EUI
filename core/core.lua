@@ -9,7 +9,7 @@ EUI:CreatePanel
 			height - the height of the new frame
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 ]]
-function EUI:CreatePanel(name, parent)
+function V:CreatePanel(name, parent)
 	local frame = CreateFrame("Frame", name, parent)
 	frame:SetBackdrop({ 
 	  bgFile = [[Interface\AddOns\EUI\media\blank]], 
@@ -32,7 +32,7 @@ EUI:CreateButton
 	NOTE : BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 	adding functionality shouls be done with a HookScript.
 ]]
-function EUI:CreateButton(name, parent)
+function V:CreateButton(name, parent)
 	local button = CreateFrame("Button", name, parent)
 	button.hover = false
 
@@ -75,13 +75,16 @@ end
 This needs to be at the beginning of every element. It loads the Element and holds sets up the table for the 
 Element's data.
 ]]
-function EUI:NewElement(name)
+function V:NewElement(name)
 	E[name] = { }
 	E[name].loader = CreateFrame("Frame")
 	E[name].loader:RegisterEvent("ADDON_LOADED")
 	E[name].loader:SetScript("OnEvent", function(self, event, ...)
-		if not tContains(V.saved.noload, name) then
-			E[name]:load()
+		if ... == "EUI" then
+			if not V.saved.noload then V.saved.noload = { } end
+			if not tContains(V.saved.noload, name) then
+				E[name]:load()
+			end
 		end
 	end)
 	return E[name]

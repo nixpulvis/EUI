@@ -4,13 +4,13 @@ local E, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 
 local function install()
-	print("Installing...")
+	E.chat.install()
 end
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
-f:SetScript("OnEvent", function(self, name, ...) 
-	if name == "EUI" and not V.saved.installed then
+f:SetScript("OnEvent", function(self, event, ...) 
+	if ... == "EUI" and not V.saved.installed then
 		install()
 	end
 end)
