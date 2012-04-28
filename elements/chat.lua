@@ -8,12 +8,19 @@ function chat:load()
 	local chatframe = V:CreatePanel("EUIChatFrame", UIParent)
 	chatframe:SetFrameStrata("BACKGROUND")
 	chatframe:SetFrameLevel(0)
-	chatframe:SetAllPointsOffset(4, ChatFrame1)
+	chatframe:SetPoint("TOPLEFT", ChatFrame1, "TOPLEFT", -4, 4)
+	chatframe:SetPoint("BOTTOMRIGHT", ChatFrame1, "BOTTOMRIGHT", 2, -5)
 
+	local tab_header = V:CreatePanel("EUIChatTabs", chatframe)
+	tab_header:SetPoint("BOTTOMLEFT", chatframe, "TOPLEFT", 0, 0)
+	tab_header:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0 , 0)
+	tab_header:SetHeight(20)
+	
 	--Skinning
 	for i = 1, NUM_CHAT_WINDOWS do
 		local blizzcf = _G["ChatFrame"..i]
 		local editbox = _G["ChatFrame"..i.."EditBox"]
+		local tab = _G["ChatFrame"..i.."Tab"]
 	
 		-- Remove Blizz Style
 		blizzcf:StripTextures()
@@ -25,9 +32,18 @@ function chat:load()
 		editbox:SetPoint("BOTTOMLEFT", chatframe, "BOTTOMLEFT")
 		editbox:SetPoint("BOTTOMRIGHT", chatframe, "BOTTOMRIGHT")
 		editbox:SetHeight(24)
+		
+		-- everytime the editbox would normally lower alpha, hide it
+		editbox:Hide()
+		editbox:HookScript("OnEditFocusLost", function(self) self:Hide() end)
 	
 		-- Hide the chat arrow buttons.
 		_G["ChatFrame"..i.."ButtonFrame"]:Hide()
+		
+		
+		-- TABS --
+		tab:StripTextures()
+		
 	end
 	ChatFrameMenuButton:Kill()
 	FriendsMicroButton:Hide()
@@ -35,6 +51,7 @@ end
 
 -- Code to be called on install
 function chat:install()
+	-- need this because though the install happens on ADDON_LOADED, this needs to happen later.
 	local handler = CreateFrame("Frame")
 	handler:RegisterEvent("UPDATE_CHAT_WINDOWS")
 	handler:SetScript("OnEvent", function(self, event, ...)
