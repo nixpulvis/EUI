@@ -2,36 +2,28 @@ local E, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Utility Functions
 -----------------------------------------------------------------------
-local eventhandler, events = CreateFrame("Frame"), { }
 
-
-
-function V:Test()
-	print("test")
+-- adds the given function to the given event
+function V.addToEvent(func, event)
+	if V.events[event] == nil then
+		V.events[event] = { }
+	end
+	tinsert(V.events[event], func)
 end
+
+-----------------------------------------------------------------------
+-- Event Functions
+-----------------------------------------------------------------------
 
 -- Keep V.mylevel updated
-function events:PLAYER_LEVEL_UP()
+local function updateUnitLevel()
 	V.mylevel = UnitLevel("player")
 end
+V.addToEvent(updateUnitLevel, "PLAYER_LEVEL_UP")
+
 -- Keep V.incombat updated
-function events:PLAYER_REGEN_DISABLED()
-	V.incombat = true
+local function updateCombatStatus()
+	UnitAffectingCombat("player")
 end
-function events:PLAYER_REGEN_ENABLED()
-	V.incombat = false
-end
-
-
-
-
-
-
-
-
-for k,v in pairs(events) do
-	eventhandler:RegisterEvent(k)
-end
-eventhandler:SetScript("OnEvent", function(self, event, ...)
-	events[event](self, ...)
-end)
+V.addToEvent(updateCombatStatus, "PLAYER_REGEN_ENABLED")
+V.addToEvent(updateCombatStatus, "PLAYER_REGEN_DISABLED")
