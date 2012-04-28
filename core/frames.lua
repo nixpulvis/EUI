@@ -5,15 +5,13 @@ EUI:CreatePanel
 	returns : new Frame
 	param : name - the name of the frame being created
 			parent - the frame this new frame will be parented to
-			width - the width of the new frame
-			height - the height of the new frame
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 ]]
 function V:CreatePanel(name, parent)
 	local frame = CreateFrame("Frame", name, parent)
 	frame:SetBackdrop({ 
-	  bgFile = [[Interface\AddOns\EUI\media\blank]], 
-	  edgeFile = [[Interface\AddOns\EUI\media\blank]], tile = false, tileSize = 0, edgeSize = 1, 
+	  bgFile = V.media.tex.blank, 
+	  edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	frame:SetBackdropColor(unpack(S.General.background_color))
@@ -27,8 +25,6 @@ EUI:CreateButton
 	returns : new Button (frame)
 	param : name - the name of the button being created
 			parent - the frame this new frame will be parented to
-			width - the width of the new frame
-			height - the height of the new frame
 	NOTE : BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 	adding functionality shouls be done with a HookScript.
 ]]
@@ -37,8 +33,8 @@ function V:CreateButton(name, parent)
 	button.hover = false
 
 	button:SetBackdrop({ 
-	  bgFile = [[Interface\AddOns\EUI\media\blank]], 
-	  edgeFile = [[Interface\AddOns\EUI\media\blank]], tile = false, tileSize = 0, edgeSize = 1, 
+	  bgFile = V.media.tex.blank, 
+	  edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
 	  insets = { left = 0, right = 0, top = 0, bottom = 0 }
 	})
 	button:SetBackdropColor(unpack(S.General.background_color))

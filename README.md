@@ -11,6 +11,11 @@ Inspired by [Tukui](http://www.tukui.org).
 ## Features
 This UI is all about minimalism, without sacrifice. As a hardcore WoW player myself I know very well what a competitive player needs and doesn't need. This means your UI will be full featured and yet compact and lightweight.
 
+### Combat Hiding
+With combat hiding enabled and configured, you can choose what "frame zone" (name not final) you want to be in while in combat. This allows you to have your UI give you all the information you want while waiting for the action, then only the information you NEED while in combat. Things like trade chat, your minimap, and even your action bars can be hidden. In fact every EUI panel can be set to disappear in combat. Keeps your UI clean and powerful.
+
+Not only can you hide frames in combat, but you can also make frames show ONLY while in combat. For example, hide all your buff and debuff tracking while not fighting. This system is designed to help keep fights that require a lot of attention easy to manage. Your UI should never be in the way.
+
 ### Combat Control
 Placeholder text
 
@@ -33,7 +38,7 @@ If you want you can also [download the git repository](https://github.com/Epicgr
 If you have a github account or can take the few seconds it takes to make one, submitted issues on github are my preferred method of reporting bugs. However, there is also a forum open for Bugs on tukui.org __NOTE TO SELF: Make Forum When version 1.0 is released__
 
 ## Credits
-Core Code By: Epicgrim (Nathan Lilienthal)
+Core Code By: Nathan Lilienthal (Epicgrim)
 
 Ideas and Inspiration from: [Tukui](http://www.tukui.org/forums/), [ElvUI](http://www.tukui.org/forums/)
 
