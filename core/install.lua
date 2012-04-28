@@ -7,10 +7,9 @@ local function install()
 	E.chat.install()
 end
 
-local f = CreateFrame("Frame")
-f:RegisterEvent("ADDON_LOADED")
-f:SetScript("OnEvent", function(self, event, ...) 
-	if ... == "EUI" and not V.saved.installed then
+local function install_ADDON_LOADED(self, name)
+	if name == "EUI" and not V.saved.installed then
 		install()
 	end
-end)
+end
+V.addToEvent(install_ADDON_LOADED, "ADDON_LOADED")
