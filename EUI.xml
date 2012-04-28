@@ -4,6 +4,8 @@
 	<Script file="init\constants.lua"/>
 	<Script file="init\savedvars.lua"/>
 	
+	<Script file="media\media.lua"/>
+	
 	<Script file="settings\settings.lua"/>	
 
 	<Script file="core\api.lua"/>	

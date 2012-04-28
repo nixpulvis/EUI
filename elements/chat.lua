@@ -8,13 +8,8 @@ function chat:load()
 	local chatframe = V:CreatePanel("EUIChatFrame", UIParent)
 	chatframe:SetFrameStrata("BACKGROUND")
 	chatframe:SetFrameLevel(0)
-	chatframe:SetPoint("TOPLEFT", ChatFrame1, "TOPLEFT", -4, 4)
+	chatframe:SetPoint("TOPLEFT", ChatFrame1, "TOPLEFT", -4, 24)
 	chatframe:SetPoint("BOTTOMRIGHT", ChatFrame1, "BOTTOMRIGHT", 2, -5)
-
-	local tab_header = V:CreatePanel("EUIChatTabs", chatframe)
-	tab_header:SetPoint("BOTTOMLEFT", chatframe, "TOPLEFT", 0, 0)
-	tab_header:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0 , 0)
-	tab_header:SetHeight(20)
 	
 	--Skinning
 	for i = 1, NUM_CHAT_WINDOWS do
@@ -43,6 +38,10 @@ function chat:load()
 		
 		-- TABS --
 		tab:StripTextures()
+		tab.bottomline = V:CreatePanel(nil, tab)
+		tab.bottomline:SetPoint("LEFT", tab, "BOTTOMLEFT")
+		tab.bottomline:SetPoint("RIGHT", tab, "BOTTOMRIGHT")
+		tab.bottomline:SetHeight(1)		
 		
 	end
 	ChatFrameMenuButton:Kill()
