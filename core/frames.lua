@@ -43,6 +43,9 @@ function V:CreateButton(name, parent)
 	button:SetWidth(20)
 	button:SetHeight(20)
 	
+--	button.text = V:CreateFontString()
+--	button.text:SetPoint("CENTER")
+	
 	local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
 	local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
 	button:SetScript("OnEnter", function(self) 
