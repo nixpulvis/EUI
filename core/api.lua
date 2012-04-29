@@ -6,8 +6,8 @@ local E, S, V = unpack(select(2, ...))
 -- Set the style of the frame to EUI
 local function StyleFrame(frame)
 	frame:SetBackdrop({ 
-	  bgFile = [[Interface\AddOns\EUI\media\blank]], 
-	  edgeFile = [[Interface\AddOns\EUI\media\blank]], tile = false, tileSize = 0, edgeSize = 1, 
+	  bgFile = V.media.tex.blank, 
+	  edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
 	  insets = { left = 0, right = 0, top = 0, bottom = 0 }
 	})
 	frame:SetBackdropColor(unpack(S.General.background_color))
