@@ -1,20 +1,28 @@
-local E, S, V = unpack(select(2, ...))
+local M, S, V = unpack(select(2, ...))
 
 --[[
-This needs to be at the beginning of every element. It loads the Element and holds sets up the table for the 
-Element's data.
+EUI:CreatePanel
+	returns : new Frame
+	param : name - the name of the frame being created
+			parent - the frame this new frame will be parented to
+	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
+		   Additionally these Elements are the frames in charge of display settings.
 ]]
-function V:NewElement(name)
-	E[name] = { }
-	E[name].loader = CreateFrame("Frame")
-	E[name].loader:RegisterEvent("ADDON_LOADED")
-	E[name].loader:SetScript("OnEvent", function(self, event, ...)
-		if ... == "EUI" then
-			if not V.saved.noload then V.saved.noload = { } end
-			if not tContains(V.saved.noload, name) then
-				E[name]:load()
-			end
-		end
-	end)
-	return E[name]
+function V:CreateElement(name, module, parent)
+	local element = { 
+		tier = 1
+	}
+	
+	-- Making the frame
+	element.frame = V:CreatePanel(name, parent)
+	
+	element.mover = V:CreatePanel(name.."_Mover", element.frame)
+	element.mover:SetPoint("TOPRIGHT", element.frame, "TOPLEFT", -3, 0)
+	element.mover:SetPoint("BOTTOMRIGHT", element.frame, "BOTTOMLEFT", -3, 0)
+	element.mover:SetWidth(15)
+	element.mover:SetBackdropColor(.1,.7,.1,select(4, unpack(S.General.background_color)))
+	element.mover:Hide()
+	
+	module.elements[name] = element
+	return element.frame
 end

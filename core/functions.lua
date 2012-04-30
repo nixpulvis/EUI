@@ -1,4 +1,4 @@
-local E, S, V = unpack(select(2, ...))
+local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Utility Functions
 -----------------------------------------------------------------------
@@ -9,6 +9,18 @@ function V.addToEvent(func, event)
 		V.events[event] = { }
 	end
 	tinsert(V.events[event], func)
+end
+
+function V.toggleMovers()
+	for module,v in pairs(M) do
+		for k,v in pairs(M[module].elements) do
+			if v.mover:IsVisible() then
+				v.mover:Hide()
+			else
+				v.mover:Show()
+			end
+		end
+	end
 end
 
 -----------------------------------------------------------------------
