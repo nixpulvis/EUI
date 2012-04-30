@@ -1,4 +1,4 @@
-local E, S, V = unpack(select(2, ...))
+local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- These are tools used for development.
 -----------------------------------------------------------------------
@@ -46,4 +46,12 @@ end)
 SLASH_SCRIPTBOX1 = '/sb'
 function SlashCmdList.SCRIPTBOX(msg, editbox)
 	script_box:Show()
+end
+
+
+
+-- Best slash cmd ever!
+SLASH_EUI1 = '/eui'
+function SlashCmdList.EUI(msg, editbox)
+	V.toggleMovers()
 end

@@ -1,11 +1,11 @@
-local E, S, V = unpack(select(2, ...))
+local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Chat (needs install)
 -----------------------------------------------------------------------
-local chat = V:NewElement("chat")
+local chat = V:NewModule("chat")
 
-function chat:load()
-	local chatframe = V:CreatePanel("EUIChatFrame", UIParent)
+function chat:load()	
+	local chatframe = V:CreateElement("EUIChatFrame", chat, UIParent)
 	chatframe:SetFrameStrata("BACKGROUND")
 	chatframe:SetFrameLevel(0)
 	chatframe:SetPoint("TOPLEFT", ChatFrame1, "TOPLEFT", -4, 24)
