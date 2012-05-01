@@ -14,10 +14,11 @@
 	<Script file="core\elements.lua"/>
 	<Script file="core\modules.lua"/>
 	<Script file="core\install.lua"/>
-	<Script file="core\events.lua"/>
+	<Script file="core\config.lua"/>	
 	
 	<Script file="modules\chat.lua"/>
 	<Script file="modules\actionbars.lua"/>
 	
+	<Script file="core\events.lua"/>
 	<Script file="core\dev.lua"/>
 </Ui>

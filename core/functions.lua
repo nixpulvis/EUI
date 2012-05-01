@@ -3,6 +3,16 @@ local M, S, V = unpack(select(2, ...))
 -- EUI Utility Functions
 -----------------------------------------------------------------------
 
+-- Make a string on a frame
+function V.SetFontString(parent, fontName, fontHeight, fontStyle)
+	local fs = parent:CreateFontString(nil, "OVERLAY")
+	fs:SetFont(fontName, fontHeight, fontStyle)
+	fs:SetJustifyH("LEFT")
+	fs:SetShadowColor(0, 0, 0)
+	fs:SetShadowOffset(1.25, -1.25)
+	return fs
+end
+
 -- adds the given function to the given event
 function V.addToEvent(func, event)
 	if V.events[event] == nil then

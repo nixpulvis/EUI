@@ -11,19 +11,21 @@ local function installAll()
 			module.install()
 		end
 	end
+	S.savedperchar.installed = true
 end
 
+-- not sure if this is worth keeping
 local function install(module)
-	if M[module] and M[module].install then
-		M[module].install()
+	if module and module.install then
+		module.install()
 	else
-		error("No Module "..module)
+		error("No Module install function")
 	end
 end
 
-local function install_ADDON_LOADED(self, name)
-	if name == "EUI" and not V.saved.installed then
+local function install_PLAYER_ENTERING_WORLD(self)
+	if not S.savedperchar.installed then
 		installAll()
 	end
 end
-V.addToEvent(install_ADDON_LOADED, "ADDON_LOADED")
+V.addToEvent(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")

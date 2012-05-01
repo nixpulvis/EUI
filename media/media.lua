@@ -19,3 +19,4 @@ tex["blank"] = [[Interface\AddOns\EUI\media\blank]]
 ------------ Icons -------------
 
 ------------ Fonts -------------
+fonts["main"] = [[Interface\AddOns\EUI\media\HelveticaWorld-Regular.ttf]]

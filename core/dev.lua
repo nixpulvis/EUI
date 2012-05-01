@@ -48,10 +48,15 @@ function SlashCmdList.SCRIPTBOX(msg, editbox)
 	script_box:Show()
 end
 
+-- install a module
+SLASH_INSTALL1 = '/install'
+function SlashCmdList.INSTALL(msg, editbox)
+	M[msg].install()
+end
 
-
--- Best slash cmd ever!
-SLASH_EUI1 = '/eui'
-function SlashCmdList.EUI(msg, editbox)
-	V.toggleMovers()
+-- reset saved vars
+SLASH_RESET1 = '/reset'
+function SlashCmdList.RESET(msg, editbox)
+	V.resetSavedVars()
+	ReloadUI()
 end
