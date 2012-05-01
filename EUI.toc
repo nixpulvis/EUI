@@ -2,7 +2,7 @@
 ## Author: Epicgrim
 ## Credits: Tukz, Hydra, Smelly
 ## Version: 0.1
-## Title: EUI
+## Title: EUI - Complete User Interface
 ## Notes: EUI (formerly EpicUI) User Interface.
 ## SavedVariables: EUIData
 ## SavedVariablesPerCharacter: EUIToonData

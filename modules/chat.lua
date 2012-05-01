@@ -9,7 +9,7 @@ function chat:load()
 	chatframe:SetFrameStrata("BACKGROUND")
 	chatframe:SetFrameLevel(0)
 	chatframe:SetPoint("TOPLEFT", ChatFrame1, "TOPLEFT", -4, 24)
-	chatframe:SetPoint("BOTTOMRIGHT", ChatFrame1, "BOTTOMRIGHT", 2, -5)
+	chatframe:SetPoint("BOTTOMRIGHT", ChatFrame1, "BOTTOMRIGHT", 2, -6)
 	
 	--Skinning
 	for i = 1, NUM_CHAT_WINDOWS do
@@ -46,28 +46,55 @@ function chat:load()
 	end
 	ChatFrameMenuButton:Kill()
 	FriendsMicroButton:Hide()
+	
+	-- Chat info
+	local info_panel = V:CreatePanel("EUIChatInfoPanel", chatframe)
+	info_panel:SetPoint("BOTTOMLEFT", chatframe, "TOPLEFT", 0, 3)
+	info_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0, 3)
+	info_panel:SetHeight(20)
+	
+	info_panel.text = V.SetFontString(info_panel, V.media.fonts.main, 12)
+	info_panel.text:SetText("GUILD")
+	info_panel.text:SetPoint("CENTER")
+
+	info_panel:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(info_panel, "ANCHOR_TOP")
+		GameTooltip:ClearLines()
+		
+		-- Guild info
+		local guildName, guildRankName, guildRankIndex = GetGuildInfo("player")
+		GameTooltip:AddDoubleLine(guildName..":", guildRankName)
+		
+		for i = 1, GetNumGuildMembers() do
+			local name, rank, rankIndex, level, class, zone, note,
+			officernote, online, status, classFileName,
+			achievementPoints, achievementRank, isMobile = GetGuildRosterInfo(i)
+			local classc, levelc = RAID_CLASS_COLORS[classFileName], GetQuestDifficultyColor(level)
+			
+			if online then
+				GameTooltip:AddDoubleLine(name, string.format("|cFFFFFFFF%s|r", "["..rank.."] ")..level, classc.r, classc.g, classc.b, levelc.r, levelc.g, levelc.b)
+			end
+		end
+				
+		GameTooltip:Show()
+	end)
+	info_panel:SetScript("OnLeave", function(self)
+		GameTooltip:Hide()
+	end)
 end
 
 -- Code to be called on install
 function chat:install()
-	-- need this because though the install happens on ADDON_LOADED, this needs to happen later.
-	local handler = CreateFrame("Frame")
-	handler:RegisterEvent("UPDATE_CHAT_WINDOWS")
-	handler:SetScript("OnEvent", function(self, event, ...)
-		local frame = _G["ChatFrame".."1"]
-		local id = frame:GetID()
-		
-		-- default position
-		frame:ClearAllPoints()
-		frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 10, 10)
+	local frame = _G["ChatFrame".."1"]
+	local id = frame:GetID()
 
-		-- default chat size
-		local width, height = 300, 200
-		frame:SetSize(width, height)
-		SetChatWindowSavedDimensions(id, width, height)
-		FCF_SavePositionAndDimensions(frame)
-		
-		-- Never call this again
-		self:SetScript("OnEvent", nil)
-	end)
+	-- default position
+	frame:ClearAllPoints()
+	frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 10, 10)
+
+	-- default chat size
+	local width, height = 300, 200
+	frame:SetSize(width, height)
+	SetChatWindowSavedDimensions(id, width, height)
+	FCF_SavePositionAndDimensions(frame)
 end
