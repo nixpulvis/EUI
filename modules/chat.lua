@@ -63,7 +63,8 @@ function chat:load()
 		
 		-- Guild info
 		local guildName, guildRankName, guildRankIndex = GetGuildInfo("player")
-		GameTooltip:AddDoubleLine(guildName..":", guildRankName)
+		GameTooltip:AddDoubleLine(guildName)
+		GameTooltip:AddLine("-------------------------------------------")
 		
 		for i = 1, GetNumGuildMembers() do
 			local name, rank, rankIndex, level, class, zone, note,
@@ -80,6 +81,9 @@ function chat:load()
 	end)
 	info_panel:SetScript("OnLeave", function(self)
 		GameTooltip:Hide()
+	end)
+	info_panel:SetScript("OnMouseUp", function(self)
+		ToggleGuildFrame()
 	end)
 end
 
