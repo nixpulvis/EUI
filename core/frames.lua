@@ -1,13 +1,22 @@
 local M, S, V = unpack(select(2, ...))
 
+--[[ Frames within the MEF system
+A frame is a single LUA frame (or derivitive) that is used to make a element.
+some elements will not need any other frames then the one that is created for the
+element, but most will. These are styled to fit the UI. These are most like the
+CreateFrame function provided by blizz.
+]]
+
 --[[
-EUI:CreatePanel
+EUI:CreateFrame
 	returns : new Frame
-	param : name - the name of the frame being created
+	param : name   - the name of the frame being created
 			parent - the frame this new frame will be parented to
+			width  - the width of the frame
+			height - the height of the frame
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 ]]
-function V:CreatePanel(name, parent)
+function V:CreateFrame(name, parent, width, height)
 	local frame = CreateFrame("Frame", name, parent)
 	frame:SetBackdrop({ 
 	  bgFile = V.media.tex.blank, 
@@ -17,16 +26,19 @@ function V:CreatePanel(name, parent)
 	frame:SetBackdropColor(unpack(S.General.background_color))
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
 	
+	button:SetWidth(width)
+	button:SetHeight(height)
+	
 	return frame
 end
 
 --[[
 EUI:CreateButton
 	returns : new Button (frame)
-	param : name - the name of the button being created
+	param : name   - the name of the button being created
 			parent - the frame this new frame will be parented to
-	NOTE : BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
-	adding functionality shouls be done with a HookScript.
+	NOTE  :	BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
+			adding functionality shouls be done with a HookScript.
 ]]
 function V:CreateButton(name, parent)
 	local button = CreateFrame("Button", name, parent)
@@ -39,33 +51,14 @@ function V:CreateButton(name, parent)
 	})
 	button:SetBackdropColor(unpack(S.General.background_color))
 	button:SetBackdropBorderColor(unpack(S.General.border_color))
+	button:HoverClickStyle()
 	
+	-- default button width and height
 	button:SetWidth(20)
 	button:SetHeight(20)
 	
---	button.text = V:CreateFontString()
---	button.text:SetPoint("CENTER")
-	
-	local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
-	local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
-	button:SetScript("OnEnter", function(self) 
-		self:SetBackdropColor(unpack(hover_color))
-		button.hover = true
-	end)
-	button:SetScript("OnLeave", function(self) 
-		self:SetBackdropColor(unpack(S.General.background_color))
-		button.hover = false
-	end)
-	button:SetScript("OnMouseDown", function(self) 
-		self:SetBackdropColor(unpack(mousedown_color))
-	end)
-	button:SetScript("OnMouseUp", function(self) 
-		if button.hover then
-			self:SetBackdropColor(unpack(hover_color))
-		else
-			self:SetBackdropColor(unpack(S.General.background_color))
-		end
-	end)
-	
+	button.text = button:SetFontString(V.media.fonts.main, 12, "OUTLINE")
+	button.text:SetPoint("CENTER")
+		
 	return button
 end

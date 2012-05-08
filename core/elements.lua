@@ -1,5 +1,11 @@
 local M, S, V = unpack(select(2, ...))
 
+--[[ ELEMENTS within the MEF system.
+an element is what the user will see on the screen as a individual part of the UI.
+for example, the Left Chat Frame is an element, however there maw be more chat frames,
+each one is an element, eventhough they are in the same module.
+]]
+
 --[[
 EUI:CreatePanel
 	returns : new Frame

@@ -15,15 +15,15 @@ local function installAll()
 end
 
 -- not sure if this is worth keeping
-local function install(module)
+local function installModule(module)
 	if module and module.install then
 		module.install()
 	else
-		error("No Module install function")
+		error("No Module Install Function for "..module)
 	end
 end
 
-local function install_PLAYER_ENTERING_WORLD(self)
+local function install(self)
 	if not S.savedperchar.installed then
 		installAll()
 	end
