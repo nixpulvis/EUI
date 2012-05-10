@@ -38,7 +38,7 @@ function chat:load()
 		
 		-- TABS --
 		tab:StripTextures()
-		tab.bottomline = V:CreatePanel(nil, tab)
+		tab.bottomline = V:CreateFrame(nil, tab)
 		tab.bottomline:SetPoint("LEFT", tab, "BOTTOMLEFT")
 		tab.bottomline:SetPoint("RIGHT", tab, "BOTTOMRIGHT")
 		tab.bottomline:SetHeight(1)		
@@ -48,7 +48,7 @@ function chat:load()
 	FriendsMicroButton:Hide()
 	
 	-- Chat info
-	local info_panel = V:CreatePanel("EUIChatInfoPanel", chatframe)
+	local info_panel = V:CreateFrame("EUIChatInfoFrame", chatframe)
 	info_panel:SetPoint("BOTTOMLEFT", chatframe, "TOPLEFT", 0, 3)
 	info_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0, 3)
 	info_panel:SetHeight(20)

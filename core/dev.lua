@@ -11,7 +11,7 @@ end
 
 
 -- Script Box
-local script_box = V:CreatePanel("EUIScriptBox", UIParent)
+local script_box = V:CreateFrame("EUIScriptBox", UIParent)
 script_box:SetSize(300, 300)
 script_box:SetPoint("CENTER")
 script_box:Hide()

@@ -7,9 +7,10 @@ each one is an element, eventhough they are in the same module.
 ]]
 
 --[[
-EUI:CreatePanel
+EUI:CreateElement
 	returns : new Frame
 	param : name - the name of the frame being created
+			module - the module this is a member of. (might remove this.)
 			parent - the frame this new frame will be parented to
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 		   Additionally these Elements are the frames in charge of display settings.
@@ -20,10 +21,10 @@ function V:CreateElement(name, module, parent)
 	}
 	
 	-- Making the frame
-	local frame = V:CreatePanel(name, parent)
+	local frame = V:CreateFrame(name, parent)
 	element.frame = frame
 	
-	local mover = V:CreatePanel(name.."_Mover", element.frame)
+	local mover = V:CreateFrame(name.."_Mover", element.frame)
 	mover:SetPoint("TOPRIGHT", element.frame, "TOPLEFT", -3, 0)
 	mover:SetPoint("BOTTOMRIGHT", element.frame, "BOTTOMLEFT", -3, 0)
 	mover:SetWidth(15)
