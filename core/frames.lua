@@ -26,8 +26,10 @@ function V:CreateFrame(name, parent, width, height)
 	frame:SetBackdropColor(unpack(S.General.background_color))
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
 	
-	button:SetWidth(width)
-	button:SetHeight(height)
+	-- if we have the width arg, then we should require the height as well.
+	if width then
+		frame:SetSize(width, height)
+	end
 	
 	return frame
 end
@@ -40,7 +42,7 @@ EUI:CreateButton
 	NOTE  :	BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 			adding functionality shouls be done with a HookScript.
 ]]
-function V:CreateButton(name, parent)
+function V:CreateButton(name, parent, text)
 	local button = CreateFrame("Button", name, parent)
 	button.hover = false
 
@@ -54,11 +56,11 @@ function V:CreateButton(name, parent)
 	button:HoverClickStyle()
 	
 	-- default button width and height
-	button:SetWidth(20)
-	button:SetHeight(20)
+	button:SetSize(20, 20)
 	
-	button.text = button:SetFontString(V.media.fonts.main, 12, "OUTLINE")
+	button.text = button:CreateEUIString(V.media.fonts.main, 12)
 	button.text:SetPoint("CENTER")
+	button.text:SetText(text)
 		
 	return button
 end

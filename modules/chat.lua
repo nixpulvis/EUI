@@ -53,7 +53,7 @@ function chat:load()
 	info_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0, 3)
 	info_panel:SetHeight(20)
 	
-	info_panel.text = V.SetFontString(info_panel, V.media.fonts.main, 12)
+	info_panel.text = info_panel:CreateEUIString(V.media.fonts.main, 12)
 	info_panel.text:SetText("GUILD")
 	info_panel.text:SetPoint("CENTER")
 

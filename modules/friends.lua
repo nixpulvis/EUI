@@ -20,7 +20,7 @@ function friendsList:load()
 	
 	--regular non-Bnet friends
 	for i=1, numFriends do
-		friendsList.friend[i] = V.SetFontString(friendsList, V.media.fonts.main, 12)
+		friendsList.friend[i] = friendsList:CreateEUIString(V.media.fonts.main, 12)
 		friendsList.friend[i]:SetText(GetFriendInfo(i))
 		friendsList.friend[i]:SetPoint("TOPLEFT", friendsList, "TOPLEFT", 4 + col*colMult, 14 - (row+1)*rowMult)
 		row = row+1
@@ -35,7 +35,7 @@ function friendsList:load()
 
 	--adds Bnet friends
 	for i=1, BnetFriends do
-		friendsList.friend[numFriends+i] = V.SetFontString(friendsList, V.media.fonts.main, 12)
+		friendsList.friend[numFriends+i] = friendsList:CreateEUIString(V.media.fonts.main, 12)
 		friendsList.friend[numFriends+i]:SetText(select(2, BNGetFriendInfo(i)).." "..select(3, BNGetFriendInfo(i)))
 		friendsList.friend[numFriends+i]:SetPoint("TOPLEFT", friendsList, "TOPLEFT", 4 + col*colMult, 14 - rowMult*(row + 1))
 		row = row+1

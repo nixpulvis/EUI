@@ -19,11 +19,11 @@ script_box:Hide()
 --script_box.title = V:CreateFontString("LUA Scriptbox")
 --script_box.title:SetPoint("TOPLEFT", script_box, "TOPLEFT", 2, -2)
 
-script_box.run = V:CreateButton("EUIScriptBox_RunButton", script_box)
+script_box.run = V:CreateButton("EUIScriptBox_RunButton", script_box, "run")
 script_box.run:SetPoint("BOTTOMRIGHT", script_box, "BOTTOMRIGHT", -2, 2)
 script_box.run:SetSize(35, 20)
 
-script_box.close = V:CreateButton("EUIScriptBox_RunButton", script_box)
+script_box.close = V:CreateButton("EUIScriptBox_CloseButton", script_box, "close")
 script_box.close:SetPoint("RIGHT", script_box.run, "LEFT", -2, 0)
 script_box.close:SetSize(35, 20)
 
