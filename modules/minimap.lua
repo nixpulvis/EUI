@@ -72,16 +72,6 @@ function minimap:load()
 	--hide tracking
 	MiniMapTracking:Hide()
 	
-	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
-	local clockframe = V:CreateFrame("clockframe", EUIMinimap, 40, 15)
-	clockframe:SetPoint("CENTER", EUIMinimap, "BOTTOM", 0, 0)
-	clockframe:SetFrameStrata("MEDIUM")
-	
-	local hour, minute = GetGameTime()
-	clockframe.text = clockframe:CreateEUIString(V.media.fonts.main, 12)
-	clockframe.text:SetPoint("CENTER")
-	clockframe.text:SetText(hour .. ":" .. minute)
-	
 	--removes blizzard time clock
 	local f = CreateFrame("Frame", nil, UIParent)
 	f:RegisterEvent("ADDON_LOADED")
@@ -93,6 +83,18 @@ function minimap:load()
 			end)
 		end
 	end)
+	
+	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
+	local clockframe = V:CreateFrame("clockframe", EUIMinimap, 40, 15)
+	clockframe:SetPoint("CENTER", EUIMinimap, "BOTTOM", 0, 0)
+	clockframe:SetFrameStrata("MEDIUM")
+	
+	local hour, minute = GetGameTime()
+	clockframe.text = clockframe:CreateEUIString(V.media.fonts.main, 12)
+	displayFormat = string.join("", "%02d", ":%02d")
+	clockframe.text:SetPoint("CENTER")
+	clockframe.text:SetFormattedText(displayFormat, hour, minute)
+	
 	
 	--making zone text frame
 	local zoneframe = V:CreateFrame("zoneframe", EUIMinimap, 150, 20)
@@ -122,6 +124,7 @@ function minimap:load()
 	zoneframe:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 	zoneframe:RegisterEvent("ZONE_CHANGED")
 	zoneframe:RegisterEvent("ZONE_CHANGED_INDOORS")
+	zoneframe:RegisterEvent("ADDON_LOADED")
 	zoneframe:SetScript("OnEvent",zone_Update)
 	
 	
@@ -137,6 +140,38 @@ function minimap:load()
 		zoneframe.text:SetAlpha(0)
 	end)
 
+	
+	
+	---------------------------------------------------------------------
+	-- left-clicking time when stopwatch is already open should close it
+	---------------------------------------------------------------------
+	
+	local function HideStopwatch()
+		StopwatchFrame:Hide()
+	end
+	
+	clockframe:SetScript("OnMouseUp", function(self, btn)
+		if btn == "RightButton" then	
+			if TimeManagerFrame:IsShown() then
+				TimeManagerFrame:Hide()
+			else
+				TimeManagerFrame:SetPoint("TOPRIGHT", clockframe, "Bottom", 0, -5)
+				TimeManagerFrame:Show()
+			end
+		elseif btn == "MiddleButton" then
+			GameTimeFrame:Click()
+		else
+			if StopwatchFrame:IsShown() then
+				StopwatchFrame:Hide()
+			else
+				StopwatchFrame:Show()
+			end
+		end
+	end)
+	
+	---------------------------------------------------------------------
+	-- 
+	---------------------------------------------------------------------
 	
 	--scrolling to zoom
 	Minimap:EnableMouseWheel(true)
