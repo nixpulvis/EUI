@@ -45,8 +45,8 @@ function chat:load()
 		-- Skin Editbox
 		editbox:StyleFrame()
 		editbox:ClearAllPoints()
-		editbox:SetPoint("BOTTOMLEFT", chatframe, "BOTTOMLEFT")
-		editbox:SetPoint("BOTTOMRIGHT", chatframe, "BOTTOMRIGHT")
+		editbox:SetPoint("BOTTOMLEFT", EUIChatFrame1, "BOTTOMLEFT")
+		editbox:SetPoint("BOTTOMRIGHT", EUIChatFrame1, "BOTTOMRIGHT")
 		editbox:SetHeight(24)
 		
 		-- everytime the editbox would normally lower alpha, hide it
