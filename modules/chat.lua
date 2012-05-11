@@ -47,24 +47,27 @@ function chat:load()
 	ChatFrameMenuButton:Kill()
 	FriendsMicroButton:Hide()
 	
-	-- Chat info
-	local info_panel = V:CreateFrame("EUIChatInfoFrame", chatframe)
-	info_panel:SetPoint("BOTTOMLEFT", chatframe, "TOPLEFT", 0, 3)
-	info_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0, 3)
-	info_panel:SetHeight(20)
+	-----------------------------------------------------------------
+	-- FRIENDS AND GUILD
+	-----------------------------------------------------------------
 	
-	info_panel.text = info_panel:CreateEUIString(V.media.fonts.main, 12)
-	info_panel.text:SetText("GUILD")
-	info_panel.text:SetPoint("CENTER")
+	--Guild
+	local guild_panel = V:CreateFrame("EUIChatGuildFrame", chatframe)
+	guild_panel:SetPoint("BOTTOMLEFT", chatframe, "TOPLEFT", 0, 3)
+	guild_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOP", -2, 3)
+	guild_panel:SetHeight(20)
+	
+	guild_panel.text = guild_panel:CreateEUIString(V.media.fonts.main, 12)
+	guild_panel.text:SetPoint("CENTER")
+	guild_panel.text:SetText("Guild")
 
-	info_panel:SetScript("OnEnter", function(self)
-		GameTooltip:SetOwner(info_panel, "ANCHOR_TOP")
+	guild_panel:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(guild_panel, "ANCHOR_TOP")
 		GameTooltip:ClearLines()
 		
 		-- Guild info
 		local guildName, guildRankName, guildRankIndex = GetGuildInfo("player")
 		GameTooltip:AddDoubleLine(guildName)
-		GameTooltip:AddLine("-------------------------------------------")
 		
 		for i = 1, GetNumGuildMembers() do
 			local name, rank, rankIndex, level, class, zone, note,
@@ -79,11 +82,56 @@ function chat:load()
 				
 		GameTooltip:Show()
 	end)
-	info_panel:SetScript("OnLeave", function(self)
+	guild_panel:SetScript("OnLeave", function(self)
 		GameTooltip:Hide()
 	end)
-	info_panel:SetScript("OnMouseUp", function(self)
+	guild_panel:SetScript("OnMouseUp", function(self)
 		ToggleGuildFrame()
+	end)
+	
+	-- Friends
+	local friends_panel = V:CreateFrame("EUIChatGuildFrame", chatframe)
+	friends_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0, 3)
+	friends_panel:SetPoint("BOTTOMLEFT", chatframe, "TOP", 2, 3)
+	friends_panel:SetHeight(20)
+	
+	friends_panel.text = friends_panel:CreateEUIString(V.media.fonts.main, 12)
+	friends_panel.text:SetPoint("CENTER")
+	friends_panel.text:SetText("Friends")
+
+	friends_panel:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(friends_panel, "ANCHOR_TOP")
+		GameTooltip:ClearLines()
+		
+		-- Header
+		GameTooltip:AddLine("Friends:")
+		
+		for i = 1, GetNumFriends() do
+			local name, level, class, area, connected, status, note = GetFriendInfo(i)
+			local classc, levelc = RAID_CLASS_COLORS[class], GetQuestDifficultyColor(level)
+			
+			if online then
+				GameTooltip:AddDoubleLine(name, level, classc.r, classc.g, classc.b, levelc.r, levelc.g, levelc.b)
+			end
+		end
+		
+		for i = 1, BNGetNumFriends() do
+			local presenceID, givenName, surname, toonName, toonID, client, online,
+			 lastOnline, isAFK, isDND, broadcastText, noteText, isFriend, broadcastTime  = BNGetFriendInfo(i)
+			local classc = RAID_CLASS_COLORS[class]
+			
+			if online then
+				GameTooltip:AddDoubleLine(givenName.." "..surname, toonName, .3, .35, .9, 1, 1, 1)
+			end
+		end
+				
+		GameTooltip:Show()
+	end)
+	friends_panel:SetScript("OnLeave", function(self)
+		GameTooltip:Hide()
+	end)
+	friends_panel:SetScript("OnMouseUp", function(self)
+		ToggleFriendsFrame()
 	end)
 end
 
