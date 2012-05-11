@@ -4,18 +4,39 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 local chat = V:NewModule("chat")
 
-function chat:load()	
-	local chatframe = V:CreateElement("EUIChatFrame", chat, UIParent)
-	chatframe:SetFrameStrata("BACKGROUND")
-	chatframe:SetFrameLevel(0)
-	chatframe:SetPoint("TOPLEFT", ChatFrame1, "TOPLEFT", -4, 24)
-	chatframe:SetPoint("BOTTOMRIGHT", ChatFrame1, "BOTTOMRIGHT", 2, -6)
+function chat:load()		
+	hooksecurefunc("FCF_UnDockFrame", function(chatframe)
+		local id = chatframe:GetID()
+		local shown = select(7, FCF_GetChatWindowInfo(chatframe:GetID()))
+
+		if shown then
+			_G["EUIChatFrame"..id]:Show()
+		end
+	end)
 	
+	hooksecurefunc("FCF_DockFrame", function(chatframe, index, selected)
+		local id = chatframe:GetID()
+		if id == 1 then return end
+		_G["EUIChatFrame"..id]:Hide()
+	end)
+	hooksecurefunc("FCF_Close", function(chatframe, index, selected)
+		local id = chatframe:GetID()
+		_G["EUIChatFrame"..id]:Hide()
+	end)
+
 	--Skinning
 	for i = 1, NUM_CHAT_WINDOWS do
 		local blizzcf = _G["ChatFrame"..i]
 		local editbox = _G["ChatFrame"..i.."EditBox"]
 		local tab = _G["ChatFrame"..i.."Tab"]
+	
+		-- give every chatframe a background. just hide it until needed.
+		local background = V:CreateElement("EUIChatFrame"..i, chat, UIParent)
+		background:SetFrameStrata("BACKGROUND")
+		background:SetFrameLevel(0)
+		background:SetPoint("TOPLEFT", blizzcf, "TOPLEFT", -4, 24)
+		background:SetPoint("BOTTOMRIGHT", blizzcf, "BOTTOMRIGHT", 2, -6)
+		if  i ~= 1 then background:Hide() end
 	
 		-- Remove Blizz Style
 		blizzcf:StripTextures()
@@ -52,9 +73,9 @@ function chat:load()
 	-----------------------------------------------------------------
 	
 	--Guild
-	local guild_panel = V:CreateFrame("EUIChatGuildFrame", chatframe)
-	guild_panel:SetPoint("BOTTOMLEFT", chatframe, "TOPLEFT", 0, 3)
-	guild_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOP", -2, 3)
+	local guild_panel = V:CreateFrame("EUIChatGuildFrame", EUIChatFrame1)
+	guild_panel:SetPoint("BOTTOMLEFT", EUIChatFrame1, "TOPLEFT", 0, 3)
+	guild_panel:SetPoint("BOTTOMRIGHT", EUIChatFrame1, "TOP", -2, 3)
 	guild_panel:SetHeight(20)
 	
 	guild_panel.text = guild_panel:CreateEUIString(V.media.fonts.main, 12)
@@ -90,9 +111,9 @@ function chat:load()
 	end)
 	
 	-- Friends
-	local friends_panel = V:CreateFrame("EUIChatGuildFrame", chatframe)
-	friends_panel:SetPoint("BOTTOMRIGHT", chatframe, "TOPRIGHT", 0, 3)
-	friends_panel:SetPoint("BOTTOMLEFT", chatframe, "TOP", 2, 3)
+	local friends_panel = V:CreateFrame("EUIChatGuildFrame", EUIChatFrame1)
+	friends_panel:SetPoint("BOTTOMRIGHT", EUIChatFrame1, "TOPRIGHT", 0, 3)
+	friends_panel:SetPoint("BOTTOMLEFT", EUIChatFrame1, "TOP", 2, 3)
 	friends_panel:SetHeight(20)
 	
 	friends_panel.text = friends_panel:CreateEUIString(V.media.fonts.main, 12)
