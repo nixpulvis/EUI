@@ -28,6 +28,7 @@ function V:NewModule(name)
 			if not S.saved.noload then S.saved.noload = { } end
 			if not tContains(S.saved.noload, name) then
 				M[name]:load()
+				M[name].loaded = true
 			end
 		end
 	end
