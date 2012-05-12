@@ -84,8 +84,8 @@ function minimap:load()
 	end)
 	
 	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
-	local clockframe = V:CreateFrame("EUIClockframe", EUIMinimap, 40, 15)
-	clockframe:SetPoint("CENTER", EUIMinimap, "BOTTOM", 0, 0)
+	local clockframe = V:CreateFrame("EUIClockframe", EUIMinimap, 45, 17)
+	clockframe:SetPoint("TOP", EUIMinimap, "TOP", 0, -4)
 	clockframe:SetFrameStrata("MEDIUM")
 	clockframe:StyleFrame()
 	
@@ -152,13 +152,13 @@ function minimap:load()
 	--making zone text frame
 	local zoneframe = V:CreateFrame("EUIZoneframe", EUIMinimap, 150, 20)
 	zoneframe:SetAlpha(0)
-	zoneframe:SetPoint("TOP", EUIMinimap, "TOP", 0, 0)
+	zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
 	zoneframe.text = zoneframe:CreateEUIString(V.media.fonts.main, 12)
-	zoneframe.text:SetAlpha(0)
 	zoneframe.text:SetPoint("CENTER")
+	
 	--this sets the text to the zone and colorizes it 
-	local zone_Update = function()
+	local function zone_Update()
 		local pvp = GetZonePVPInfo()
 		zoneframe.text:SetText(GetMinimapZoneText())
 		if pvp == "friendly" then
@@ -173,22 +173,20 @@ function minimap:load()
 			zoneframe.text:SetTextColor(1.0, 1.0, 1.0)
 		end
 	end
+	
 	zoneframe:RegisterEvent("PLAYER_ENTERING_WORLD")
 	zoneframe:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 	zoneframe:RegisterEvent("ZONE_CHANGED")
 	zoneframe:RegisterEvent("ZONE_CHANGED_INDOORS")
 	zoneframe:RegisterEvent("ADDON_LOADED")
-	zoneframe:SetScript("OnEvent",zone_Update)
-	
+	zoneframe:SetScript("OnEvent", zone_Update)
 	--event handling to hide zone unless mouse is in minimap
 	Minimap:SetScript("OnEnter",function()
 		zoneframe:SetAlpha(1)
-		zoneframe.text:SetAlpha(1)
 	end)
 	
 	Minimap:SetScript("OnLeave",function()
 		zoneframe:SetAlpha(0)
-		zoneframe.text:SetAlpha(0)
 	end)
 
 	--clicking the tim (LEFTCLICK = stopwatch, RIGHTCLICK = alarm/time manager,
