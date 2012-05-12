@@ -1,15 +1,14 @@
-print("at least it loaded")
 local M, S, V = unpack(select(2, ...))
-
---_G["MinimapCluster"]:Hide()
-
+-----------------------------------------------------------------------
+-- EUI Minimap
+-----------------------------------------------------------------------
 local minimap = V:NewModule("minimap")
+
 function minimap:load()
 	local EUIMinimap = V:CreateElement("EUIMinimap", minimap, UIParent)
 	EUIMinimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -20, -20)
 	EUIMinimap:SetSize(150,150)
 	EUIMinimap:SetFrameStrata("LOW")
-	--EUIMinimap:
 	
 	-- squarifies the map
 	Minimap:SetMaskTexture(V.media.tex.blank)
@@ -85,19 +84,29 @@ function minimap:load()
 	end)
 	
 	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
-	local clockframe = V:CreateFrame("clockframe", EUIMinimap, 40, 15)
+	local clockframe = V:CreateFrame("EUIClockframe", EUIMinimap, 40, 15)
 	clockframe:SetPoint("CENTER", EUIMinimap, "BOTTOM", 0, 0)
 	clockframe:SetFrameStrata("MEDIUM")
+	clockframe:StyleFrame()
 	
-	local hour, minute = GetGameTime()
+
 	clockframe.text = clockframe:CreateEUIString(V.media.fonts.main, 12)
 	displayFormat = string.join("", "%02d", ":%02d")
 	clockframe.text:SetPoint("CENTER")
-	clockframe.text:SetFormattedText(displayFormat, hour, minute)
 	
+	-- update the time
+	local t = 1
+	clockframe:SetScript("OnUpdate", function(self, elapsed)
+		t = t - elapsed
+		
+		if t <= 0 then
+			local hour, minute = GetGameTime()
+			clockframe.text:SetFormattedText(displayFormat, hour, minute)
+		end
+	end)
 	
 	--making zone text frame
-	local zoneframe = V:CreateFrame("zoneframe", EUIMinimap, 150, 20)
+	local zoneframe = V:CreateFrame("EUIZoneframe", EUIMinimap, 150, 20)
 	zoneframe:SetAlpha(0)
 	zoneframe:SetPoint("TOP", EUIMinimap, "TOP", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
@@ -127,8 +136,6 @@ function minimap:load()
 	zoneframe:RegisterEvent("ADDON_LOADED")
 	zoneframe:SetScript("OnEvent",zone_Update)
 	
-	
-	
 	--event handling to hide zone unless mouse is in minimap
 	Minimap:SetScript("OnEnter",function()
 		zoneframe:SetAlpha(1)
@@ -140,12 +147,7 @@ function minimap:load()
 		zoneframe.text:SetAlpha(0)
 	end)
 
-	
-	
-	---------------------------------------------------------------------
 	-- left-clicking time when stopwatch is already open should close it
-	---------------------------------------------------------------------
-	
 	local function HideStopwatch()
 		StopwatchFrame:Hide()
 	end
@@ -168,10 +170,6 @@ function minimap:load()
 			end
 		end
 	end)
-	
-	---------------------------------------------------------------------
-	-- 
-	---------------------------------------------------------------------
 	
 	--scrolling to zoom
 	Minimap:EnableMouseWheel(true)
