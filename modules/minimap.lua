@@ -132,7 +132,7 @@ function minimap:load()
 		
 		if t > 0 then return end
 		
-		local hour, minute, AmPm = CalculateTimeValues()
+		local hour, minute = CalculateTimeValues()
 		
 		--if time is the same, end to save cpu cycles
 		if (hour == curHour and minute == curMinute) then
@@ -180,6 +180,7 @@ function minimap:load()
 	zoneframe:RegisterEvent("ZONE_CHANGED_INDOORS")
 	zoneframe:RegisterEvent("ADDON_LOADED")
 	zoneframe:SetScript("OnEvent", zone_Update)
+	
 	--event handling to hide zone unless mouse is in minimap
 	Minimap:SetScript("OnEnter",function()
 		zoneframe:SetAlpha(1)
@@ -189,16 +190,16 @@ function minimap:load()
 		zoneframe:SetAlpha(0)
 	end)
 
-	--clicking the tim (LEFTCLICK = stopwatch, RIGHTCLICK = alarm/time manager,
-	clockframe:SetScript("OnMouseUp", function(self, btn)
-		if btn == "RightButton" then	
+	--clicking the time (LEFTCLICK = stopwatch, RIGHTCLICK = alarm/time manager,
+	clockframe:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" then	
 			if TimeManagerFrame:IsShown() then
 				TimeManagerFrame:Hide()
 			else
 				TimeManagerFrame:SetPoint("TOPRIGHT", clockframe, "Bottom", 0, -5)
 				TimeManagerFrame:Show()
 			end
-		elseif btn == "MiddleButton" then
+		elseif button == "MiddleButton" then
 			GameTimeFrame:Click()
 		else
 			if StopwatchFrame:IsShown() then
@@ -209,12 +210,26 @@ function minimap:load()
 		end
 	end)
 	
+	
+	--right clicking minimap brings up tracking menu
+	Minimap:SetScript("OnMouseUp", function(self, button)
+		--x,y = GetCursorPosition()
+		--x = x / self:GetEffectiveScale();
+        --y = y / self:GetEffectiveScale();
+		
+		if button == "RightButton" then	
+			ToggleDropDownMenu(1, nil, MiniMapTrackingDropDown, "cursor")--, x, y)
+		else
+			Minimap_OnClick(self)
+		end
+	end)
+	
 	--scrolling to zoom
 	Minimap:EnableMouseWheel(true)
-	Minimap:SetScript("OnMouseWheel", function(self, d)
-	if d > 0 then
+	Minimap:SetScript("OnMouseWheel", function(self, direction)
+	if direction > 0 then
 		_G.MinimapZoomIn:Click()
-	elseif d < 0 then
+	elseif direction < 0 then
 		_G.MinimapZoomOut:Click()
 	end
 end)
