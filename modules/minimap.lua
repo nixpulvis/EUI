@@ -91,38 +91,36 @@ function minimap:load()
 	
 
 	clockframe.text = clockframe:CreateEUIString(V.media.fonts.main, 12)
-	displayFormat = string.join("", "%02d", ":%02d")
+	local displayFormat = string.join("", "%02d", ":%02d")
 	clockframe.text:SetPoint("CENTER")
 	
 	--formats time hour and minute strings to be in 12 or 24 hour format and if its in local time or server time
 	local function CalculateTimeValues()
-		local hour, minute, AmPm
-		hour24 = GetCVarBool("timeMgrUseMilitaryTime")
+		local hour, minute
+		mil_time = GetCVarBool("timeMgrUseMilitaryTime")
 		local_time = GetCVarBool("timeMgrUseLocalTime")
 		
-		if local_time == 1 then
-			local Hr24 = tonumber(date("%H"))
-			hour = tonumber(date("%I"))
+		if local_time then
 			minute = tonumber(date("%M"))
-			if hour24 == 1 then
-				return Hr24, minute, -1
+			
+			if mil_time then
+				hour = tonumber(date("%H"))
+				return hour, minute
 			else
-				if Hr24>=12 then AmPm = 1 else AmPm = 2 end
-				return hour, minute, AmPm
+				hour = tonumber(date("%I"))
+				return hour, minute
 			end
 		else
 			hour, minute = GetGameTime()
-			if hour24 == 1 then
-				return hour, minute, -1
+			if mil_time then
+				return hour, minute
 			else
 				if hour>=12 then
 					if hour>12 then hour = hour - 12 end
-					AmPm = 1
 				else
 					if hour == 0 then hour = 12 end
-					AmPm = 2
 				end
-				return hour, minute, AmPm
+				return hour, minute
 			end
 		end
 	end
@@ -137,17 +135,16 @@ function minimap:load()
 		local hour, minute, AmPm = CalculateTimeValues()
 		
 		--if time is the same, end to save cpu cycles
-		if (hour == curHour and minute == curMinute and AmPm == curAmPm) then
+		if (hour == curHour and minute == curMinute) then
 			t = 2
 			return
 		end
 		
 		curHour = hour
 		curMinute = minute
-		curAmPm = AmPm
 		
 		if t <= 0 then
-			local hour, minute, AmPm = CalculateTimeValues()
+			local hour, minute = CalculateTimeValues()
 			clockframe.text:SetFormattedText(displayFormat, hour, minute)
 		end
 	end)
