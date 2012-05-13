@@ -34,7 +34,7 @@ function chat:load()
 		local background = V:CreateElement("EUIChatFrame"..i, chat, UIParent)
 		background:SetFrameStrata("BACKGROUND")
 		background:SetFrameLevel(0)
-		background:SetPoint("TOPLEFT", blizzcf, "TOPLEFT", -4, 24)
+		background:SetPoint("TOPLEFT", blizzcf, "TOPLEFT", -4, 28)
 		background:SetPoint("BOTTOMRIGHT", blizzcf, "BOTTOMRIGHT", 2, -6)
 		if  i ~= 1 then background:Hide() end
 	
@@ -43,7 +43,7 @@ function chat:load()
 		editbox:StripTextures()
 	
 		-- skin editbox
-		editbox:StyleFrame()
+		editbox:StyleFrame(.9)
 		editbox:ClearAllPoints()
 		editbox:SetPoint("BOTTOMLEFT", EUIChatFrame1, "BOTTOMLEFT")
 		editbox:SetPoint("BOTTOMRIGHT", EUIChatFrame1, "BOTTOMRIGHT")
@@ -61,13 +61,21 @@ function chat:load()
 		
 		-- tabs
 		tab:StripTextures()
+		-- make that line under each tab
 		tab.bottomline = V:CreateFrame(nil, tab)
 		tab.bottomline:SetPoint("LEFT", tab, "BOTTOMLEFT")
 		tab.bottomline:SetPoint("RIGHT", tab, "BOTTOMRIGHT")
-		tab.bottomline:SetHeight(1)			
+		tab.bottomline:SetHeight(1)		
 	end
+	
 	ChatFrameMenuButton:Kill()
 	FriendsMicroButton:Hide()
+	
+	-- don't show the editbox unless we click enter
+	hooksecurefunc("ChatEdit_SetLastActiveWindow", function(editbox)
+		editbox:SetAlpha(0)
+	end)
+	
 	
 	--add Friends and Guild pane
 	V.CreateFriendsPanel()
