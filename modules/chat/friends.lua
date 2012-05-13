@@ -20,9 +20,8 @@ function V.CreateFriendsPanel()
 		GameTooltip:AddLine("Friends")
 		
 		-- world of warcraft friends
-		GameTooltip:AddLine(" ")
 		local num_friends, num_online_friends = GetNumFriends()
-		if num_online_friends > 0 then GameTooltip:AddLine("Ingame Friends:") end
+		if num_online_friends > 0 then GameTooltip:AddLine(" ") GameTooltip:AddLine("Ingame Friends:") end
 		for i = 1, num_friends do
 			local name, level, class, area, online, status, note = GetFriendInfo(i)
 			local classc, levelc = RAID_CLASS_COLORS[string.upper(class)], GetQuestDifficultyColor(level)
@@ -33,9 +32,8 @@ function V.CreateFriendsPanel()
 		end
 	
 		-- BN Friends
-		GameTooltip:AddLine(" ")
 		local numBNFriends, numBNOnlineFriends = BNGetNumFriends()
-		if numBNOnlineFriends > 0 then GameTooltip:AddLine("BN Friends:") end
+		if numBNOnlineFriends > 0 then GameTooltip:AddLine(" ") GameTooltip:AddLine("BN Friends:") end
 		for i = 1, numBNFriends do
 			local presenceID, givenName, surname, toonName, toonID, client, online,
 			 lastOnline, isAFK, isDND, broadcastText, noteText, isFriend, broadcastTime  = BNGetFriendInfo(i)
