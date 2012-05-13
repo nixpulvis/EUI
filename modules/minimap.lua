@@ -72,6 +72,9 @@ function minimap:load()
 	MiniMapTracking:Hide()
 	
 	--removes blizzard time clock
+	local function RemoveBlizTime()
+		
+	end
 	local f = CreateFrame("Frame", nil, UIParent)
 	f:RegisterEvent("ADDON_LOADED")
 	f:SetScript("OnEvent", function(self, event, name)
@@ -192,22 +195,38 @@ function minimap:load()
 
 	--clicking the time (LEFTCLICK = stopwatch, RIGHTCLICK = alarm/time manager,
 	clockframe:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" then	
-			if TimeManagerFrame:IsShown() then
-				TimeManagerFrame:Hide()
-			else
-				TimeManagerFrame:SetPoint("TOPRIGHT", clockframe, "Bottom", 0, -5)
-				TimeManagerFrame:Show()
-			end
-		elseif button == "MiddleButton" then
-			GameTimeFrame:Click()
-		else
-			if StopwatchFrame:IsShown() then
-				StopwatchFrame:Hide()
-			else
-				StopwatchFrame:Show()
-			end
-		end
+		--menu for the dropdown
+		local menu = {
+			{ text = "Time Menu", isTitle = true},
+			{ text = "Clock Settings", 
+				func = function() 
+					if TimeManagerFrame:IsShown() then
+						TimeManagerFrame:Hide()
+					else
+						TimeManagerFrame:SetPoint("TOPRIGHT", EUIMinimap, "BOTTOMRIGHT", 55, -5)
+						TimeManagerFrame:Show()
+					end
+				end },
+			{ text = "Calendar",
+				func = function()
+					GameTimeFrame:Click()
+				end },
+			{ text = "Stopwatch",
+				func = function()
+					if StopwatchFrame:IsShown() then
+						StopwatchFrame:Hide()
+					else
+						StopwatchFrame:SetPoint("TOPRIGHT", EUIMinimap, "BOTTOMRIGHT", 0, -5)
+						StopwatchFrame:Show()
+					end
+				end
+			}
+		}
+		
+		--creating frame and dropdown
+		local timemenuframe = CreateFrame("Frame", "TimeMenuFrame", UIParent, "UIDropDownMenuTemplate")
+		UIDropDownMenu_SetAnchor(timemenuframe, 0, -5, "TOP", EUIClockframe, "BOTTOM")
+		EasyMenu(menu, timemenuframe, EUIClockframe, -20 , 0, "MENU", 2)
 	end)
 	
 	
@@ -218,7 +237,8 @@ function minimap:load()
         --y = y / self:GetEffectiveScale();
 		
 		if button == "RightButton" then	
-			ToggleDropDownMenu(1, nil, MiniMapTrackingDropDown, "cursor")--, x, y)
+			UIDropDownMenu_SetAnchor(MiniMapTrackingDropDown, -5, 0, "TOPRIGHT", EUIMinimap, "TOPLEFT")
+			ToggleDropDownMenu(1, nil, MiniMapTrackingDropDown)
 		else
 			Minimap_OnClick(self)
 		end
