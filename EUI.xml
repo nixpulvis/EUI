@@ -16,7 +16,10 @@
 	<Script file="core\install.lua"/>
 	<Script file="core\config.lua"/>	
 	
-	<Script file="modules\chat.lua"/>
+	<Script file="modules\chat\chat.lua"/>
+	<Script file="modules\chat\friends.lua"/>
+	<Script file="modules\chat\guild.lua"/>
+	
 	<Script file="modules\actionbars.lua"/>
 	<Script file="modules\friends.lua"/>
 	
