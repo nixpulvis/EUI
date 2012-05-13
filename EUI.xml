@@ -22,6 +22,7 @@
 	
 	<Script file="modules\actionbars.lua"/>
 	<Script file="modules\friends.lua"/>
+	<Script file="modules\minimap.lua"/>
 	
 	<Script file="core\events.lua"/>
 	<Script file="core\dev.lua"/>
