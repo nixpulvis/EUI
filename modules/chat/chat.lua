@@ -71,6 +71,9 @@ function chat:load()
 	ChatFrameMenuButton:Kill()
 	FriendsMicroButton:Hide()
 	
+	_G["GeneralDockManagerScrollFrame"]:ClearAllPoints()
+	_G["GeneralDockManagerScrollFrame"]:SetPoint("CENTER")
+	
 	-- don't show the editbox unless we click enter
 	hooksecurefunc("ChatEdit_SetLastActiveWindow", function(editbox)
 		editbox:SetAlpha(0)
