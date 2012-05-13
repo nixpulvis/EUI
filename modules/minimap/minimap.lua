@@ -48,7 +48,9 @@ function minimap:load()
 	MiniMapMailFrame:ClearAllPoints()
 	MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, 3, 3)
 	MiniMapMailBorder:Hide()
-		--need to make a mail icon with transparent background
+
+	--set the mail icon
+	MiniMapMailIcon:SetTexture(V.media.icons.mail)
 		
 	--put battleground icon in BOTTOMRIGHT corner
 	MiniMapBattlefieldFrame:ClearAllPoints()
