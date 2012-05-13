@@ -55,8 +55,11 @@ function chat:load()
 	
 		-- hide the chat arrow buttons.
 		_G["ChatFrame"..i.."ButtonFrame"]:Hide()
+		_G["ChatFrame"..i.."ButtonFrame"]:SetScript("OnShow", function(self)
+			self:Hide()
+		end)
 		
-		-- tabs --
+		-- tabs
 		tab:StripTextures()
 		tab.bottomline = V:CreateFrame(nil, tab)
 		tab.bottomline:SetPoint("LEFT", tab, "BOTTOMLEFT")
