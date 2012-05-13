@@ -4,13 +4,15 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 
 -- Set the style of the frame to EUI
-local function StyleFrame(frame)
+local function StyleFrame(frame, alpha)
+	local r,g,b,a = unpack(S.General.background_color)
+	if not alpha then alpha = a end
 	frame:SetBackdrop({ 
 	  bgFile = V.media.tex.blank, 
 	  edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
 	  insets = { left = 0, right = 0, top = 0, bottom = 0 }
 	})
-	frame:SetBackdropColor(unpack(S.General.background_color))
+	frame:SetBackdropColor(r, g, b, alpha)
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
 end
 
