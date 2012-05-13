@@ -197,8 +197,8 @@ function minimap:load()
 	clockframe:SetScript("OnMouseUp", function(self, button)
 		--menu for the dropdown
 		local menu = {
-			{ text = "Time Menu", isTitle = true},
-			{ text = "Clock Settings", 
+			{ text = "Time Menu", isTitle = true, isNotRadio = true, notCheckable = true},
+			{ text = "Clock Settings", isNotRadio = true, notCheckable = true,
 				func = function() 
 					if TimeManagerFrame:IsShown() then
 						TimeManagerFrame:Hide()
@@ -207,11 +207,11 @@ function minimap:load()
 						TimeManagerFrame:Show()
 					end
 				end },
-			{ text = "Calendar",
+			{ text = "Calendar", isNotRadio = true, notCheckable = true,
 				func = function()
 					GameTimeFrame:Click()
 				end },
-			{ text = "Stopwatch",
+			{ text = "Stopwatch", isNotRadio = true, notCheckable = true,
 				func = function()
 					if StopwatchFrame:IsShown() then
 						StopwatchFrame:Hide()
