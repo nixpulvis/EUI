@@ -23,8 +23,16 @@ function V.CreateFriendsPanel()
 		if num_online_friends > 0 then GameTooltip:AddLine(" ") GameTooltip:AddLine("Ingame Friends:") end
 		for i = 1, num_friends do
 			local name, level, class, area, online, status, note = GetFriendInfo(i)
+			--changes death knight to not have a space
+			if class == "Death Knight" then
+				class = "DEATHKNIGHT"
+			end
 			local classc, levelc = RAID_CLASS_COLORS[string.upper(class)], GetQuestDifficultyColor(level)
-		
+			--changes deathknight back to original
+			if class == "DEATHKNIGHT" then
+				class = "Death Knight"
+			end
+			
 			if online then
 				GameTooltip:AddDoubleLine(name, level, classc.r, classc.g, classc.b, levelc.r, levelc.g, levelc.b)
 			end
