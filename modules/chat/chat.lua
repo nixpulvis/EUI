@@ -93,6 +93,9 @@ function chat:load()
 
 		if shown and _G["EUIChatFrame"..id] then
 			_G["EUIChatFrame"..id]:Show()
+			_G["ChatFrame"..id.."EditBox"]:ClearAllPoints()
+			_G["ChatFrame"..id.."EditBox"]:SetPoint("BOTTOMLEFT", _G["EUIChatFrame"..id], "BOTTOMLEFT")
+			_G["ChatFrame"..id.."EditBox"]:SetPoint("BOTTOMRIGHT", _G["EUIChatFrame"..id], "BOTTOMRIGHT")
 		end
 	end)
 	
@@ -101,6 +104,7 @@ function chat:load()
 		local id = chatframe:GetID()
 		if id == 1 or not _G["EUIChatFrame"..id] then return end
 		_G["EUIChatFrame"..id]:Hide()
+		_G["ChatFrame"..id.."EditBox"]:SetAllPoints(ChatFrame1EditBox)
 	end)
 	
 	-- hide background on closing
