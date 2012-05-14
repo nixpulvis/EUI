@@ -8,9 +8,8 @@ function V.CreateGuildPanel()
 	guild_panel:SetPoint("BOTTOMRIGHT", EUIChatFrame1, "TOP", -2, 3)
 	guild_panel:SetHeight(20)
 
-	guild_panel.text = guild_panel:CreateEUIString(V.media.fonts.main, 12)
+	guild_panel.text = guild_panel:CreateString("Guild", V.media.fonts.main, 12)
 	guild_panel.text:SetPoint("CENTER")
-	guild_panel.text:SetText("Guild")
 
 	guild_panel:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(guild_panel, "ANCHOR_TOP")

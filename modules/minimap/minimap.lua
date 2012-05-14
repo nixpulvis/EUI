@@ -95,7 +95,7 @@ function minimap:load()
 	clockframe:StyleFrame()
 	
 
-	clockframe.text = clockframe:CreateEUIString(V.media.fonts.main, 12)
+	clockframe.text = clockframe:CreateString("", V.media.fonts.main, 12)
 	local displayFormat = string.join("", "%02d", ":%02d")
 	clockframe.text:SetPoint("CENTER")
 	
@@ -159,7 +159,7 @@ function minimap:load()
 	zoneframe:SetAlpha(0)
 	zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
-	zoneframe.text = zoneframe:CreateEUIString(V.media.fonts.main, 12)
+	zoneframe.text = zoneframe:CreateString("", V.media.fonts.main, 12)
 	zoneframe.text:SetPoint("CENTER")
 	
 	--this sets the text to the zone and colorizes it 

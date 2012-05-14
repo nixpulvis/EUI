@@ -18,7 +18,16 @@ function chat:load()
 		background:SetFrameLevel(0)
 		background:SetPoint("TOPLEFT", chatframe, "TOPLEFT", -4, 28)
 		background:SetPoint("BOTTOMRIGHT", chatframe, "BOTTOMRIGHT", 2, -6)
-		if not name == "ChatFrame1" then background:Hide() end
+		background:Hide()
+		
+		if name == "ChatFrame1" then
+			background.div = V:CreateFrame(nil, background, 0, 1)
+			background.div:SetPoint("LEFT", background, "TOPLEFT", 2, -20)
+			background.div:SetPoint("RIGHT", background, "TOPRIGHT", -2, -20)
+			
+			background:SetPoint("TOPLEFT", chatframe, "TOPLEFT", -4, 48)
+			background:Show()
+		end
 		
 		-- remove blizzard style
 		chatframe:StripTextures()

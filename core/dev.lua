@@ -19,9 +19,8 @@ script_box:SetSize(325, 325)
 script_box:SetPoint("CENTER")
 script_box:Hide()
 
-script_box.title = script_box:CreateEUIString(V.media.fonts.main, 12)
+script_box.title = script_box:CreateString("LUA Scriptbox", V.media.fonts.main, 12)
 script_box.title:SetPoint("TOPLEFT", script_box, "TOPLEFT", 5, -4)
-script_box.title:SetText("LUA Scriptbox")
 
 script_box.editbox = CreateFrame("EditBox", "EUIScriptBox_EditBox", script_box)
 script_box.editbox:StyleFrame()

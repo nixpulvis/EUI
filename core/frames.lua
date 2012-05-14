@@ -58,9 +58,8 @@ function V:CreateButton(name, parent, text)
 	-- default button width and height
 	button:SetSize(20, 20)
 	
-	button.text = button:CreateEUIString(V.media.fonts.main, 12)
+	button.text = button:CreateString(text, V.media.fonts.main, 12)
 	button.text:SetPoint("CENTER")
-	button.text:SetText(text)
 		
 	return button
 end

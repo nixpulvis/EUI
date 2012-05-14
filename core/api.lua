@@ -49,9 +49,10 @@ local function SetAllPointsOffset(frame, offset, anchor_frame)
 end
 
 -- Make a string on a frame
-function CreateEUIString(frame, fontName, fontHeight, fontStyle)
+function CreateString(frame, string, fontName, fontHeight, fontStyle)
 	local text = frame:CreateFontString(nil, "OVERLAY")
 	text:SetFont(fontName, fontHeight, fontStyle)
+	text:SetText(string)
 	text:SetJustifyH("LEFT")
 	text:SetShadowColor(0, 0, 0)
 	text:SetShadowOffset(1.25, -1.25)
@@ -84,7 +85,7 @@ local function AddFunctionsTo(frame)
 	if not frame.StyleFrame then meta.StyleFrame = StyleFrame end
 	if not frame.HoverClickStyle then meta.HoverClickStyle = HoverClickStyle end
 	if not frame.SetAllPointsOffset then meta.SetAllPointsOffset = SetAllPointsOffset end
-	if not frame.CreateEUIString then meta.CreateEUIString = CreateEUIString end	
+	if not frame.CreateString then meta.CreateString = CreateString end	
 	if not frame.Kill then meta.Kill = Kill end
 	if not frame.StripTextures then meta.StripTextures = StripTextures end
 end
