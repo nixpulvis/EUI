@@ -77,6 +77,7 @@ function minimap:load()
 	local function RemoveBlizTime()
 		
 	end
+	--use addToEvents(RemoveBlizTime(), "ADDON_LOADED")
 	local f = CreateFrame("Frame", nil, UIParent)
 	f:RegisterEvent("ADDON_LOADED")
 	f:SetScript("OnEvent", function(self, event, name)
