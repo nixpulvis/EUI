@@ -1,6 +1,6 @@
 # Branching Plan
 
-We will be following a very common branching scheme, as illustrated below. This is to help keep major changes isolated from other changes. The main idea is, there will be a working branch. This will be where _non_ feature changes are made. Then for every major feature we will make a new branch for it, and merge it when we feel it's ready.
+We will be following a very common branching scheme, as illustrated below. This is to help keep major changes isolated from other changes. The main idea is, there will be a working branch. This will be where _non_ feature changes are made. Then for every major feature we will make a new branch for it, and merge it when we feel it's ready. Please find some time and read through [this document](http://git-scm.com/book/en/Git-Branching-What-a-Branch-Is)
 
 ![](http://nvie.com/img/2009/12/Screen-shot-2009-12-24-at-11.32.03.png)
 
