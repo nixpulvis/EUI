@@ -3,36 +3,40 @@ local M, S, V = unpack(select(2, ...))
 -- These are tools used for development.
 -----------------------------------------------------------------------
 
--- Best slash cmd ever!
+--------------------------
+-- Best slash cmd ever! --
+--------------------------
 SLASH_RELOAD1 = '/rl'
 function SlashCmdList.RELOAD(msg, editbox)
 	ReloadUI()
 end
 
-
--- Script Box
+----------------
+-- Script Box --
+----------------
 local script_box = V:CreateFrame("EUIScriptBox", UIParent)
-script_box:SetSize(300, 300)
+script_box:SetSize(325, 325)
 script_box:SetPoint("CENTER")
 script_box:Hide()
 
---script_box.title = V:CreateFontString("LUA Scriptbox")
---script_box.title:SetPoint("TOPLEFT", script_box, "TOPLEFT", 2, -2)
-
-script_box.run = V:CreateButton("EUIScriptBox_RunButton", script_box, "run")
-script_box.run:SetPoint("BOTTOMRIGHT", script_box, "BOTTOMRIGHT", -2, 2)
-script_box.run:SetSize(35, 20)
-
-script_box.close = V:CreateButton("EUIScriptBox_CloseButton", script_box, "close")
-script_box.close:SetPoint("RIGHT", script_box.run, "LEFT", -2, 0)
-script_box.close:SetSize(35, 20)
+script_box.title = script_box:CreateEUIString(V.media.fonts.main, 12)
+script_box.title:SetPoint("TOPLEFT", script_box, "TOPLEFT", 5, -4)
+script_box.title:SetText("LUA Scriptbox")
 
 script_box.editbox = CreateFrame("EditBox", "EUIScriptBox_EditBox", script_box)
 script_box.editbox:StyleFrame()
-script_box.editbox:SetPoint("TOPLEFT", script_box, "TOPLEFT", 2, -4)
-script_box.editbox:SetPoint("BOTTOMRIGHT", script_box, "BOTTOMRIGHT", -2, 22)
+script_box.editbox:SetPoint("TOPLEFT", script_box, "TOPLEFT", 5, -20)
+script_box.editbox:SetPoint("BOTTOMRIGHT", script_box, "BOTTOMRIGHT", -5, 28)
 script_box.editbox:SetFontObject(ChatFontNormal)
 script_box.editbox:SetMultiLine(true)
+
+script_box.run = V:CreateButton("EUIScriptBox_RunButton", script_box, "Run")
+script_box.run:SetPoint("BOTTOMRIGHT", script_box, "BOTTOMRIGHT", -5, 4)
+script_box.run:SetSize(35, 20)
+
+script_box.close = V:CreateButton("EUIScriptBox_CloseButton", script_box, "Close")
+script_box.close:SetPoint("RIGHT", script_box.run, "LEFT", -2, 0)
+script_box.close:SetSize(40, 20)
 
 script_box.run:SetScript("OnClick", function(self)
 	RunScript(script_box.editbox:GetText())
@@ -48,10 +52,24 @@ function SlashCmdList.SCRIPTBOX(msg, editbox)
 	script_box:Show()
 end
 
+
+
+
+
+-- these need to be moved into thier own file
+
 -- install a module
 SLASH_INSTALL1 = '/install'
 function SlashCmdList.INSTALL(msg, editbox)
-	M[msg].install()
+	if M[msg] then
+		if M[msg].install then
+			M[msg].install()
+		else
+			DEFAULT_CHAT_FRAME:AddMessage(msg.." doesn't have install functionality.")
+		end
+	else
+		DEFAULT_CHAT_FRAME:AddMessage("No module "..msg)
+	end
 end
 
 -- reset saved vars
