@@ -12,7 +12,7 @@ function V.CreateFriendsPanel()
 	friends_panel.text:SetPoint("CENTER")
 
 	friends_panel:SetScript("OnEnter", function(self)
-		GameTooltip:SetOwner(friends_panel, "ANCHOR_TOP")
+		GameTooltip:SetOwner(friends_panel, "ANCHOR_TOP", 0, 5)
 		GameTooltip:ClearLines()
 	
 		-- header

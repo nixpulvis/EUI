@@ -12,7 +12,7 @@ function V.CreateGuildPanel()
 	guild_panel.text:SetPoint("CENTER")
 
 	guild_panel:SetScript("OnEnter", function(self)
-		GameTooltip:SetOwner(guild_panel, "ANCHOR_TOP")
+		GameTooltip:SetOwner(guild_panel, "ANCHOR_TOP", 0, 5)
 		GameTooltip:ClearLines()
 		
 		if not IsInGuild() then
