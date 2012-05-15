@@ -17,8 +17,26 @@ EUI:CreateElement
 ]]
 function V:CreateElement(module, name, parent)
 	local element = { 
-		tier = 1
+		tier = 0
 	}
+	
+	-- Set the color of the tiers
+	local function TierColor()
+		if element.tier == 0 then
+			return V.HexToColor("3FFF00")
+		elseif element.tier == 1 then
+			return V.HexToColor("FF8C00")
+		else 
+			return V.HexToColor("FF0000")
+		end 
+	end
+	
+	-- toggle through the tiers and update color.
+	local function ToggleTier(self, button)
+		element.tier = (element.tier+1)%3
+		self.bg:SetTexture(TierColor())
+		print(element.tier)
+	end
 	
 	-- Making the frame
 	local frame = V:CreateFrame(name, parent)
@@ -33,10 +51,12 @@ function V:CreateElement(module, name, parent)
 	mover.bg = mover:CreateTexture(nil, "OVERLAY")
 	mover.bg:SetPoint("TOPLEFT", 2, -2)
 	mover.bg:SetPoint("BOTTOMRIGHT", -2, 2)
-	mover.bg:SetTexture(.1,.7,.1,select(4, unpack(S.General.background_color)))
+	mover.bg:SetTexture(TierColor())
+	
+	mover:SetScript("OnMouseUp", ToggleTier)
 	
 	element.mover = mover
-	
+
 	module.elements[name] = element
 	return element.frame
 end
