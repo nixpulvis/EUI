@@ -230,10 +230,6 @@ function minimap:load()
 	
 	--right clicking minimap brings up tracking menu
 	Minimap:SetScript("OnMouseUp", function(self, button)
-		--x,y = GetCursorPosition()
-		--x = x / self:GetEffectiveScale();
-        --y = y / self:GetEffectiveScale();
-		
 		if button == "RightButton" then	
 			UIDropDownMenu_SetAnchor(MiniMapTrackingDropDown, -5, 0, "TOPRIGHT", EUIMinimap, "TOPLEFT")
 			ToggleDropDownMenu(1, nil, MiniMapTrackingDropDown)
@@ -245,11 +241,10 @@ function minimap:load()
 	--scrolling to zoom
 	Minimap:EnableMouseWheel(true)
 	Minimap:SetScript("OnMouseWheel", function(self, direction)
-	if direction > 0 then
-		_G.MinimapZoomIn:Click()
-	elseif direction < 0 then
-		_G.MinimapZoomOut:Click()
-	end
-end)
-	
+		if direction > 0 then
+			_G.MinimapZoomIn:Click()
+		elseif direction < 0 then
+			_G.MinimapZoomOut:Click()
+		end
+	end)	
 end
