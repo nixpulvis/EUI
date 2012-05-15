@@ -16,10 +16,14 @@ end
 
 -- not sure if this is worth keeping
 local function installModule(module)
-	if module and module.install then
-		module.install()
+	if module then
+		if module.install then
+			module.install()
+		else
+			error("No Module Install Function for "..module)
+		end
 	else
-		error("No Module Install Function for "..module)
+		error("No Module "..module)
 	end
 end
 
@@ -29,3 +33,21 @@ local function install(self)
 	end
 end
 V.addToEvent(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
+
+
+-- install a module
+SLASH_INSTALL1 = '/install'
+function SlashCmdList.INSTALL(msg, editbox)
+	if msg ~= "" then
+		installModule(msg)	
+	else
+		installAll()
+	end
+end
+
+-- reset saved vars
+SLASH_RESET1 = '/reset'
+function SlashCmdList.RESET(msg, editbox)
+	V.resetSavedVars()
+	ReloadUI()
+end

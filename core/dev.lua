@@ -50,30 +50,3 @@ SLASH_SCRIPTBOX1 = '/sb'
 function SlashCmdList.SCRIPTBOX(msg, editbox)
 	script_box:Show()
 end
-
-
-
-
-
--- these need to be moved into thier own file
-
--- install a module
-SLASH_INSTALL1 = '/install'
-function SlashCmdList.INSTALL(msg, editbox)
-	if M[msg] then
-		if M[msg].install then
-			M[msg].install()
-		else
-			DEFAULT_CHAT_FRAME:AddMessage(msg.." doesn't have install functionality.")
-		end
-	else
-		DEFAULT_CHAT_FRAME:AddMessage("No module "..msg)
-	end
-end
-
--- reset saved vars
-SLASH_RESET1 = '/reset'
-function SlashCmdList.RESET(msg, editbox)
-	V.resetSavedVars()
-	ReloadUI()
-end
