@@ -74,19 +74,15 @@ function minimap:load()
 	MiniMapTracking:Hide()
 	
 	--removes blizzard time clock
-	local function RemoveBlizTime()
-		
-	end
-	local f = CreateFrame("Frame", nil, UIParent)
-	f:RegisterEvent("ADDON_LOADED")
-	f:SetScript("OnEvent", function(self, event, name)
+	local function RemoveBlizTime(self, name)
 		if name == "Blizzard_TimeManager" then
 			TimeManagerClockButton:Hide()
 			TimeManagerClockButton:SetScript("OnShow", function(self)
 				TimeManagerClockButton:Hide()
 			end)
 		end
-	end)
+	end
+	V.addToEvent(RemoveBlizTime, "ADDON_LOADED")
 	
 	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
 	local clockframe = V:CreateFrame("EUIClockframe", EUIMinimap, 45, 17)
