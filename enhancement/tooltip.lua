@@ -48,13 +48,15 @@ function t:load()
 	hooksecurefunc("GameTooltip_OnLoad", SkinTooltip)
 	hooksecurefunc("GameTooltip_OnHide", SkinTooltip)
 	
-	hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
-		PositionTooltip(self)
-	end)
-	
-	local function Tooltip_OnUpdate(self, elapsed)
-		PositionTooltip(self)
-	end
-	
-	GameTooltip:HookScript("OnUpdate", Tooltip_OnUpdate)
+	-- Position tooltip on update
+	GameTooltip:HookScript("OnUpdate", function(self) PositionTooltip(self) end)
+
+	-- Health bar skinning	
+	local hp = GameTooltipStatusBar
+	hp:StyleFrame()
+	hp:ClearAllPoints()
+	hp:SetHeight(6)
+	hp:SetPoint("BOTTOMLEFT", hp:GetParent(), "TOPLEFT", 0, 3)
+	hp:SetPoint("BOTTOMRIGHT", hp:GetParent(), "TOPRIGHT", 0, 3)
+	hp:SetStatusBarTexture(V.media.tex.norm)
 end

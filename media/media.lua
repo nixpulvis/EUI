@@ -15,6 +15,7 @@ local fonts = V.media.fonts
 
 ---------- Textures -----------
 tex["blank"] = [[Interface\AddOns\EUI\media\textures\blank.tga]]
+tex["norm"] = [[Interface\AddOns\EUI\media\textures\normTex.tga]]
 
 ------------ Icons -------------
 icons["mail"] = [[Interface\AddOns\EUI\media\icons\mail.tga]]
