@@ -18,13 +18,7 @@ EUI:CreateFrame
 ]]
 function V:CreateFrame(name, parent, width, height)
 	local frame = CreateFrame("Frame", name, parent)
-	frame:SetBackdrop({ 
-	  bgFile = V.media.tex.blank, 
-	  edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
-	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
-	})
-	frame:SetBackdropColor(unpack(S.General.background_color))
-	frame:SetBackdropBorderColor(unpack(S.General.border_color))
+	frame:StyleFrame()
 	
 	-- if we have the width arg, then we should require the height as well.
 	if width then
@@ -46,13 +40,7 @@ function V:CreateButton(name, parent, text)
 	local button = CreateFrame("Button", name, parent)
 	button.hover = false
 
-	button:SetBackdrop({ 
-	  bgFile = V.media.tex.blank, 
-	  edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
-	  insets = { left = 0, right = 0, top = 0, bottom = 0 }
-	})
-	button:SetBackdropColor(unpack(S.General.background_color))
-	button:SetBackdropBorderColor(unpack(S.General.border_color))
+	button:StyleFrame()
 	button:HoverClickStyle()
 	
 	-- default button width and height
