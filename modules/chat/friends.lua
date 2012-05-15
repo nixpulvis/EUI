@@ -28,10 +28,6 @@ function V.CreateFriendsPanel()
 				class = "DEATHKNIGHT"
 			end
 			local classc, levelc = RAID_CLASS_COLORS[string.upper(class)], GetQuestDifficultyColor(level)
-			--changes deathknight back to original
-			if class == "DEATHKNIGHT" then
-				class = "Death Knight"
-			end
 			
 			if online then
 				GameTooltip:AddDoubleLine(name, level, classc.r, classc.g, classc.b, levelc.r, levelc.g, levelc.b)
