@@ -15,7 +15,7 @@ EUI:CreateElement
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 		   Additionally these Elements are the frames in charge of display settings.
 ]]
-function V:CreateElement(name, module, parent)
+function V:CreateElement(module, name, parent)
 	local element = { 
 		tier = 1
 	}

@@ -5,7 +5,7 @@ local M, S, V = unpack(select(2, ...))
 local minimap = V:NewModule("minimap")
 
 function minimap:load()
-	local EUIMinimap = V:CreateElement("EUIMinimap", minimap, UIParent)
+	local EUIMinimap = V:CreateElement(minimap, "EUIMinimap", UIParent)
 	EUIMinimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -20, -20)
 	EUIMinimap:SetSize(150,150)
 	EUIMinimap:SetFrameStrata("LOW")

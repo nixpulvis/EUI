@@ -13,7 +13,7 @@ function chat:load()
 		local tab = _G[name.."Tab"]
 	
 		-- give every chatframe a background. just hide it until needed.
-		local background = V:CreateElement("EUI"..name, chat, UIParent)
+		local background = V:CreateElement(chat, "EUI"..name, UIParent)
 		background:SetFrameStrata("BACKGROUND")
 		background:SetFrameLevel(0)
 		background:SetPoint("TOPLEFT", chatframe, "TOPLEFT", -4, 28)
