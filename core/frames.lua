@@ -33,15 +33,15 @@ EUI:CreateButton
 	returns : new Button (frame)
 	param : name   - the name of the button being created
 			parent - the frame this new frame will be parented to
+			text   - the text on the button
 	NOTE  :	BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 			adding functionality shouls be done with a HookScript.
 ]]
 function V:CreateButton(name, parent, text)
 	local button = CreateFrame("Button", name, parent)
-	button.hover = false
 
 	button:StyleFrame()
-	button:HoverClickStyle()
+	button:StyleButton()
 	
 	-- default button width and height
 	button:SetSize(20, 20)

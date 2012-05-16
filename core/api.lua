@@ -16,36 +16,44 @@ local function StyleFrame(frame, alpha)
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
 end
 
-local function HoverClickStyle(frame)
+-- Stlye frame to interavt with the mouse on hover.
+local function StyleButton(frame)
 	local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
 	local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
 	
+	-- Set a variable for the state of the hover.
+	frame.hover = false;
+	
+	-- Texture for the overlay effect.
+	frame.overlay = frame:CreateTexture()
+	frame.overlay:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2)
+	frame.overlay:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -2, -2)
+	frame.overlay:SetTexture(unpack(hover_color))
+	frame.overlay:Hide()
+	
 	frame:SetScript("OnEnter", function(self) 
-		self:SetBackdropColor(unpack(hover_color))
+		--self:SetBackdropColor(unpack(hover_color))
+		self.overlay:Show()
 		self.hover = true
 	end)
 	frame:SetScript("OnLeave", function(self) 
-		self:SetBackdropColor(unpack(S.General.background_color))
+		--self:SetBackdropColor(unpack(S.General.background_color))
+		self.overlay:Hide()
 		self.hover = false
 	end)
 	frame:SetScript("OnMouseDown", function(self) 
-		self:SetBackdropColor(unpack(mousedown_color))
+		--self:SetBackdropColor(unpack(mousedown_color))
+		self.overlay:Hide()
 	end)
 	frame:SetScript("OnMouseUp", function(self) 
 		if self.hover then
-			self:SetBackdropColor(unpack(hover_color))
+			--self:SetBackdropColor(unpack(hover_color))
+			self.overlay:Show()
 		else
-			self:SetBackdropColor(unpack(S.General.background_color))
+			--self:SetBackdropColor(unpack(S.General.background_color))
+			self.overlay:Hide()
 		end
 	end)
-end
-
--- Set a frames points to it's parent 
-local function SetAllPointsOffset(frame, offset, anchor_frame)
-	anchor_frame = anchor_frame or frame:GetParent()
-	
-	frame:SetPoint("TOPLEFT", anchor_frame, "TOPLEFT", -offset, offset)
-	frame:SetPoint("BOTTOMRIGHT", anchor_frame, "BOTTOMRIGHT", offset, -offset)
 end
 
 -- Make a string on a frame
@@ -83,8 +91,7 @@ local function AddFunctionsTo(frame)
 	local meta = getmetatable(frame).__index
 
 	if not frame.StyleFrame then meta.StyleFrame = StyleFrame end
-	if not frame.HoverClickStyle then meta.HoverClickStyle = HoverClickStyle end
-	if not frame.SetAllPointsOffset then meta.SetAllPointsOffset = SetAllPointsOffset end
+	if not frame.StyleButton then meta.StyleButton = StyleButton end
 	if not frame.CreateString then meta.CreateString = CreateString end	
 	if not frame.Kill then meta.Kill = Kill end
 	if not frame.StripTextures then meta.StripTextures = StripTextures end
