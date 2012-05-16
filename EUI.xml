@@ -17,7 +17,7 @@
 	<Script file="core\config.lua"/>	
 	
 	<!-- System Files -->
-	<Script file="enhancement\tooltip.lua"/>
+	<Script file="modules\tooltip\tooltip.lua"/>
 	
 	<!-- Chat Files -->
 	<Script file="modules\chat\chat.lua"/>
