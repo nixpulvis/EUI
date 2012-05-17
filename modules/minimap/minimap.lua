@@ -155,7 +155,10 @@ function minimap:load()
 	zoneframe:SetAlpha(0)
 	zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
+		--making a string to be put into th zone text frame
 	zoneframe.text = zoneframe:CreateString("", V.media.fonts.main, 12)
+	zoneframe.text:SetHeight(12)
+	zoneframe.text:SetWidth(zoneframe:GetWidth()-6)
 	zoneframe.text:SetPoint("CENTER")
 	
 	--this sets the text to the zone and colorizes it 
