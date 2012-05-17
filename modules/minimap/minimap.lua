@@ -156,25 +156,26 @@ function minimap:load()
 	zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
 		--making a string to be put into th zone text frame
-	zoneframe.text = zoneframe:CreateString("", V.media.fonts.main, 12)
-	zoneframe.text:SetHeight(12)
-	zoneframe.text:SetWidth(zoneframe:GetWidth()-6)
-	zoneframe.text:SetPoint("CENTER")
+	local zoneframe_text = zoneframe:CreateFontString("TukuiMinimapZoneText","Overlay")
+	zoneframe_text:SetFont(V.media.fonts.main, 12)
+	zoneframe_text:SetHeight(12)
+	zoneframe_text:SetWidth(zoneframe:GetWidth()-6)
+	zoneframe_text:SetPoint("CENTER", zoneframe, "CENTER")
 	
 	--this sets the text to the zone and colorizes it 
 	local function zone_Update()
 		local pvp = GetZonePVPInfo()
-		zoneframe.text:SetText(GetMinimapZoneText())
+		zoneframe_text:SetText(GetMinimapZoneText())
 		if pvp == "friendly" then
-			zoneframe.text:SetTextColor(0.1, 1.0, 0.1)
+			zoneframe_text:SetTextColor(0.1, 1.0, 0.1)
 		elseif pvp == "sanctuary" then
-			zoneframe.text:SetTextColor(0.41, 0.8, 0.94)
+			zoneframe_text:SetTextColor(0.41, 0.8, 0.94)
 		elseif pvp == "arena" or pvp == "hostile" then
-			zoneframe.text:SetTextColor(1.0, 0.1, 0.1)
+			zoneframe_text:SetTextColor(1.0, 0.1, 0.1)
 		elseif pvp == "contested" then
-			zoneframe.text:SetTextColor(1.0, 0.7, 0.0)
+			zoneframe_text:SetTextColor(1.0, 0.7, 0.0)
 		else
-			zoneframe.text:SetTextColor(1.0, 1.0, 1.0)
+			zoneframe_text:SetTextColor(1.0, 1.0, 1.0)
 		end
 	end
 	
