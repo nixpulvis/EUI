@@ -2,6 +2,22 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- Tooltip Skinning and Enhancement
 -----------------------------------------------------------------------
+local GameTooltip = _G["GameTooltip"]
+
+-- These are the Tooltips in the game we want to skin.
+local tooltips = {
+	GameTooltip,
+	ShoppingTooltip1,
+	ShoppingTooltip2,
+	ShoppingTooltip3,
+	WorldMapTooltip,
+	WorldMapCompareTooltip1,
+	WorldMapCompareTooltip2,
+	WorldMapCompareTooltip3,
+	ItemRefTooltip,
+	FriendsTooltip
+}
+
 local t = V:NewModule("tooltip")
 
 function t:load()
@@ -36,17 +52,22 @@ function t:load()
 		end
 	end
 
-	local function SkinTooltip()
-		tooltip:StripTextures()
-		tooltip:StyleFrame()
+	local function SkinTooltip(n)
+		n:StripTextures()
+		n:StyleFrame()
+		print(n:GetName())
 	end
-	
-	-- First things first, skin this shit.
-	SkinTooltip()
-	
-	-- turns out blizz hates being skinned, TOO BAD.
-	hooksecurefunc("GameTooltip_OnLoad", SkinTooltip)
-	hooksecurefunc("GameTooltip_OnHide", SkinTooltip)
+
+	-- Skin the tooltip every time the frame is shown, <3 Tukui
+	local function tooltip_PLAYER_ENTERING_WORLD()
+		for _,v in pairs(tooltips) do
+			if v == ItemRefTooltip then
+				v:HookScript("OnTooltipSetItem", SkinTooltip)
+			end
+			v:HookScript("OnShow", SkinTooltip)
+		end
+	end
+	V.addToEvent(tooltip_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
 	
 	-- Position tooltip on update
 	GameTooltip:HookScript("OnUpdate", function(self) PositionTooltip(self) end)
