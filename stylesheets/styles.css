@@ -164,9 +164,8 @@ strong {
   color:#222;
 }
 
-.developers {
-	line-height:2em;
-	list-style:square;
+.info ul {
+	line-height:1.6em;
 	padding:0 0 0 17px;
 }
 
