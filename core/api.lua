@@ -3,6 +3,8 @@ local M, S, V = unpack(select(2, ...))
 -- EUI Frame Functions
 -----------------------------------------------------------------------
 
+-- STYLING FUNCTIONS
+
 -- Set the style of the frame to EUI
 local function StyleFrame(frame, alpha)
 	local r,g,b,a = unpack(S.General.background_color)
@@ -32,25 +34,20 @@ local function StyleButton(frame)
 	frame.overlay:Hide()
 	
 	frame:SetScript("OnEnter", function(self) 
-		--self:SetBackdropColor(unpack(hover_color))
 		self.overlay:Show()
 		self.hover = true
 	end)
 	frame:SetScript("OnLeave", function(self) 
-		--self:SetBackdropColor(unpack(S.General.background_color))
 		self.overlay:Hide()
 		self.hover = false
 	end)
 	frame:SetScript("OnMouseDown", function(self) 
-		--self:SetBackdropColor(unpack(mousedown_color))
 		self.overlay:Hide()
 	end)
 	frame:SetScript("OnMouseUp", function(self) 
 		if self.hover then
-			--self:SetBackdropColor(unpack(hover_color))
 			self.overlay:Show()
 		else
-			--self:SetBackdropColor(unpack(S.General.background_color))
 			self.overlay:Hide()
 		end
 	end)
@@ -84,7 +81,8 @@ local function StripTextures(frame)
 end
 
 -----------------------------------------------------------------------
--- Integrate EUI functions to the frames
+-- Integrate EUI functions to the frames  
+-- TODO optimize this, currently taken from TUKUI
 -----------------------------------------------------------------------
 
 local function AddFunctionsTo(frame)

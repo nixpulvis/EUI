@@ -20,6 +20,10 @@ function V:CreateElement(module, name, parent)
 		tier = 0
 	}
 	
+	------------------------------------
+	--       /eui functionality       --
+	------------------------------------
+	
 	-- Set the color of the tiers
 	local function TierColor()
 		if element.tier == 0 then
@@ -35,7 +39,11 @@ function V:CreateElement(module, name, parent)
 	local function ToggleTier(self, button)
 		element.tier = (element.tier+1)%3
 		self.bg:SetTexture(TierColor())
-		print(element.tier)
+	end
+	
+	-- default nil function for ToggleMoveable()
+	function element:SetMoveable(bool)
+		return
 	end
 	
 	-- Making the frame
@@ -54,9 +62,21 @@ function V:CreateElement(module, name, parent)
 	mover.bg:SetTexture(TierColor())
 	
 	mover:SetScript("OnMouseUp", ToggleTier)
-	
-	element.mover = mover
 
-	module.elements[name] = element
+	-- show the movers and set the element to be moveable TODO
+	function element:ToggleMovers()
+		-- show mover
+		if mover:IsVisible() then
+			mover:Hide()
+			element:SetMoveable(false)
+		else
+			mover:Show()
+			element:SetMoveable(true)
+		end
+	end
+		
+	element.mover = mover				-- Set the mover to the element
+	tinsert(module.elements, element)	-- add this element to the table of elements
+	--module.elements[name] = element		-- add this element to the table of elements
 	return element.frame
 end
