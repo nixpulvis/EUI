@@ -14,7 +14,7 @@ end
 ----------------
 -- Script Box --
 ----------------
-local script_box = V:CreateFrame("EUIScriptBox", UIParent)
+local script_box = V.CreateFrame("EUIScriptBox", UIParent)
 script_box:SetSize(325, 325)
 script_box:SetPoint("CENTER")
 script_box:Hide()
@@ -29,11 +29,11 @@ script_box.editbox:SetPoint("BOTTOMRIGHT", script_box, "BOTTOMRIGHT", -5, 28)
 script_box.editbox:SetFontObject(ChatFontNormal)
 script_box.editbox:SetMultiLine(true)
 
-script_box.run = V:CreateButton("EUIScriptBox_RunButton", script_box, "Run")
+script_box.run = V.CreateButton("EUIScriptBox_RunButton", script_box, "Run")
 script_box.run:SetPoint("BOTTOMRIGHT", script_box, "BOTTOMRIGHT", -5, 4)
 script_box.run:SetSize(35, 20)
 
-script_box.close = V:CreateButton("EUIScriptBox_CloseButton", script_box, "Close")
+script_box.close = V.CreateButton("EUIScriptBox_CloseButton", script_box, "Close")
 script_box.close:SetPoint("RIGHT", script_box.run, "LEFT", -2, 0)
 script_box.close:SetSize(40, 20)
 

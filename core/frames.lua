@@ -16,7 +16,7 @@ EUI:CreateFrame
 			height - the height of the frame
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 ]]
-function V:CreateFrame(name, parent, width, height)
+function V.CreateFrame(name, parent, width, height)
 	local frame = CreateFrame("Frame", name, parent)
 	frame:StyleFrame()
 	
@@ -37,7 +37,7 @@ EUI:CreateButton
 	NOTE  :	BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 			adding functionality shouls be done with a HookScript.
 ]]
-function V:CreateButton(name, parent, text)
+function V.CreateButton(name, parent, text)
 	local button = CreateFrame("Button", name, parent)
 
 	button:StyleFrame()

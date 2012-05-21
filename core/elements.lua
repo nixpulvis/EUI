@@ -15,7 +15,7 @@ EUI:CreateElement
 	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 		   Additionally these Elements are the frames in charge of display settings.
 ]]
-function V:CreateElement(module, name, parent)
+function V.CreateElement(module, name, parent)
 	local element = { 
 		tier = 0
 	}
@@ -47,10 +47,10 @@ function V:CreateElement(module, name, parent)
 	end
 	
 	-- Making the frame
-	local frame = V:CreateFrame(name, parent)
+	local frame = V.CreateFrame(name, parent)
 	element.frame = frame
 	
-	local mover = V:CreateFrame(name.."_Mover", element.frame)
+	local mover = V.CreateFrame(name.."_Mover", element.frame)
 	mover:SetPoint("TOPRIGHT", element.frame, "TOPLEFT", -3, 0)
 	mover:SetPoint("BOTTOMRIGHT", element.frame, "BOTTOMLEFT", -3, 0)
 	mover:SetWidth(15)

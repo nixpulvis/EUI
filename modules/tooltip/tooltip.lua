@@ -22,7 +22,7 @@ local t = V:NewModule("tooltip")
 
 function t:load()
 	local tooltip = GameTooltip
-	local anchor = V:CreateElement(t, "EUITooltipAnchor", UIParent)
+	local anchor = V.CreateElement(t, "EUITooltipAnchor", UIParent)
 	anchor:SetSize(150, 15)
 	anchor:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -325, 150)
 	anchor:Hide()

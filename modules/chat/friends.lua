@@ -3,7 +3,7 @@ local M, S, V = unpack(select(2, ...))
 -- EUI Chat (needs install)
 -----------------------------------------------------------------------
 function V.CreateFriendsPanel()
-	local friends_panel = V:CreateFrame("EUIChatGuildFrame", EUIChatFrame1)
+	local friends_panel = V.CreateFrame("EUIChatGuildFrame", EUIChatFrame1)
 	friends_panel:SetPoint("BOTTOMRIGHT", EUIChatFrame1, "TOPRIGHT", 0, 3)
 	friends_panel:SetPoint("BOTTOMLEFT", EUIChatFrame1, "TOP", 2, 3)
 	friends_panel:SetHeight(20)
