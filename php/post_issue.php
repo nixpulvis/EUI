@@ -6,7 +6,7 @@ $username = 'EUIbugs';   // authentication
 $password = 'EUIbugs1';  // authentication
  
 // jSON String for request
-$json_string = json_encode(array('title' => $_POST['title'], 'body' => $_POST['body']));
+$json_string = json_encode(array('title' => $_GET['title'], 'body' => $_GET['body']));
  
 // Initializing curl
 $ch = curl_init( $json_url );
