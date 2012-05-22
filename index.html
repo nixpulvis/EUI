@@ -26,15 +26,21 @@
           <li><a href="https://github.com/Epicgrim/EUI">View On <strong>GitHub</strong></a></li>
         </ul>
 		<hr>
-		<div class="info">
+		<h3>Submit Issue</h3>
+		<form action="php/post_issue.php" method="POST">
+		  Title: <input name="title" type="text"/><br/>
+		  Description: <br/><textarea name="body" type="text" rows="6"></textarea><br/>
+		  <input type="submit" value="Submit Issue" />
+		</form>
+		<!-- <div class="info"> -->
 			<!-- Developers -->
-			<h3>Developers</h3>
-			<ul class="developers"></ul>
+			<!--<h3>Developers</h3>-->
+			<!-- <ul class="developers"></ul> -->
 		
 			<!-- Git Commits -->
-			<h3>Latest Commits</h3>		
-			<div><ul class="commits"></ul></div>
-		</div>
+			<!-- <h3>Latest Commits</h3>		 -->
+			<!-- <div><ul class="commits"></ul></div> -->
+		<!-- </div> -->
       </header>
       <section>
         <p>A World of Warcraft User Interface, written by Nathan Lilienthal (Epicgrim). For more info, or to get in touch with me you can leave me comments here or over on the <a href="http://www.tukui.org/forums/forum.php?id=168">Tukui forums</a>. </p>

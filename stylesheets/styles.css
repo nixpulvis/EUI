@@ -169,6 +169,11 @@ strong {
 	padding:0 0 0 17px;
 }
 
+input, textarea {
+	margin-bottom: 10px;
+	width: 100% !important;
+}
+
 section {
   width:500px;
   float:right;

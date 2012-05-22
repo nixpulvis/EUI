@@ -34,7 +34,7 @@ function git_GET_lastestCommit() {
 	});
 }
 
-//handle updating commits
+//handle updating 
 $(document).ready(function() {
 	git_GET_collaborators();
 	git_GET_lastestCommit();
