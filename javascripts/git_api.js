@@ -40,6 +40,7 @@ $(document).ready(function() {
 	git_GET_lastestCommit();
 	
 	//handle form submission to php
+	/*
 	$("#issue").submit(function() {
 		var title = $("input[name=title]").val();
 		var body = $("input[name=body]").val();
@@ -52,4 +53,5 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	*/
 });
