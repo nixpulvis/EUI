@@ -1,7 +1,9 @@
 // not abstracted for other repos
 function git_GET_collaborators() {
 	$.ajax({
-	  url: "https://api.github.com/repos/Epicgrim/EUI/collaborators",
+	  	url: "https://api.github.com/repos/Epicgrim/EUI/collaborators",
+	 	crossDomain: true,
+	    dataType: 'json'	
 	}).done(function(data) {
 		$(".developers").empty();
 		for(var i=0; i < data.length; i++){
@@ -15,7 +17,9 @@ function git_GET_collaborators() {
 // not abstracted for other repos
 function git_GET_lastestCommit() {
 	$.ajax({
-	  url: "https://api.github.com/repos/Epicgrim/EUI/commits",
+	  	url: "https://api.github.com/repos/Epicgrim/EUI/commits",
+	 	crossDomain: true,
+	    dataType: 'json'
 	}).done(function(data) {
 		$(".commits").empty();
 		for(var i=0; i < 5; i++){
