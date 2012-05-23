@@ -5,7 +5,7 @@ local M, S, V = unpack(select(2, ...))
 local eventhandler, events = CreateFrame("Frame"), V.events
 
 -- This binds the functions in V.events to the eventhandler.
-function V.updateEventRegistration()
+local function updateEventRegistration()
 	for k,v in pairs(events) do
 		if not eventhandler:IsEventRegistered(k) then
 			eventhandler:RegisterEvent(k)
@@ -25,16 +25,15 @@ function V.addEventListener(func, event)
 		V.events[event] = { }
 	end
 	tinsert(events[event], func)
-	V.updateEventRegistration()
+	updateEventRegistration()
 end
 
 -- remove the given function from the given event
 function V.removeEventListener(func, event)
 	for i,v in ipairs(events[event]) do
 		if v == func then tremove(events[event], i) end
-		print(#events[event])
 	end
-	V.updateEventRegistration()
+	updateEventRegistration()
 end
 
 eventhandler:SetScript("OnEvent", function(self, event, ...)
