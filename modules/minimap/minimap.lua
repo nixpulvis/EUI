@@ -82,7 +82,7 @@ function minimap:load()
 			end)
 		end
 	end
-	V.addToEvent(RemoveBlizTime, "ADDON_LOADED")
+	V.addEventListener(RemoveBlizTime, "ADDON_LOADED")
 	
 	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
 	local clockframe = V.CreateFrame("EUIClockframe", EUIMinimap, 45, 17)

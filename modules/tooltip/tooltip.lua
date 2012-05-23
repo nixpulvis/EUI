@@ -66,7 +66,7 @@ function t:load()
 			v:HookScript("OnShow", SkinTooltip)
 		end
 	end
-	V.addToEvent(tooltip_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
+	V.addEventListener(tooltip_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
 	
 	-- Position tooltip on update
 	GameTooltip:HookScript("OnUpdate", function(self) PositionTooltip(self) end)

@@ -32,7 +32,7 @@ local function install(self)
 		installAll()
 	end
 end
-V.addToEvent(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
+V.addEventListener(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
 
 
 -- install a module

@@ -22,23 +22,20 @@ end
 -- Event Functions
 -----------------------------------------------------------------------
 
--- adds the given function to the given event
-function V.addToEvent(func, event)
-	if V.events[event] == nil then
-		V.events[event] = { }
-	end
-	tinsert(V.events[event], func)
-end
-
 -- Keep V.mylevel updated
 local function updateUnitLevel()
 	V.mylevel = UnitLevel("player")
 end
-V.addToEvent(updateUnitLevel, "PLAYER_LEVEL_UP")
+V.addEventListener(updateUnitLevel, "PLAYER_LEVEL_UP")
 
 -- Keep V.incombat updated
 local function updateCombatStatus()
 	UnitAffectingCombat("player")
+	print('hit')
 end
-V.addToEvent(updateCombatStatus, "PLAYER_REGEN_ENABLED")
-V.addToEvent(updateCombatStatus, "PLAYER_REGEN_DISABLED")
+V.addEventListener(updateCombatStatus, "PLAYER_REGEN_ENABLED")
+V.addEventListener(updateCombatStatus, "PLAYER_REGEN_DISABLED")
+
+
+V.removeEventListener(updateCombatStatus, "PLAYER_REGEN_ENABLED")
+V.removeEventListener(updateCombatStatus, "PLAYER_REGEN_DISABLED")

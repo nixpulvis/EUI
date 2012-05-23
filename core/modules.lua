@@ -32,6 +32,6 @@ function V:NewModule(name)
 			end
 		end
 	end
-	V.addToEvent(onAddonLoaded, "ADDON_LOADED")
+	V.addEventListener(onAddonLoaded, "ADDON_LOADED")
 	return M[name]
 end
