@@ -44,12 +44,8 @@ function git_GET_lastestDownload() {
 		var data = response.data;
 		if (data[0]) {
 			$('.dl_link').attr("href", data[0].html_url);
-			if (data[0].description) {
-				$('.version').html("EUI &nbsp"+data[0].description.replace(/[a-z]/, "")+
+			$('.version').html("EUI &nbsp"+data[0].name.match(/[0-9]+.*[^.zip]/, "")+
 				"<span class='size'>"+" &nbsp"+Math.round(data[0].size/100000)/10+"mb"+"</span");
-			} else {
-				$('.version').html("EUI");
-			}
 		} else {
 			$('.version').html("Unavalible");
 		}
