@@ -23,25 +23,32 @@
         <h1>EUI</h1>
         <p>A World of Warcraft User Interface, inspired by Tukui</p>
         <ul class="downloads">
-          <li><a href="https://github.com/Epicgrim/EUI/zipball/master">Download <strong>Version 0.01 beta</strong></a></li>
+          <li><a class="dl_link">Download <strong class="version"></strong></a></li>
           <li><a href="https://github.com/Epicgrim/EUI">View On <strong>GitHub</strong></a></li>
         </ul>
 		<hr>
-		<h3>Submit Issue</h3>
-		<form id="issue" action="php/post_issue.php" method="GET">
-		  Title: <input name="title" type="text"/><br/>
-		  Description: <br/><textarea name="body" type="text" rows="6"></textarea><br/>
-		  <input id="submit_btn" type="submit" value="Submit Issue" />
-		</form>
-		<!-- <div class="info"> -->
+		<div class="info">
 			<!-- Developers -->
-			<!--<h3>Developers</h3>-->
-			<!-- <ul class="developers"></ul> -->
+			<h3>Developers</h3>
+			<ul class="developers"></ul>
 		
 			<!-- Git Commits -->
 			<!-- <h3>Latest Commits</h3>		 -->
 			<!-- <div><ul class="commits"></ul></div> -->
-		<!-- </div> -->
+
+			<!-- Submit Issues -->
+			<input class="issue_btn" type="button" value="Submit Issue"/>
+			<form class="issue">
+				Title: <input name="title" type="text"/><br/>
+				Description: <br/><textarea name="body" type="text" rows="6"></textarea><br/>
+				<input class="submit_btn, issue_btn" type="submit" value="Submit" /></form>
+			<script>
+				$('.issue').hide();
+				$('.issue_btn').click(function() {
+					$('.issue').slideToggle();					
+				});
+			</script>
+		</div>
       </header>
       <section>
         <p>A World of Warcraft User Interface, written by Nathan Lilienthal (Epicgrim). For more info, or to get in touch with me you can leave me comments here or over on the <a href="http://www.tukui.org/forums/forum.php?id=168">Tukui forums</a>. </p>
@@ -81,9 +88,6 @@ Alternatively you can view and download all versions of EUI from the <a href="ht
 
 <p>Special Thanks to: Hydra, Tukz, Elv</p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/Epicgrim">Epicgrim</a></p>
-      </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
     

@@ -34,24 +34,45 @@ function git_GET_lastestCommit() {
 	});
 }
 
+// not abstracted for other repos
+function git_GET_lastestDownload() {
+	$.ajax({
+	  	url: "https://api.github.com/repos/Epicgrim/EUI/downloads",
+	 	crossDomain: true,
+	    dataType: 'jsonp'
+	}).done(function(response) {
+		var data = response.data;
+		if (data[0]) {
+			$('.dl_link').attr("href", data[0].html_url);
+			if (data[0].description) {
+				$('.version').html("EUI &nbsp"+data[0].description.replace(/[a-z]/, "")+
+				"<span class='size'>"+" &nbsp"+Math.round(data[0].size/100000)/10+"mb"+"</span");
+			} else {
+				$('.version').html("EUI");
+			}
+		} else {
+			$('.version').html("Unavalible");
+		}
+	});
+}
+
 //handle updating 
 $(document).ready(function() {
 	git_GET_collaborators();
 	git_GET_lastestCommit();
+	git_GET_lastestDownload();
 	
 	//handle form submission to php
-	/*
-	$("#issue").submit(function() {
+	$(".issue").submit(function() {
 		var title = $("input[name=title]").val();
-		var body = $("input[name=body]").val();
+		var body = $("textarea[name=body]").val();
 		$.ajax({
 			type: "POST",
 		  	url: "php/post_issue.php",
 			data: {"title" : title, "body" : body }
 		}).done(function(response) {
-			alert("Posted");
+			alert("Issue Submitted");
 		});
 		return false;
 	});
-	*/
 });
