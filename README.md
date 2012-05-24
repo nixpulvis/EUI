@@ -1,12 +1,12 @@
-# EUI _formerly EpicUI_
+# EUI
 
-A World of Warcraft User Interface, written by Nathan Lilienthal (Epicgrim). For more info, or to get in touch with me you can leave me comments here or over on the [Tukui forums](http://www.tukui.org/forums/forum.php?id=168). 
+A World of Warcraft User Interface, written by Nathan Lilienthal (Epicgrim), and Jody Saliba (Shineey). The goal of this user interface is to provide users with a clean, fast, and fully functional UI. Configuration is easy, and the display of critical information is in the forefront of the UI.
 
-Feedback and bug reports are greatly appreciated. If you would like to help with this project there are a few things you could do. The first thing would be to fork this project and send pull requests, however if you want to be more involved let me know, I'd love to have more help :)
-
-Inspired by [Tukui](http://www.tukui.org).
+ If you would like to help with this project there are a few things you could do. The first thing would be to fork this project and send pull requests, however if you want to be more involved let me know, I'd love to have more help.
 
 ---
+
+![placeholder img](http://i.imgur.com/dFaQx.jpg)
 
 ## Features
 This UI is all about minimalism, without sacrifice. As a hardcore WoW player myself I know very well what a competitive player needs and doesn't need. This means your UI will be full featured and yet compact and lightweight.
@@ -29,16 +29,14 @@ Placeholder text
 Placeholder text
 
 ## Installation
-The easiest way to get the latest stable version of EUI is to goto [epicgrim.github.com/EUI](http://epicgrim.github.com/EUI) and click "Download Version X.X"
-Alternatively you can view and download all versions of EUI from the [downloads tab](https://github.com/Epicgrim/EUI/downloads) on Github. 
+Simply click the "Download EUI x.x" on this page. This will download the latest stable version of the UI as a zip. The zip will contain the EUI folder, simply move that folder into your Addons folder. (even easier install available, once I get a webserver up and running) 
 
-If you want you can also [download the git repository](https://github.com/Epicgrim/EUI/zipball/master) and use that. This has it's advantages and disadvantages. With this method you will have the absolute newest version I have committed, which means for you the newest features and bug fixes. It also means however that I have not tested it to my full liking, and it may have more issues then you would like. The choice is yours.
+If you want you can also [download the git repository](https://github.com/Epicgrim/EUI/zipball/develop) and use that. This has it's advantages and disadvantages. With this method you will have the absolute newest version I have committed, which means for you the newest features and bug fixes. It also means however that I have not tested it to my full liking, and it may have more issues then you would like. The choice is yours.
 
 ## Support
-If you have a github account or can take the few seconds it takes to make one, submitted issues on github are my preferred method of reporting bugs. However, there is also a forum open for Bugs on tukui.org __NOTE TO SELF: Make Forum When version 1.0 is released__
+Feedback and bug reports are greatly appreciated. To submit a bug for review simply click the "Submit Issue" button on the left side of this page. These issues go directly into the projects Issues tracking on github. For more interactive disscussion please feel free to leave a comment on (FOURM LINK HERE)
 
 ## Credits
-Core Code By: Nathan Lilienthal (Epicgrim)
 
 Ideas and Inspiration from: [Tukui](http://www.tukui.org/forums/), [ElvUI](http://www.tukui.org/forums/)
 
