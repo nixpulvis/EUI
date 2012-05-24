@@ -80,6 +80,25 @@ local function StripTextures(frame)
 	end		
 end
 
+-- Skins the frame, designed to handle all types of frames
+local function Skin(frame, alpha)
+	frame:StripTextures()
+	
+	local otype = frame:GetObjectType()
+	if otype == "Frame" then
+		frame:StyleFrame()
+	elseif otype == "Button" then
+		frame:StyleButton()
+	elseif otype == "EditBox" then
+		-- TODO: make this sexier :)
+		frame:StyleFrame()				
+	elseif otype == "GameTooltip" then
+		-- TODO: make this sexier :)
+		frame:StyleFrame()
+	else
+		error("Skin() is not applicable for the type "..otype)
+	end
+end
 -----------------------------------------------------------------------
 -- Integrate EUI functions to the frames  
 -- TODO optimize this, currently taken from TUKUI
@@ -93,6 +112,7 @@ local function AddFunctionsTo(frame)
 	if not frame.CreateString then meta.CreateString = CreateString end	
 	if not frame.Kill then meta.Kill = Kill end
 	if not frame.StripTextures then meta.StripTextures = StripTextures end
+	if not frame.Skin then meta.Skin = Skin end
 end
 
 

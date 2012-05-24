@@ -87,9 +87,7 @@ function minimap:load()
 	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
 	local clockframe = V.CreateFrame("EUIClockframe", EUIMinimap, 45, 17)
 	clockframe:SetPoint("TOP", EUIMinimap, "TOP", 0, -4)
-	clockframe:SetFrameStrata("MEDIUM")
-	clockframe:StyleFrame()
-	
+	clockframe:SetFrameStrata("MEDIUM")	
 
 	clockframe.text = clockframe:CreateString("", V.media.fonts.main, 12)
 	local displayFormat = string.join("", "%02d", ":%02d")

@@ -53,8 +53,7 @@ function t:load()
 	end
 
 	local function SkinTooltip(n)
-		n:StripTextures()
-		n:StyleFrame()
+		n:Skin()
 	end
 
 	-- Skin the tooltip every time the frame is shown, <3 Tukui

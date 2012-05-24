@@ -23,10 +23,9 @@ function chat:load()
 		
 		-- remove blizzard style
 		chatframe:StripTextures()
-		editbox:StripTextures()
+		editbox:Skin(.9)
 	
-		-- skin editbox
-		editbox:StyleFrame(.9)
+		-- position editbox
 		editbox:ClearAllPoints()
 		editbox:SetPoint("BOTTOMLEFT", background, "BOTTOMLEFT")
 		editbox:SetPoint("BOTTOMRIGHT", background, "BOTTOMRIGHT")
@@ -75,7 +74,6 @@ function chat:load()
 	-- skin the overflow button
 	local overflow = _G["GeneralDockManagerOverflowButton"]
 	overflow:StripTextures()
-	--overflow:StyleFrame()
 	overflow:SetSize(10, 24)
 	overflow.frame = V.CreateFrame(nil, overflow)
 	overflow.frame:SetPoint("BOTTOMLEFT", overflow, "BOTTOMLEFT", -1, 2)
