@@ -59,12 +59,27 @@ function chat:load()
 		
 		-- tabs
 		tab:StripTextures()
-		-- make that line under each tab
-		tab.bottomline = V.CreateFrame(nil, tab)
-		tab.bottomline:SetPoint("LEFT", tab, "BOTTOMLEFT")
-		tab.bottomline:SetPoint("RIGHT", tab, "BOTTOMRIGHT")
-		tab.bottomline:SetHeight(1)
+		tab:SetHeight(32)
+
+		tab.frame = V.CreateFrame(nil, tab)
+		tab.frame:SetPoint("BOTTOMLEFT", tab, "BOTTOMLEFT")
+		if chatframe:GetID() <= 2 then
+			tab.frame:SetPoint("TOPRIGHT", tab, "TOPRIGHT", -3, -10)
+		else
+			tab.frame:SetPoint("TOPRIGHT", tab, "TOPRIGHT", -3, -11)			
+		end
 	end
+	-- make the scroll frame fit the tabs aligned.
+	_G["GeneralDockManagerScrollFrame"]:SetHeight(33)
+	
+	-- skin the overflow button
+	local overflow = _G["GeneralDockManagerOverflowButton"]
+	overflow:StripTextures()
+	--overflow:StyleFrame()
+	overflow:SetSize(10, 24)
+	overflow.frame = V.CreateFrame(nil, overflow)
+	overflow.frame:SetPoint("BOTTOMLEFT", overflow, "BOTTOMLEFT", -1, 2)
+	overflow.frame:SetPoint("TOPRIGHT", overflow, "TOPRIGHT", -1, 0)
 	
 	-- skin the default 10 chat friends
 	for i = 1, NUM_CHAT_WINDOWS do
