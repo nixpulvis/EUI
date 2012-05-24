@@ -48,6 +48,7 @@ function V.CreateElement(module, name, parent)
 	
 	-- Making the frame
 	local frame = V.CreateFrame(name, parent)
+	frame:EnableMouse(true)
 	element.frame = frame
 	
 	local mover = V.CreateFrame(name.."_Mover", element.frame)
@@ -56,15 +57,37 @@ function V.CreateElement(module, name, parent)
 	mover:SetWidth(15)
 	mover:Hide()
 	
+	mover:SetMovable(true)
+	mover:EnableMouse(true)
+	mover:RegisterForDrag("LeftButton")
+	mover:SetScript("OnMouseDown", function()
+		local lastX, lastY = GetCursorPosition()
+		mover:SetScript("OnUpdate", function()
+			local x, y = GetCursorPosition()
+		
+			xOff, yOff = x-lastX, y-lastY
+			lastX, lastY = x, y
+	
+			for i = 1, frame:GetNumPoints() do
+				local point, relativeTo, relativePoint, xOffset, yOffset = frame:GetPoint(i)
+				frame:SetPoint(point, relativeTo, relativePoint, xOffset+xOff, yOffset+yOff)
+			end
+		end)
+	end)
+	mover:SetScript("OnDragStop", function()
+		local xOff, yOff = GetCursorPosition()
+		mover:SetScript("OnUpdate", nil)
+	end)
+	
 	mover.bg = mover:CreateTexture(nil, "OVERLAY")
 	mover.bg:SetPoint("TOPLEFT", 2, -2)
 	mover.bg:SetPoint("BOTTOMRIGHT", -2, 2)
 	mover.bg:SetTexture(TierColor())
 	
 	mover:SetScript("OnMouseUp", ToggleTier)
-
+	
 	-- show the movers and set the element to be moveable TODO
-	function element:ToggleMovers()
+	function element:ToggleMover()
 		-- show mover
 		if mover:IsVisible() then
 			mover:Hide()

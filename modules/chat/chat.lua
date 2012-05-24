@@ -130,8 +130,8 @@ function chat:load()
 	end)
 	
 	--add Friends and Guild pane
-	V.CreateFriendsPanel()
-	V.CreateGuildPanel()
+	--V.CreateFriendsPanel()
+	--V.CreateGuildPanel()
 end
 
 -- Code to be called on install

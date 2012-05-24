@@ -7,14 +7,7 @@ local M, S, V = unpack(select(2, ...))
 function V.toggleMovers()
 	for module,v in pairs(M) do
 		for k,v in pairs(M[module].elements) do
-			v:ToggleMovers()
-			--[[
-			if v.mover:IsVisible() then
-				v.mover:Hide()
-			else
-				v.mover:Show()
-			end
-			]]
+			v:ToggleMover()
 		end
 	end
 end
