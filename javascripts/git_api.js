@@ -47,7 +47,7 @@ function git_GET_lastestDownload() {
 			$('.version').html("EUI &nbsp"+data[0].name.match(/[0-9]+.*[^.zip]/, "")+
 				"<span class='size'>"+" &nbsp"+Math.round(data[0].size/100000)/10+"mb"+"</span");
 		} else {
-			$('.version').html("Unavalible");
+			$('.version').html("Unavailable");
 		}
 	});
 }
