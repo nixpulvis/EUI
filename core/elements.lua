@@ -57,6 +57,8 @@ function V.CreateElement(module, name, parent)
 	mover:SetWidth(15)
 	mover:Hide()
 	
+	-- make the mover move the parent frame
+	-- NEEDS WORK!!!!!!!!
 	mover:SetMovable(true)
 	mover:EnableMouse(true)
 	mover:RegisterForDrag("LeftButton")

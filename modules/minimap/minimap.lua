@@ -14,50 +14,47 @@ function minimap:load()
 	Minimap:SetMaskTexture(V.media.tex.blank)
 	function GetMinimapShape() return "SQUARE" end
 	
-	--hides border
-	MinimapBorder:Hide()
-	MinimapBorderTop:Hide()
-	
-	--hides the zone text
-	MinimapZoneTextButton:Hide()
-	
 	-- sets blizz.Minimap's parent to EUIMinimap and anchors it correctly
 	Minimap:SetParent(EUIMinimap)
 	Minimap:ClearAllPoints()
 	Minimap:SetPoint("TOPLEFT", 2, -2)
 	Minimap:SetPoint("BOTTOMRIGHT", -2, 2)
 	Minimap:SetSize(150,150)
-	
-	--hides world map button
+
+	-- HIDING --
+	------------
+	-- hides border
+	MinimapBorder:Hide()
+	MinimapBorderTop:Hide()
+	-- hides the zone text
+	MinimapZoneTextButton:Hide()
+	-- hides world map button
 	MiniMapWorldMapButton:Hide()
-	
-	--gets rid of the "N" at the top of the map signifying North
+	-- hide "N"
 	MinimapNorthTag:SetTexture(nil)
-	
-	--hide the zoom
+	-- hide the zoom
 	MinimapZoomIn:Hide()
 	MinimapZoomOut:Hide()
-	
-	--hide voice chat just in case someone actually does enable it
+	-- hide voice chat
 	MiniMapVoiceChatFrame:Hide()
-	
-	--hide calendar
+	-- hide calendar
 	GameTimeFrame:Hide()
+	-- hide tracking
+	MiniMapTracking:Hide()
 	
-	--moves mail to inside map frame on TOPRIGHT and removes border
+
+	-- skin and move mail icon
 	MiniMapMailFrame:ClearAllPoints()
 	MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, 3, 3)
-	MiniMapMailBorder:Hide()
-
-	--set the mail icon
 	MiniMapMailIcon:SetTexture(V.media.icons.mail)
+	MiniMapMailBorder:Hide()
 		
-	--put battleground icon in BOTTOMRIGHT corner
+	-- put battleground icon in BOTTOMRIGHT corner
 	MiniMapBattlefieldFrame:ClearAllPoints()
 	MiniMapBattlefieldFrame:SetPoint("BOTTOMRIGHT", Minimap, 0, 0)
 	MiniMapBattlefieldBorder:Hide()
 	
-	--puts dungeon difficulty in TOPLEFT corner
+	-- puts dungeon difficulty in TOPLEFT corner
 	MiniMapInstanceDifficulty:ClearAllPoints()
 	MiniMapInstanceDifficulty:SetParent(Minimap)
 	MiniMapInstanceDifficulty:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 0, 0)
@@ -65,15 +62,12 @@ function minimap:load()
 	GuildInstanceDifficulty:SetParent(Minimap)
 	GuildInstanceDifficulty:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 0, 0)
 	
-	--put LFG/LFR icon in BOTTOMLEFT corner
+	-- put LFG/LFR icon in BOTTOMLEFT corner
 	MiniMapLFGFrame:ClearAllPoints()
 	MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, 0, 0)
 	MiniMapLFGFrameBorder:Hide()
 	
-	--hide tracking
-	MiniMapTracking:Hide()
-	
-	--removes blizzard time clock
+	-- removes blizzard time clock
 	local function RemoveBlizTime(self, name)
 		if name == "Blizzard_TimeManager" then
 			TimeManagerClockButton:Hide()
@@ -84,14 +78,14 @@ function minimap:load()
 	end
 	V.addEventListener(RemoveBlizTime, "ADDON_LOADED")
 	
-	--create a frame for time and put time in it (simply puts in realm time...no local time support yet)
-	local clockframe = V.CreateFrame("EUIClockframe", EUIMinimap, 45, 17)
-	clockframe:SetPoint("TOP", EUIMinimap, "TOP", 0, -4)
-	clockframe:SetFrameStrata("MEDIUM")	
+	-- time frame
+	local clock = V.CreateFrame("EUIClock", EUIMinimap, 45, 17)
+	clock:SetPoint("TOP", EUIMinimap, "TOP", 0, -4)
+	clock:SetFrameStrata("MEDIUM")	
 
-	clockframe.text = clockframe:CreateString("", V.media.fonts.main, 12)
+	clock.text = clock:CreateString("", V.media.fonts.main, 12)
 	local displayFormat = string.join("", "%02d", ":%02d")
-	clockframe.text:SetPoint("CENTER")
+	clock.text:SetPoint("CENTER")
 	
 	--formats time hour and minute strings to be in 12 or 24 hour format and if its in local time or server time
 	local function CalculateTimeValues()
@@ -126,7 +120,7 @@ function minimap:load()
 	
 	--update the time
 	local t = 1
-	clockframe:SetScript("OnUpdate", function(self, elapsed)
+	clock:SetScript("OnUpdate", function(self, elapsed)
 		t = t - elapsed
 		
 		if t > 0 then return end
@@ -144,23 +138,23 @@ function minimap:load()
 		
 		if t <= 0 then
 			local hour, minute = CalculateTimeValues()
-			clockframe.text:SetFormattedText(displayFormat, hour, minute)
+			clock.text:SetFormattedText(displayFormat, hour, minute)
 		end
 	end)
 	
-	--making zone text frame
+	-- making zone text frame
 	local zoneframe = V.CreateFrame("EUIZoneframe", EUIMinimap, 150, 20)
 	zoneframe:SetAlpha(0)
 	zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
-		--making a string to be put into th zone text frame
+	-- making a string to be put into th zone text frame
 	local zoneframe_text = zoneframe:CreateFontString("TukuiMinimapZoneText","Overlay")
 	zoneframe_text:SetFont(V.media.fonts.main, 12)
 	zoneframe_text:SetHeight(12)
 	zoneframe_text:SetWidth(zoneframe:GetWidth()-6)
 	zoneframe_text:SetPoint("CENTER", zoneframe, "CENTER")
 	
-	--this sets the text to the zone and colorizes it 
+	-- this sets the text to the zone and colorizes it 
 	local function zone_Update()
 		local pvp = GetZonePVPInfo()
 		zoneframe_text:SetText(GetMinimapZoneText())
@@ -194,7 +188,7 @@ function minimap:load()
 	end)
 
 	--clicking the time (LEFTCLICK = stopwatch, RIGHTCLICK = alarm/time manager,
-	clockframe:SetScript("OnMouseUp", function(self, button)
+	clock:SetScript("OnMouseUp", function(self, button)
 		--menu for the dropdown
 		local menu = {
 			{ text = "Time Menu", isTitle = true, isNotRadio = true, notCheckable = true},
@@ -225,8 +219,8 @@ function minimap:load()
 		
 		--creating frame and dropdown
 		local timemenuframe = CreateFrame("Frame", "TimeMenuFrame", UIParent, "UIDropDownMenuTemplate")
-		UIDropDownMenu_SetAnchor(timemenuframe, 0, -5, "TOP", EUIClockframe, "BOTTOM")
-		EasyMenu(menu, timemenuframe, EUIClockframe, -20 , 0, "MENU", 2)
+		UIDropDownMenu_SetAnchor(timemenuframe, 0, -5, "TOP", EUIClock, "BOTTOM")
+		EasyMenu(menu, timemenuframe, EUIClock, -20 , 0, "MENU", 2)
 	end)
 	
 	

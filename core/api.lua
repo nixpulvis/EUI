@@ -3,7 +3,8 @@ local M, S, V = unpack(select(2, ...))
 -- EUI Frame Functions
 -----------------------------------------------------------------------
 
--- STYLING FUNCTIONS
+-- STYLING FUNCTIONS not actually added to the API
+-- accessable through the Skin() function
 
 -- Set the style of the frame to EUI
 local function StyleFrame(frame, alpha)
@@ -18,7 +19,7 @@ local function StyleFrame(frame, alpha)
 	frame:SetBackdropBorderColor(unpack(S.General.border_color))
 end
 
--- Stlye frame to interavt with the mouse on hover.
+-- Stlye frame to interact with the mouse on hover.
 local function StyleButton(frame)
 	local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
 	local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
@@ -52,6 +53,8 @@ local function StyleButton(frame)
 		end
 	end)
 end
+
+------------------------------------------------------------------
 
 -- Make a string on a frame
 function CreateString(frame, string, fontName, fontHeight, fontStyle)
@@ -107,8 +110,6 @@ end
 local function AddFunctionsTo(frame)
 	local meta = getmetatable(frame).__index
 
-	if not frame.StyleFrame then meta.StyleFrame = StyleFrame end
-	if not frame.StyleButton then meta.StyleButton = StyleButton end
 	if not frame.CreateString then meta.CreateString = CreateString end	
 	if not frame.Kill then meta.Kill = Kill end
 	if not frame.StripTextures then meta.StripTextures = StripTextures end

@@ -72,7 +72,7 @@ function t:load()
 
 	-- Health bar skinning	
 	local hp = GameTooltipStatusBar
-	hp:StyleFrame()
+	hp:Skin()
 	hp:ClearAllPoints()
 	hp:SetHeight(6)
 	hp:SetPoint("BOTTOMLEFT", hp:GetParent(), "TOPLEFT", 0, 3)
