@@ -48,11 +48,6 @@ function minimap:load()
 	MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, 3, 3)
 	MiniMapMailIcon:SetTexture(V.media.icons.mail)
 	MiniMapMailBorder:Hide()
-		
-	-- put battleground icon in BOTTOMRIGHT corner
-	MiniMapBattlefieldFrame:ClearAllPoints()
-	MiniMapBattlefieldFrame:SetPoint("BOTTOMRIGHT", Minimap, 0, 0)
-	MiniMapBattlefieldBorder:Hide()
 	
 	-- puts dungeon difficulty in TOPLEFT corner
 	MiniMapInstanceDifficulty:ClearAllPoints()
@@ -63,9 +58,9 @@ function minimap:load()
 	GuildInstanceDifficulty:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 0, 0)
 	
 	-- put LFG/LFR icon in BOTTOMLEFT corner
-	MiniMapLFGFrame:ClearAllPoints()
-	MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, 0, 0)
-	MiniMapLFGFrameBorder:Hide()
+	QueueStatusMinimapButton:ClearAllPoints()
+	QueueStatusMinimapButton:SetPoint("BOTTOMLEFT", Minimap, 0, 0)
+	QueueStatusMinimapButtonBorder:Hide()
 	
 	-- removes blizzard time clock
 	local function RemoveBlizTime(self, name)

@@ -89,15 +89,18 @@ local function Skin(frame, alpha)
 	
 	local otype = frame:GetObjectType()
 	if otype == "Frame" then
-		frame:StyleFrame()
+		StyleFrame(frame)
 	elseif otype == "Button" then
-		frame:StyleButton()
+		StyleButton(frame)
 	elseif otype == "EditBox" then
 		-- TODO: make this sexier :)
-		frame:StyleFrame()				
+		StyleFrame(frame)				
 	elseif otype == "GameTooltip" then
 		-- TODO: make this sexier :)
-		frame:StyleFrame()
+		StyleFrame(frame)
+	elseif otype == "StatusBar" then
+		-- TODO: make this sexier :)
+		StyleFrame(frame)
 	else
 		error("Skin() is not applicable for the type "..otype)
 	end
