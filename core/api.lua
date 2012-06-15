@@ -3,6 +3,9 @@ local M, S, V = unpack(select(2, ...))
 -- EUI Frame Functions
 -----------------------------------------------------------------------
 
+-- STYLING FUNCTIONS not actually added to the API
+-- accessable through the Skin() function
+
 -- Set the style of the frame to EUI
 local function StyleFrame(frame, alpha)
 	local r,g,b,a = unpack(S.General.background_color)
@@ -26,7 +29,8 @@ local function StyleButton(frame)
 	
 	-- Texture for the overlay effect.
 	frame.overlay = frame:CreateTexture()
-	frame.overlay:SetAllPoints()
+	frame.overlay:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2)
+	frame.overlay:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -2, -2)
 	frame.overlay:SetTexture(unpack(hover_color))
 	frame.overlay:Hide()
 	
@@ -108,24 +112,21 @@ end
 
 local function AddFunctionsTo(frame)
 	local meta = getmetatable(frame).__index
-	meta.StyleFrame = StyleFrame
-	meta.StyleButton = StyleButton
-	meta.CreateString = CreateString	
-	meta.Kill = Kill
-	meta.StripTextures = StripTextures
-	meta.Skin = Skin
+
+	if not frame.CreateString then meta.CreateString = CreateString end	
+	if not frame.Kill then meta.Kill = Kill end
+	if not frame.StripTextures then meta.StripTextures = StripTextures end
+	if not frame.Skin then meta.Skin = Skin end
 end
 
-local temp = {}
--- add functions to frames
-for i,v in ipairs(V.frame_types) do
-	temp[v] = CreateFrame(v, "Registration_"..v)
-	AddFunctionsTo(temp[v])
-	
-	-- remove this silly silly frame
-	temp[v]:Hide()
-	_G[temp[v]:GetName()] = nil
+
+local type_handled = {}
+local frame = EnumerateFrames()
+while frame do
+	if not type_handled[frame:GetObjectType()] then
+		AddFunctionsTo(frame)
+		type_handled[frame:GetObjectType()] = true
+	end
+
+	frame = EnumerateFrames(frame)
 end
--- add functions to layeredregions (manually cause this is a bitch)
-AddFunctionsTo(temp['Frame']:CreateTexture())
-AddFunctionsTo(temp['Frame']:CreateFontString())

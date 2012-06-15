@@ -9,24 +9,3 @@ V.myrealm = GetRealmName()
 V.incombat = UnitAffectingCombat("player")
 
 V.versionnumber = tonumber(GetAddOnMetadata("EUI", "Version"))
-
-V.frame_types = {
-	"Frame",
-	"Button",
-		"CheckButton",
-	"Cooldown",
-	"ColorSelect",
-	"EditBox",
-	"GameTooltip",
-	"MessageFrame",
-	"Minimap",
-	"Model",
-		"PlayerModel",
-			"DressUpModel",
-			"TabardModel",
-	"ScrollFrame",
-	"ScrollingMessageFrame",
-	"SimpleHTML",
-	"Slider",
-	"StatusBar",
-}
