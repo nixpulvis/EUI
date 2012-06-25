@@ -6,7 +6,7 @@ A World of Warcraft User Interface, written by Nathan Lilienthal (Epicgrim), and
 
 ---
 
-![placeholder img](http://i.imgur.com/dFaQx.jpg)
+![placeholder img](http://f.cl.ly/items/1r3P3L0O311n2W0F1t2V/WoWScrnShot_080911_204144.jpg)
 
 ## Features
 This UI is all about minimalism, without sacrifice. As a hardcore WoW player myself I know very well what a competitive player needs and doesn't need. This means your UI will be full featured and yet compact and lightweight.
@@ -36,8 +36,15 @@ If you want you can also [download the git repository](https://github.com/Epicgr
 ## Support
 Feedback and bug reports are greatly appreciated. To submit a bug for review simply click the "Submit Issue" button on the left side of this page. These issues go directly into the projects Issues tracking on github. For more interactive disscussion please feel free to leave a comment on (FOURM LINK HERE)
 
+## Versioning
+EUI will be versioned according to the following template. I will try to adhere to these guidelines to the best of my ability.
+
+`major.minor.tiny`
+
+A major release can be expected to rework stylings, add features, and might remove some features. A minor release can be expected to add features, tweak styles, optimize proformance, and add 3rd party addon support. I'll use the 'tiny' versions for bugfixes, and additions that don't affect the end user directly.
+
 ## Credits
 
 Ideas and Inspiration from: [Tukui](http://www.tukui.org/forums/), [ElvUI](http://www.tukui.org/forums/)
 
-Special Thanks to: <span style="color: #ad2424;">Hydra, Tukz, Elv</span>
+Special Thanks to: <span style="color: #ad2424;">Hydra</span>

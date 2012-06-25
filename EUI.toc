@@ -1,9 +1,8 @@
 ## Interface: 40300
 ## Author: Epicgrim
-## Credits: Tukz, Hydra, Smelly
-## Version: 0.1
+## Version: 0.2.0
 ## Title: EUI - Complete User Interface
-## Notes: EUI (formerly EpicUI) User Interface.
+## Notes: EUI // Minimalistic UI tuned for High Level Raiding //
 ## SavedVariables: EUIData
 ## SavedVariablesPerCharacter: EUIToonData
 
