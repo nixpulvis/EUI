@@ -2,9 +2,13 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Event Handler
 -----------------------------------------------------------------------
+--[[ this is designed to make updating information possible without the 
+	 need to make a frame just for event handling. ]]
+
+-- the single frame in charge of handling EUI's events
 local eventhandler, events = CreateFrame("Frame"), V.events
 
--- This binds the functions in V.events to the eventhandler.
+-- binds the functions in V.events to the event-handler.
 local function updateEventRegistration()
 	for k,v in pairs(events) do
 		if not eventhandler:IsEventRegistered(k) then
