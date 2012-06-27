@@ -1,9 +1,12 @@
 local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- Base Settings
+-- EUI Settings
 -----------------------------------------------------------------------
+--[[ default settings for EUI. designed to be approachable to users,
+	 these values are only defaults. many of them will be overridden by 
+	 savedvar settings. ]]
 
 S['General'] = {
-	['background_color'] = { .075, .075, .075, .8 },
-	['border_color'] = { .25, .25, .25 },
+	['background_color'] = { .075, .075, .075, .8 },	-- [used]
+	['border_color']     = { .25, .25, .25 },			-- [used]
 }

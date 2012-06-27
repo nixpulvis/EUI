@@ -1,17 +1,19 @@
 local M, S, V = unpack(select(2, ...))
+-----------------------------------------------------------------------
+-- EUI Modules
+-----------------------------------------------------------------------
+--[[ modules within the MEF system. A module contains a complete part of the UI.
+	 These are almost like addons in thier own right. They have thier own
+	 namespace (they can still access all of EUI however). They contain elements,
+	 functions, and more. Modules are loaded on "ADDON_LOADED"
 
---[[ Modules within the MEF system
-A module contains a complete part of the UI. These are almost like addons in thier own right.
-They have thier own namespace (they can still access all of EUI however). They contain elements,
-functions, and more. Modules are loaded on "ADDON_LOADED"
+	 When a module is made it needs to have a load function. This is what every module
+	 attempts to call when the addon is loaded. All the element creating should be
+	 done within this function.
 
-When a module is made it needs to have a load function. This is what every module attempts to call 
-when the addon is loaded. All the element creating should be done within this function.
-
-Also a module can have a install function, this will be called once when a player is detected that 
-has not installed EUI before. This is useful for setting elements defaults, but then letting the 
-user change things later.
-]]
+	 Also a module can have a install function, this will be called once when a player 
+	 is detected that has not installed EUI before. This is useful for setting elements
+	 defaults, but then letting the user change things later. ]]
 
 --[[
 V:NewModule

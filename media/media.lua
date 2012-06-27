@@ -2,6 +2,7 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Media
 -----------------------------------------------------------------------
+--[[ links to media for use in EUI. all media located in V.media ]]
 
 V.media = {
 	tex = { },

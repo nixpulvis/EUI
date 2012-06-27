@@ -17,7 +17,7 @@ local function installAll()
 end
 
 -- not sure if this is worth keeping
-local function installModule(module)
+local function installModule( module )
 	if module then
 		if module.install then
 			module.install()
@@ -29,7 +29,7 @@ local function installModule(module)
 	end
 end
 
-local function install(self)
+local function install( self )
 	if not S.savedperchar.installed then
 		installAll()
 	end
@@ -41,7 +41,7 @@ V.addEventListener(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
 
 -- install a module
 SLASH_INSTALL1 = '/install'
-function SlashCmdList.INSTALL(msg, editbox)
+function SlashCmdList.INSTALL( msg, editbox )
 	if msg ~= "" then
 		installModule(msg)	
 	else
@@ -51,7 +51,7 @@ end
 
 -- reset saved vars
 SLASH_RESET1 = '/reset'
-function SlashCmdList.RESET(msg, editbox)
-	V.resetSavedVars()
+function SlashCmdList.RESET( msg, editbox )
+	V.ClearSavedVars()
 	ReloadUI()
 end

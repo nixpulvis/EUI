@@ -2,9 +2,12 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Saved Variables
 -----------------------------------------------------------------------
+--[[ load in and save out the EUIData and EUIToonData. on load we pull
+	 the variables into S.xxx in order to remove complexity around
+	 savedvar usage in other areas of EUI. ]]
 
 -- Load the saved variables into V.saved or V.savedperchar
-local function loadvars()
+local function LoadVariables()
 	if not EUIData then EUIData = { } end
 	if not EUIToonData then EUIToonData = { } end
 	
@@ -13,29 +16,29 @@ local function loadvars()
 end
 
 -- save V.saved and V.savedperchar to saved variables
-local function savevars()
+local function SaveVariables()
 	EUIData = S.saved
 	EUIToonData = S.savedperchar
 end
 
---------------------------------------------------------------------------
-
-function V.resetSavedVars()
+-- EUI function to clear Saved vars
+function V.ClearSavedVars()
 	S.saved = { }
 	S.savedperchar = { }
 	savevars()
 end
 
---------------------------------------------------------------------------
+-- :: Event :: --------------------------------------------------------
+-----------------------------------------------------------------------
 
 local handler, events = CreateFrame("Frame"), { }
 function events:PLAYER_LOGOUT(...)
-	savevars()
+	SaveVariables()
 end
 function events:ADDON_LOADED(...)
 	local name = ...
 	if name == "EUI" then
-		loadvars()
+		LoadVariables()
 	end
 end
 
