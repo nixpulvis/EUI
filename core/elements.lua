@@ -1,28 +1,29 @@
 local M, S, V = unpack(select(2, ...))
-
---[[ ELEMENTS within the MEF system.
-an element is what the user will see on the screen as a individual part of the UI.
-for example, the Left Chat Frame is an element, however there maw be more chat frames,
-each one is an element, eventhough they are in the same module.
-]]
+-----------------------------------------------------------------------
+-- EUI Elements
+-----------------------------------------------------------------------
+--[[ elements within the MEF system. an element is what the user will see 
+	 on the screen as a individual part of the UI. for example, the
+	 Left Chat Frame is an element, however there maw be more chat frames, 
+	 each one is an element, eventhough they are in the same module. ]]
 
 --[[
 EUI:CreateElement
-	returns : new Frame
-	param : name - the name of the frame being created
-			module - the module this is a member of. (might remove this.)
-			parent - the frame this new frame will be parented to
-	NOTE : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
-		   Additionally these Elements are the frames in charge of display settings.
+    returns : Frame
+    param   : name   - the name of the frame being created.
+              module - the module this is a member of.
+              parent - the frame this new frame will be parented to
+    use     : every display item as part of a module should part of a containing
+              element. use this function to setup the element.
+    note    : Elements are the frames in charge of display settings.
 ]]
 function V.CreateElement(module, name, parent)
 	local element = { 
 		tier = 0
 	}
-	
-	------------------------------------
-	--       /eui functionality       --
-	------------------------------------
+
+	-- :: /eui :: ----------------------------
+	------------------------------------------
 	
 	-- Set the color of the tiers
 	local function TierColor()
