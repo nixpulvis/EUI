@@ -1,7 +1,9 @@
 local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- Configuration for EUI
+-- EUI In-Game Configuration
 -----------------------------------------------------------------------
+--[[ functions for managing modules built in ability to move, hide,
+	 and change settings. there is no discrete settings frame. ]]
 
 -- shows and hides the movers for each element.
 function V.toggleMovers()
