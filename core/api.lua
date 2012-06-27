@@ -2,9 +2,15 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Frame Functions
 -----------------------------------------------------------------------
+--[[ these functions are to be added to all frames in the UI. styling,
+     and new frame functionality should be added here. anything I'd
+     want to call like Frame:SomeFunction() ]]
 
--- Set the style of the frame to EUI
-local function StyleFrame(frame, alpha)
+-- :: Style :: --------------------------------------------------------
+-----------------------------------------------------------------------
+
+-- make the frame look like an EUI frame.
+local function StyleFrame( frame, alpha )
   local r,g,b,a = unpack(S.General.background_color)
   if not alpha then alpha = a end
   frame:SetBackdrop({ 
@@ -16,8 +22,8 @@ local function StyleFrame(frame, alpha)
   frame:SetBackdropBorderColor(unpack(S.General.border_color))
 end
 
--- Stlye frame to interact with the mouse on hover.
-local function StyleButton(frame)
+-- stlye button to highlight on hover.
+local function StyleButton( frame )
   local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
   local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
 
@@ -50,10 +56,11 @@ local function StyleButton(frame)
   end)
 end
 
-------------------------------------------------------------------
+-- :: Creation / Destruction :: ---------------------------------------
+-----------------------------------------------------------------------
 
--- Make a string on a frame
-function CreateString(frame, string, fontName, fontHeight, fontStyle)
+-- make a string on a frame
+function CreateString( frame, string, fontName, fontHeight, fontStyle )
   local text = frame:CreateFontString(nil, "OVERLAY")
   text:SetFont(fontName, fontHeight, fontStyle)
   text:SetText(string)
@@ -63,14 +70,14 @@ function CreateString(frame, string, fontName, fontHeight, fontStyle)
   return text
 end
 
--- Really Really Kill something
-local function Kill(frame)
+-- remove a frame from the UI completely. 
+local function Kill( frame )
   frame:Hide()
   _G[frame:GetName()] = nil
 end
 
--- Remove all Textures from a frame. Usefull for stripping Blizz / Other addons style.
-local function StripTextures(frame)
+-- remove all Textures from a frame. useful for stripping Blizz / Other addon's style.
+local function StripTextures( frame )
   for i=1, frame:GetNumRegions() do
     local region = select(i, frame:GetRegions())
     if region:GetObjectType() == "Texture" then
@@ -79,8 +86,8 @@ local function StripTextures(frame)
   end   
 end
 
--- Skins the frame, designed to handle all types of frames
-local function Skin(frame, alpha)
+-- skin the frame, designed to handle all types of frames
+local function Skin( frame, alpha )
   frame:StripTextures()
 
   local otype = frame:GetObjectType()
@@ -101,12 +108,11 @@ local function Skin(frame, alpha)
     error("Skin() is not applicable for the type "..otype)
   end
 end
------------------------------------------------------------------------
--- Integrate EUI functions to the frames  
--- TODO optimize this, currently taken from TUKUI
+
+-- :: Integration :: --------------------------------------------------
 -----------------------------------------------------------------------
 
-local function AddFunctionsTo(frame)
+local function AddFunctionsTo( frame )
   local meta = getmetatable(frame).__index
   meta.StyleFrame = StyleFrame
   meta.StyleButton = StyleButton
@@ -116,16 +122,10 @@ local function AddFunctionsTo(frame)
   meta.Skin = Skin
 end
 
-local temp = {}
 -- add functions to frames
 for i,v in ipairs(V.frame_types) do
-  temp[v] = CreateFrame(v, "Registration_"..v)
-  AddFunctionsTo(temp[v])
-
-  -- remove this silly silly frame
-  temp[v]:Hide()
-  _G[temp[v]:GetName()] = nil
+  AddFunctionsTo(CreateFrame(v))
 end
 -- add functions to layeredregions (manually cause this is a bitch)
-AddFunctionsTo(temp['Frame']:CreateTexture())
-AddFunctionsTo(temp['Frame']:CreateFontString())
+AddFunctionsTo( CreateFrame('Frame'):CreateTexture() )
+AddFunctionsTo( CreateFrame('Frame'):CreateFontString() )
