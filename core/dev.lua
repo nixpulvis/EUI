@@ -1,11 +1,13 @@
 local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- These are tools used for development.
+-- EUI Development Tools
 -----------------------------------------------------------------------
+--[[ these are some tools and functions to assist in development of
+	 EUI, they will be included with the release, but are designed
+	 to use as little resources as possible when not in use. ]]
 
---------------------------
--- Best slash cmd ever! --
---------------------------
+-- :: /rl :: ----------------------------------------------------------
+-----------------------------------------------------------------------
 SLASH_RELOAD1 = '/rl'
 function SlashCmdList.RELOAD(msg, editbox)
 	ReloadUI()
