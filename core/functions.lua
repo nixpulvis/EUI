@@ -1,10 +1,12 @@
 local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- EUI Utility Functions
+-- EUI Functions
 -----------------------------------------------------------------------
+--[[ these are EUI's utilities, they provide somewhat abstracted
+	 functionality. All functions here are stored in V ]]
 
 -- converts hex colors to 0-1 colors for use in EUI.
-function V.HexToColor(hex)
+function V.HexToColor( hex )
 	local color = { }
 	if strlen(hex) == 6 or strlength(hex) == 8 then
 		for i = 1, 8, 2 do
@@ -18,24 +20,18 @@ function V.HexToColor(hex)
 	return unpack(color)
 end
 
------------------------------------------------------------------------
--- Event Functions
+-- :: Event Dependent :: ----------------------------------------------
 -----------------------------------------------------------------------
 
--- Keep V.mylevel updated
+-- V.mylevel updated
 local function updateUnitLevel()
 	V.mylevel = UnitLevel("player")
 end
 V.addEventListener(updateUnitLevel, "PLAYER_LEVEL_UP")
 
--- Keep V.incombat updated
+-- V.incombat updated
 local function updateCombatStatus()
 	UnitAffectingCombat("player")
-	print('hit')
 end
 V.addEventListener(updateCombatStatus, "PLAYER_REGEN_ENABLED")
 V.addEventListener(updateCombatStatus, "PLAYER_REGEN_DISABLED")
-
-
-V.removeEventListener(updateCombatStatus, "PLAYER_REGEN_ENABLED")
-V.removeEventListener(updateCombatStatus, "PLAYER_REGEN_DISABLED")
