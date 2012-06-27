@@ -1,7 +1,9 @@
 local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- Tooltip Skinning and Enhancement
+-- EUI Tooltip
 -----------------------------------------------------------------------
+--[[ setup for EUIs tooltip, a skinning happens based on tooltips table ]]
+
 local GameTooltip = _G["GameTooltip"]
 
 -- These are the Tooltips in the game we want to skin.
@@ -20,14 +22,14 @@ local tooltips = {
 
 local t = V:NewModule("tooltip")
 
-function t:load()
+function t:Load()
 	local tooltip = GameTooltip
 	local anchor = V.CreateElement(t, "EUITooltipAnchor", UIParent)
 	anchor:SetSize(150, 15)
 	anchor:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -325, 150)
 	anchor:Hide()
 
-	local function PositionTooltip(tt)
+	local function PositionTooltip( tt )
 		if tt:GetAnchorType() == "ANCHOR_NONE" and anchor then
 			local point = anchor:GetPoint()
 			if point == "TOPLEFT" then
@@ -52,7 +54,7 @@ function t:load()
 		end
 	end
 
-	local function SkinTooltip(n)
+	local function SkinTooltip( n )
 		n:Skin()
 	end
 
@@ -65,7 +67,7 @@ function t:load()
 			v:HookScript("OnShow", SkinTooltip)
 		end
 	end
-	V.addEventListener(tooltip_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
+	V.AddEventListener(tooltip_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
 	
 	-- Position tooltip on update
 	GameTooltip:HookScript("OnUpdate", function(self) PositionTooltip(self) end)

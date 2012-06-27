@@ -2,9 +2,12 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Minimap
 -----------------------------------------------------------------------
+--[[ setup for EUIs minimap ]]
+
 local minimap = V:NewModule("minimap")
 
-function minimap:load()
+function minimap:Load()
+
 	local EUIMinimap = V.CreateElement(minimap, "EUIMinimap", UIParent)
 	EUIMinimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -20, -20)
 	EUIMinimap:SetSize(150,150)
@@ -21,8 +24,8 @@ function minimap:load()
 	Minimap:SetPoint("BOTTOMRIGHT", -2, 2)
 	Minimap:SetSize(150,150)
 
-	-- HIDING --
-	------------
+	-- :: Hiding :: --------------------------
+	------------------------------------------
 	-- hides border
 	MinimapBorder:Hide()
 	MinimapBorderTop:Hide()
@@ -71,7 +74,7 @@ function minimap:load()
 			end)
 		end
 	end
-	V.addEventListener(RemoveBlizTime, "ADDON_LOADED")
+	V.AddEventListener(RemoveBlizTime, "ADDON_LOADED")
 	
 	-- time frame
 	local clock = V.CreateFrame("EUIClock", EUIMinimap, 45, 17)

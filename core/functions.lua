@@ -27,11 +27,11 @@ end
 local function updateUnitLevel()
 	V.mylevel = UnitLevel("player")
 end
-V.addEventListener(updateUnitLevel, "PLAYER_LEVEL_UP")
+V.AddEventListener(updateUnitLevel, "PLAYER_LEVEL_UP")
 
 -- V.incombat updated
 local function updateCombatStatus()
 	UnitAffectingCombat("player")
 end
-V.addEventListener(updateCombatStatus, "PLAYER_REGEN_ENABLED")
-V.addEventListener(updateCombatStatus, "PLAYER_REGEN_DISABLED")
+V.AddEventListener(updateCombatStatus, "PLAYER_REGEN_ENABLED")
+V.AddEventListener(updateCombatStatus, "PLAYER_REGEN_DISABLED")

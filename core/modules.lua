@@ -20,7 +20,7 @@ V:NewModule
 	param  : name	this is the name of the module (chat for example)
 	return : table	this is the table that contains all data for this module (including frames, functions, etc.)
 ]]
-function V:NewModule(name)
+function V:NewModule( name )
 	M[name] = { 
 		-- every module is going to have elements right?
 		elements = { }
@@ -29,11 +29,11 @@ function V:NewModule(name)
 		if addon == "EUI" then
 			if not S.saved.noload then S.saved.noload = { } end
 			if not tContains(S.saved.noload, name) then
-				M[name]:load()
+				M[name]:Load()
 				M[name].loaded = true
 			end
 		end
 	end
-	V.addEventListener(onAddonLoaded, "ADDON_LOADED")
+	V.AddEventListener(onAddonLoaded, "ADDON_LOADED")
 	return M[name]
 end

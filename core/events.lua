@@ -24,7 +24,7 @@ local function updateEventRegistration()
 end
 
 -- adds the given function to the given event
-function V.addEventListener(func, event)
+function V.AddEventListener(func, event)
 	if V.events[event] == nil then
 		V.events[event] = { }
 	end
@@ -33,7 +33,7 @@ function V.addEventListener(func, event)
 end
 
 -- remove the given function from the given event
-function V.removeEventListener(func, event)
+function V.RemoveEventListener(func, event)
 	for i,v in ipairs(events[event]) do
 		if v == func then tremove(events[event], i) end
 	end

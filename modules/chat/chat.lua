@@ -1,13 +1,15 @@
 local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- EUI Chat (needs install)
+-- EUI Chat
 -----------------------------------------------------------------------
+--[[ this module needs installation ]]
+
 local chat = V:NewModule("chat")
 
-function chat:load()		
+function chat:Load()		
 	
 	-- skins the given chatframe
-	local function SkinChatFrame(chatframe)
+	local function SkinChatFrame( chatframe )
 		local name = chatframe:GetName()
 		local editbox = _G[name.."EditBox"]
 		local tab = _G[name.."Tab"]
@@ -132,6 +134,7 @@ function chat:load()
 	--add Friends and Guild pane
 	--V.CreateFriendsPanel()
 	--V.CreateGuildPanel()
+
 end
 
 -- Code to be called on install

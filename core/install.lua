@@ -34,7 +34,7 @@ local function install( self )
 		installAll()
 	end
 end
-V.addEventListener(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
+V.AddEventListener(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
 
 -- :: Manual Install :: -----------------------------------------------
 -----------------------------------------------------------------------
