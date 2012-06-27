@@ -2,6 +2,8 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Install
 -----------------------------------------------------------------------
+--[[ this file is in charge of installing modules on a per char basis.
+	 it also adds manual ways to install in needed.  ]]
 
 -- Install all modules that have a install function.
 local function installAll()
@@ -34,6 +36,8 @@ local function install(self)
 end
 V.addEventListener(install_PLAYER_ENTERING_WORLD, "PLAYER_ENTERING_WORLD")
 
+-- :: Manual Install :: -----------------------------------------------
+-----------------------------------------------------------------------
 
 -- install a module
 SLASH_INSTALL1 = '/install'
