@@ -16,8 +16,12 @@ A good example might help, lets say I want to make some ramen.
 		Cook( pot, 1.5 )
 	end
 
-* Function name `MakeRamen` is camel-cased, with the initial letter capitalized.
-* Function call arguments are given 1 space padding.
+| Scope     | Case  | Space Char | Example                          |
+|:----------|:------|:-----------|:---------------------------------|
+| local     | lower | `_`        | `read_table()`                   |
+| global    | camel | `none`     | `V.AddEventListener( ..., ... )` |
+
+*Function call arguments are given 1 space padding.*
 
 ### Variables
 To help keep variables scope, and use organized and readable I'll follow these naming conventions.

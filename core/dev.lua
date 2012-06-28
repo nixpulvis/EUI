@@ -9,6 +9,6 @@ local M, S, V = unpack(select(2, ...))
 -- :: /rl :: ----------------------------------------------------------
 -----------------------------------------------------------------------
 SLASH_RELOAD1 = '/rl'
-function SlashCmdList.RELOAD(msg, editbox)
+function SlashCmdList.RELOAD( msg, editbox )
 	ReloadUI()
 end
