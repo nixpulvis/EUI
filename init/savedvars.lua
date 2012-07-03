@@ -6,10 +6,18 @@ local M, S, V = unpack(select(2, ...))
 	 the variables into S.xxx in order to remove complexity around
 	 savedvar usage in other areas of EUI. ]]
 
+-- assigns the given name to a table if nil
+local function ensure( name )
+	if not name then name = { } end
+end
+
 -- Load the saved variables into V.saved or V.savedperchar
 local function LoadVariables()
-	if not EUIData then EUIData = { } end
-	if not EUIToonData then EUIToonData = { } end
+	ensure(EUIData)
+	ensure(EUIToonData)
+
+	-- some tables are going to be needed, init here
+	ensure(EUIData.noload)
 	
 	S.saved = EUIData
 	S.savedperchar = EUIToonData	
@@ -25,7 +33,7 @@ end
 function V.ClearSavedVars()
 	S.saved = { }
 	S.savedperchar = { }
-	savevars()
+	SaveVariables()
 end
 
 -- :: Event :: --------------------------------------------------------

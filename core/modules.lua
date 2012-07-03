@@ -27,7 +27,6 @@ function V:NewModule( name )
 	}
 	local function onAddonLoaded(self, addon)
 		if addon == "EUI" then
-			if not S.saved.noload then S.saved.noload = { } end
 			if not tContains(S.saved.noload, name) then
 				M[name]:Load()
 				M[name].loaded = true
