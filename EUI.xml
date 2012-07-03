@@ -14,8 +14,8 @@
 	<Script file="core\frames.lua"/>
 	<Script file="core\elements.lua"/>
 	<Script file="core\modules.lua"/>
-	<Script file="core\install.lua"/>
-	<Script file="core\config.lua"/>	
+	<Script file="core\install.lua"/> 
+	<Script file="core\config.lua"/> -->
 	
 	<!-- System Files -->
 	<Script file="modules\tooltip\tooltip.lua"/>

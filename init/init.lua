@@ -11,7 +11,7 @@ local addon, ns = ...
 -- Modules
 ns[1] = { }
 
--- Settings
+-- Saved Vars
 ns[2] = { }	
 
 -- Variables
