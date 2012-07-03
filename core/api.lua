@@ -122,10 +122,14 @@ local function AddFunctionsTo( frame )
   meta.Skin = Skin
 end
 
--- add functions to frames
+local temp = {}
+-- add functions to frames 
 for i,v in ipairs(V.frame_types) do
-  AddFunctionsTo(CreateFrame(v))
+  temp[v] = CreateFrame(v, "Registration_"..v) 
+  AddFunctionsTo(temp[v]) 
+  -- remove this silly silly frame
+  temp[v]:Hide()
+  _G[temp[v]:GetName()] = nil
 end
--- add functions to layeredregions (manually cause this is a bitch)
-AddFunctionsTo( CreateFrame('Frame'):CreateTexture() )
-AddFunctionsTo( CreateFrame('Frame'):CreateFontString() )
+AddFunctionsTo(temp['Frame']:CreateTexture())
+AddFunctionsTo(temp['Frame']:CreateFontString())
