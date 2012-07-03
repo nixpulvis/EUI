@@ -13,11 +13,11 @@ end
 
 -- Load the saved variables into V.saved or V.savedperchar
 local function LoadVariables()
-	ensure(EUIData)
-	ensure(EUIToonData)
+	if not EUIData then EUIData = { } end
+	if not EUIToonData then EUIToonData = { } end
 
 	-- some tables are going to be needed, init here
-	ensure(EUIData.noload)
+	if not EUIData.noload then EUIData.noload = { } end
 	
 	S.saved = EUIData
 	S.savedperchar = EUIToonData	
