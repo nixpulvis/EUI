@@ -25,7 +25,7 @@ function chat:Load()
 		
 		-- remove blizzard style
 		chatframe:StripTextures()
-		editbox:Skin(.9)
+		editbox:Style(.9)
 	
 		-- position editbox
 		editbox:ClearAllPoints()

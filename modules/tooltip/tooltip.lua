@@ -55,7 +55,7 @@ function t:Load()
 	end
 
 	local function SkinTooltip( n )
-		n:Skin()
+		n:Style()
 	end
 
 	-- Skin the tooltip every time the frame is shown, <3 Tukui
@@ -74,7 +74,7 @@ function t:Load()
 
 	-- Health bar skinning	
 	local hp = GameTooltipStatusBar
-	hp:Skin()
+	hp:Style()
 	hp:ClearAllPoints()
 	hp:SetHeight(6)
 	hp:SetPoint("BOTTOMLEFT", hp:GetParent(), "TOPLEFT", 0, 3)

@@ -12,34 +12,6 @@ Example:
 	frame:CreateString('hi', helvetica, 12)
 
 
-### :StyleFrame
-Styles the frame for EUI, with the default alpha. An optional argument can be provided to override the default alpha.
-
-Usage:
-
-	frame:StyleFrame()
-	frame2:StyleFrame(.5)
-
-Added Fields:
-
-	none
-
-
-### :StyleButton
-Styles a frame (generally a button) to react to a mouse hover and click. It will glow and depress accordingly.
-
-Warning: Use caution when using this function with frames that have scripts bound to `OnEnter`, `OnLeave`, `OnMouseDown`, and `OnMouseUp`.
-
-Usage:
-
-	frame:StyleButton()
-
-Added Fields:
-
-	frame.hover 		<-- boolean
-	frame.overlay 		<-- Texture
-
-
 ### :CreateString
 Creates a FontString for the frame. It needs a value for the text, and the font style. After creation this text field needs to be positioned. Updates to the text value should be done with `:SetText()`
 
@@ -69,8 +41,8 @@ Skins the frame according to it's type, this function can be provided an optiona
 
 Usage:
 
-	frame:Skin()
-	frame2:Skin(.5)
+	frame:Style()
+	frame2:Style(.5)
 
 Added Fields:
 

@@ -18,7 +18,7 @@ EUI:CreateFrame
 ]]
 function V.CreateFrame(name, parent, width, height)
 	local frame = CreateFrame("Frame", name, parent)
-	frame:Skin()
+	frame:Style()
 	
 	-- if we have the width arg, then we should require the height as well.
 	if width then
@@ -39,7 +39,7 @@ EUI:CreateButton
 ]]
 function V.CreateButton(name, parent, text)
 	local button = CreateFrame("Button", name, parent)
-	button:Skin()
+	button:Style()
 	
 	-- default button width and height
 	button:SetSize(20, 20)

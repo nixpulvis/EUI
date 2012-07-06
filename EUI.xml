@@ -9,6 +9,7 @@
 	<Script file="settings\settings.lua"/>	
 
 	<Script file="core\events.lua"/>
+	<Script file="core\style.lua"/>
 	<Script file="core\api.lua"/>	
 	<Script file="core\functions.lua"/>
 	<Script file="core\frames.lua"/>
