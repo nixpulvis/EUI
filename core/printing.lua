@@ -29,8 +29,8 @@ function V.Print( message )
 	print(m_out)
 end
 
-function V.PrintBlock( header, message )
-	h_out = eui_print_string('EUI', header, V.euicolor, header_color)
+function V.PrintBlock( prefix, header, message )
+	h_out = eui_print_string(prefix, header, V.euicolor, header_color)
 	print(h_out)
 	print(message)
 end
