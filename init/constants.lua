@@ -36,3 +36,6 @@ V.frame_types = {
 	"Slider",
 	"StatusBar",
 }
+
+-- eui style constants
+V.euicolor = { 0.588, 0.294, 0.000 }
