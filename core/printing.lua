@@ -7,20 +7,20 @@ local M, S, V = unpack(select(2, ...))
 
 -- create colored, and formatted strings for output.
 local function eui_print_string( prefix, message, pcolor, color )
-	prefix  = '|c'..V.ColorToHex(pcolor)..prefix..'|r'
-	message = '|c'..V.ColorToHex(color)..message..'|r'
-	return prefix..": "..message
+	prefix  = '|cFF'..pcolor..prefix..': '..'|r'
+	message = '|cFF'..color..message..'|r'
+	return prefix..message
 end
 
 -- :: Colors :: -------------------------------------------------------
 -----------------------------------------------------------------------
 
-local header_color   = { .33, .15, .15 }
-local warning_color1 = { .95, .55, .08 }
-local warning_color2 = { .75, .35, 0.0 }
-local error_color1   = { .91, .15, .02 }
-local error_color2   = { .71, 0.0, 0.0 }
-local white_color    = { 0.0, 0.0, 0.0 }
+local header_color   = 'D2B48C'
+local warning_color1 = 'FFFF00'
+local warning_color2 = 'FFFFBB'
+local error_color1   = 'FF0000'
+local error_color2   = 'FF4444'
+local white_color    = 'FFFFFF'
 
 -- :: General :: ------------------------------------------------------
 -----------------------------------------------------------------------
@@ -31,8 +31,7 @@ end
 
 function V.PrintBlock( prefix, header, message )
 	h_out = eui_print_string(prefix, header, V.euicolor, header_color)
-	print(h_out)
-	print(message)
+	print(h_out..'\n'..message)
 end
 
 -- :: Warnings :: -----------------------------------------------------

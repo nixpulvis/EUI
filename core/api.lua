@@ -38,7 +38,7 @@ local function Style( frame, alpha )
   frame:StripTextures()
 
   local otype = frame:GetObjectType()
-  V.skin[otype](frame, alpha)
+  V.style[otype](frame, alpha)
 end
 
 -- :: Integration :: --------------------------------------------------

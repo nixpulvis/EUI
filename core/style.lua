@@ -57,10 +57,27 @@ function V.style.Button( frame )
   end)
 end
 
+-- :: StatusBar :: ----------------------------------------------------
+-----------------------------------------------------------------------
+function V.style.StatusBar( frame )
+	V.style.Frame(frame)
+end
+
+-- :: GameTooltip :: --------------------------------------------------
+-----------------------------------------------------------------------
+function V.style.GameTooltip( frame )
+	V.style.Frame(frame)
+end
+
+-- :: EditBox :: ----------------------------------------------------
+-----------------------------------------------------------------------
+function V.style.EditBox( frame )
+	V.style.Frame(frame)
+end
 
 -- :: Assure Complete Skin Set :: -------------------------------------
 -----------------------------------------------------------------------
 -- remove once passing, this is just for me
-for i,v in ipairs(V.frame_types) do
-	assert(V.style[v])
-end
+-- for i,v in ipairs(V.frame_types) do
+-- 	assert(V.style[v])
+-- end

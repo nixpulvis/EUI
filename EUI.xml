@@ -8,6 +8,7 @@
 	
 	<Script file="settings\settings.lua"/>	
 
+	<Script file="core\printing.lua"/>
 	<Script file="core\events.lua"/>
 	<Script file="core\style.lua"/>
 	<Script file="core\api.lua"/>	

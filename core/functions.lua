@@ -20,23 +20,6 @@ function V.HexToColor( hex )
 	return unpack(color)
 end
 
--- converts the given color (0-1) to hex value.
-function V.ColorToHex( color )
-	local r,g,b = unpack(color)
-	local function num_to_hex( num )
-	    local hexstr = '0123456789ABCDEF'
-	    local s = ''
-	    while num > 0 do
-	        local mod = math.fmod(num, 16)
-	        s = string.sub(hexstr, mod+1, mod+1)..s
-	        num = math.floor(num / 16)
-	    end
-	    if s == '' then s = '0' end
-	    return s
-	end
-	return 'FF'..num_to_hex(r)..num_to_hex(g)..num_to_hex(b)
-end
-
 -- :: Event Dependent :: ----------------------------------------------
 -----------------------------------------------------------------------
 
