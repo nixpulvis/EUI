@@ -16,8 +16,8 @@ EUI:CreateFrame
 			  height - the height of the frame
 	note    : FRAMES CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 ]]
-function V.CreateFrame(name, parent, width, height)
-	local frame = CreateFrame("Frame", name, parent)
+function V.CreateFrame(name, parent, width, height, inherits)
+	local frame = CreateFrame("Frame", name, parent, inherits)
 	frame:Style()
 	
 	-- if we have the width arg, then we should require the height as well.
@@ -37,15 +37,12 @@ EUI:CreateButton
 	note    : BUTTONS CREATED WITH THIS FUNCTION NEED TO BE POSITIONED STILL
 			  adding functionality shouls be done with a HookScript.
 ]]
-function V.CreateButton(name, parent, text)
-	local button = CreateFrame("Button", name, parent)
+function V.CreateButton(name, parent, inherits)
+	local button = CreateFrame("Button", name, parent, inherits)
 	button:Style()
 	
 	-- default button width and height
 	button:SetSize(20, 20)
-	
-	button.text = button:CreateString(text, V.media.fonts.main, 12)
-	button.text:SetPoint("CENTER")
 		
 	return button
 end
