@@ -23,9 +23,9 @@
 	<Script file="modules\tooltip\tooltip.lua"/>
 	
 	<!-- Chat Files -->
-	<Script file="modules\chat\chat.lua"/>
-	<Script file="modules\chat\friends.lua"/>
-	<Script file="modules\chat\guild.lua"/>
+	<Script file="modules\social\chat.lua"/>
+	<Script file="modules\social\friends.lua"/>
+	<Script file="modules\social\guild.lua"/>
 	
 	<!-- Minimap Files -->
 	<Script file="modules\minimap\minimap.lua"/>
