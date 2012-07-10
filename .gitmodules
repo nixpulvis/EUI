@@ -1,0 +1,3 @@
+[submodule "issues"]
+	path = issues
+	url = git@heroku.com:gentle-mountain-7097.git
