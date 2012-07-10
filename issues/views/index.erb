@@ -1,0 +1,64 @@
+<div class="row">
+	<% if submitted == 'true' %>
+		<div class="span6 offset3">
+			<div id="thank-you" class="alert alert-success alert-block">
+			  <h4 class="alert-heading">Thank you!</h4>
+			  <button class="close" data-dismiss="alert">×</button>
+			  By submitting issues, your helping EUI become more awesome. I'll be sure to look into this issue.
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+		<form action="/" method="post" class="well">
+		  <fieldset>
+		    <legend class="clearfix">
+		    	<h1 class="pull-left">Submit Issue</h1>
+		    	<div class="btn-group pull-right">
+					  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					    Recent
+					    <span class="caret"></span>
+					  </a>
+					  <table class="dropdown-menu issues">
+					  	<% issues.each_with_index do |issue, i| %>
+								<% if i >= 5 then break end %>
+								<tr class="issue" href="<%= issue['html_url'] %>">
+									<td class="number">#<%= issue['number'] %></td>
+									<td class="info">
+										<h4><%= issue['title'] %></h4>
+										<p>by <strong>Epicgrim</strong></p>
+									</td>
+								</tr>
+							<% end %>
+					  </table>
+					</div>
+		    </legend>
+
+		    <div class="control-group">
+		      <label class="control-label">Issue Title</label>
+		      <div class="controls">
+		        <input type="text" class="span5" name="title" rel="tooltip" data-title="Something useful please">
+		      </div>
+		    </div>
+
+		    <div class="control-group">
+		      <label class="control-label">Issue Body</label>
+		      <div class="controls">
+		        <textarea class="span5" rows=5 name="body"></textarea>
+		        <p class="help-block">Information about the issue, how to replicate. Situations where issue occurs.</p>
+		      </div>
+		    </div>
+
+		    <div class="form-actions">
+		    	<button class="btn btn-danger" id="cancel-btn">
+		    		Cancel <i class="icon-remove icon-white"></i>
+		    	</button>
+		    	<button type="submit" class="btn btn-primary" id="submit-btn">Submit Issue <i class="icon-heart icon-white"></i></button>
+		    </div>
+
+		  </fieldset>
+		</form>
+	</div>
+</div>
