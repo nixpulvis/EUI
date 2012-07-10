@@ -57,18 +57,4 @@ $(document).ready(function() {
 	git_GET_collaborators();
 	git_GET_lastestCommit();
 	git_GET_lastestDownload();
-	
-	//handle form submission to php
-	$(".issue").submit(function() {
-		var title = $("input[name=title]").val();
-		var body = $("textarea[name=body]").val();
-		$.ajax({
-			type: "POST",
-		  	url: "php/post_issue.php",
-			data: {"title" : title, "body" : body }
-		}).done(function(response) {
-			alert("Issue Submitted");
-		});
-		return false;
-	});
 });

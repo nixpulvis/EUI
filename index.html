@@ -28,26 +28,24 @@
         </ul>
 		<hr>
 		<div class="info">
+			<!-- Submit Issues -->
+			<button class="issue_btn">Submit Issue</button>
+			<script>
+				$('.issue_btn').click(function() {
+					window.open('http://gentle-mountain-7097.herokuapp.com/','mywindow','width=400,height=500');
+				});
+			</script>
+			<br>
+			<br>
+
 			<!-- Developers -->
 			<h3>Developers</h3>
 			<ul class="developers"></ul>
 		
 			<!-- Git Commits -->
-			<!-- <h3>Latest Commits</h3>		 -->
-			<!-- <div><ul class="commits"></ul></div> -->
+			<h3>Latest Commits</h3>		
+			<div><ul class="commits"></ul></div>
 
-			<!-- Submit Issues -->
-			<input class="issue_btn" type="button" value="Submit Issue"/>
-			<form class="issue">
-				Title: <input name="title" type="text"/><br/>
-				Description: <br/><textarea name="body" type="text" rows="6"></textarea><br/>
-				<input class="submit_btn, issue_btn" type="submit" value="Submit" /></form>
-			<script>
-				$('.issue').hide();
-				$('.issue_btn').click(function() {
-					$('.issue').slideToggle();					
-				});
-			</script>
 		</div>
       </header>
       <section>
