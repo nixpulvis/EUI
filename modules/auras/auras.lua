@@ -16,6 +16,7 @@ function auras:Load()
 	auras_frame:SetPoint('TOPLEFT', 5, -5)
 	auras_frame:SetSize(600,250)
 	auras_frame:SetAlpha(0)
+	auras_frame:SetFrameStrata("Background")
 	
 	-- a table containing the names of all auras
 	local buffs   = { }
@@ -30,7 +31,23 @@ function auras:Load()
 		buffs_frames[i] = V.CreateButton(nil, UIParent, 'SecureActionButtonTemplate')
 		buffs_frames[i]:SetSize(size, size)
 		buffs_frames[i]:SetPoint("TOPLEFT", auras_frame, "TOPLEFT", (i-1)*(size+5), 0)
+		
+		-- icon
 		buffs_frames[i].icon = buffs_frames[i]:CreateTexture("ARTWORK")
+		buffs_frames[i].icon:SetPoint("TOPLEFT", 1, -1)
+  	buffs_frames[i].icon:SetPoint("BOTTOMRIGHT", -1, 1)
+  	buffs_frames[i].icon:SetTexCoord(unpack(V.iconcrop))
+
+  	-- tooltip
+  	buffs_frames[i]:HookScript("OnEnter", function( self )
+  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -size, -5)
+			GameTooltip:ClearLines()
+			GameTooltip:SetUnitAura("player", i, 'HELPFUL')
+			GameTooltip:Show()
+  	end)
+  	buffs_frames[i]:HookScript("OnLeave", function( self )
+  		GameTooltip:Hide()
+  	end)
 
 		-- click off action
 		buffs_frames[i]:SetAttribute("type", "macro")
@@ -42,18 +59,30 @@ function auras:Load()
 		debuffs_frames[i] = V.CreateButton(nil, UIParent, 'SecureActionButtonTemplate')
 		debuffs_frames[i]:SetSize(size, size)
 		debuffs_frames[i]:SetPoint("TOPLEFT", auras_frame, "TOPLEFT", (i-1)*(size+5), -80)
+		
+		-- icon
 		debuffs_frames[i].icon = debuffs_frames[i]:CreateTexture("ARTWORK")
+		debuffs_frames[i].icon:SetPoint("TOPLEFT", 1, -1)
+  	debuffs_frames[i].icon:SetPoint("BOTTOMRIGHT", -1, 1)
+  	debuffs_frames[i].icon:SetTexCoord(unpack(V.iconcrop))
+
+  	-- tooltip
+  	debuffs_frames[i]:HookScript("OnEnter", function( self )
+  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -size, -5)
+			GameTooltip:ClearLines()
+			GameTooltip:SetUnitAura("player", i, 'HARMFUL')
+			GameTooltip:Show()
+  	end)
+  	debuffs_frames[i]:HookScript("OnLeave", function( self )
+  		GameTooltip:Hide()
+  	end)
 	end
 
 	local function update_aura( frame, index, filter )
 		name,_,icon,count,d_type,duration,exp_time,caster,is_stealable,consolidate,spell_id 
 		= UnitAura('player', index, filter)
 
-		frame.icon:SetPoint("TOPLEFT", 1, -1)
-  	frame.icon:SetPoint("BOTTOMRIGHT", -1, 1)
 		frame.icon:SetTexture(icon)
-		frame.icon:SetTexCoord(unpack(V.iconcrop))
-
 		frame:SetAlpha(1)
 	end
 
@@ -93,9 +122,5 @@ function auras:Load()
 	end
 	V.AddEventListener(update_auras, 'UNIT_AURA')
 	V.AddEventListener(update_auras, 'PLAYER_ENTERING_WORLD')
-		
-
-
-	-- create_aura('player', 1, 'HELPFUL')
 
 end
