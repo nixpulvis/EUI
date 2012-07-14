@@ -17,6 +17,7 @@ function auras:Load()
 	auras_frame:SetSize(600,250)
 	auras_frame:SetAlpha(0)
 	auras_frame:SetFrameStrata("Background")
+	auras_frame:EnableMouse(false)
 	
 	-- a table containing the names of all auras
 	local buffs   = { }
