@@ -1,0 +1,3 @@
+[submodule "lib/oUF"]
+	path = lib/oUF
+	url = git://github.com/haste/oUF.git
