@@ -23,15 +23,12 @@ function auras:Load()
 	local buffs   = { }
 	local debuffs = { }	
 
-	-- settings
-	local size = 35
-
 	-- initialize buff buttons
 	local buffs_frames = { }
 	for i=1,10 do
 		buffs_frames[i] = V.CreateButton(nil, UIParent, 'SecureActionButtonTemplate')
-		buffs_frames[i]:SetSize(size, size)
-		buffs_frames[i]:SetPoint("TOPLEFT", auras_frame, "TOPLEFT", (i-1)*(size+5), 0)
+		buffs_frames[i]:SetSize(S.auras.size, S.auras.size)
+		buffs_frames[i]:SetPoint("TOPLEFT", auras_frame, "TOPLEFT", (i-1)*(S.auras.size+5), 0)
 		
 		-- icon
 		buffs_frames[i].icon = buffs_frames[i]:CreateTexture("ARTWORK")
@@ -41,7 +38,7 @@ function auras:Load()
 
   	-- tooltip
   	buffs_frames[i]:HookScript("OnEnter", function( self )
-  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -size, -5)
+  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -S.auras.size, -5)
 			GameTooltip:ClearLines()
 			GameTooltip:SetUnitAura("player", i, 'HELPFUL')
 			GameTooltip:Show()
@@ -65,8 +62,8 @@ function auras:Load()
 	local debuffs_frames = { }
 	for i=1,10 do
 		debuffs_frames[i] = V.CreateButton(nil, UIParent, 'SecureActionButtonTemplate')
-		debuffs_frames[i]:SetSize(size, size)
-		debuffs_frames[i]:SetPoint("TOPLEFT", auras_frame, "TOPLEFT", (i-1)*(size+5), -80)
+		debuffs_frames[i]:SetSize(S.auras.size, S.auras.size)
+		debuffs_frames[i]:SetPoint("TOPLEFT", auras_frame, "TOPLEFT", (i-1)*(S.auras.size+5), -80)
 		
 		-- icon
 		debuffs_frames[i].icon = debuffs_frames[i]:CreateTexture("ARTWORK")
@@ -76,7 +73,7 @@ function auras:Load()
 
   	-- tooltip
   	debuffs_frames[i]:HookScript("OnEnter", function( self )
-  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -size, -5)
+  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -S.auras.size, -5)
 			GameTooltip:ClearLines()
 			GameTooltip:SetUnitAura("player", i, 'HARMFUL')
 			GameTooltip:Show()
