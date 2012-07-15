@@ -13,7 +13,7 @@ function auras:Load()
 
 	-- aura container
 	auras_frame = V.CreateElement(auras, 'EUI_Auras', UIParent)
-	auras_frame:SetPoint('TOPLEFT', 5, -5)
+	auras_frame:SetPoint('TOPLEFT', 20, -20)
 	auras_frame:SetSize(600,250)
 	auras_frame:SetAlpha(0)
 	auras_frame:SetFrameStrata("Background")
