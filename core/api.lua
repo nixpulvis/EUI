@@ -7,13 +7,15 @@ local M, S, V = unpack(select(2, ...))
      want to call like Frame:SomeFunction() ]]
 
 -- make a string on a frame
-function CreateString( frame, string, fontName, fontHeight, fontStyle )
+function CreateString( frame, string, font, height, flags )
+  if not font then font = V.media.fonts.mono end
+  if not height then height = 10 end
+  if not flags then flags = "MONOCHROME, OUTLINE" end
   local text = frame:CreateFontString(nil, "OVERLAY")
-  text:SetFont(fontName, fontHeight, fontStyle)
+  text:SetFont(font, height, flags)
   text:SetText(string)
   text:SetJustifyH("LEFT")
-  text:SetShadowColor(0, 0, 0)
-  text:SetShadowOffset(1.25, -1.25)
+  text:SetShadowOffset(0, 0)
   return text
 end
 

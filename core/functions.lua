@@ -35,6 +35,21 @@ function V.HexToColor( hex )
 	return unpack(color)
 end
 
+-- display seconds to min/hour/day (tukui <3)
+function V.FormatTime( string )
+	local day, hour, minute = 86400, 3600, 60
+	if string >= day then
+		return format("%dd", ceil(string / day))
+	elseif string >= hour then
+		return format("%dh", ceil(string / hour))
+	elseif string >= minute then
+		return format("%dm", ceil(string / minute))
+	elseif string >= minute / 12 then
+		return floor(string)
+	end
+	return '|cFFFF2222'..format("%.1f", string)..'|r'
+end
+
 -- a timer, with callbacks
 V.Timer = {
 	precision     = 2,		-- number of decimals

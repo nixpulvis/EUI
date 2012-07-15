@@ -51,7 +51,7 @@ function auras:Load()
   	end)
 
   	-- timer
-		buffs_frames[i].time = buffs_frames[i]:CreateString(nil, V.media.fonts.main, 12)
+		buffs_frames[i].time = buffs_frames[i]:CreateString()
 		buffs_frames[i].time:SetPoint("TOP", buffs_frames[i], "BOTTOM", 0, -2)
 		buffs_frames[i].timer = V.Timer.Create(2)
 
@@ -60,6 +60,7 @@ function auras:Load()
 		buffs_frames[i]:SetAttribute("type2", "macro")
 		buffs_frames[i]:SetAttribute("macrotext", "/cancelaura "..i)
 	end
+
 	-- initialize debuff buttons 
 	local debuffs_frames = { }
 	for i=1,10 do
@@ -85,7 +86,7 @@ function auras:Load()
   	end)
 
   	-- timer
-  	debuffs_frames[i].time = debuffs_frames[i]:CreateString(nil, V.media.fonts.main, 12)
+  	debuffs_frames[i].time = debuffs_frames[i]:CreateString()
 		debuffs_frames[i].time:SetPoint("TOP", debuffs_frames[i], "BOTTOM", 0, -2)
 		debuffs_frames[i].timer = V.Timer.Create(2)
 	end
@@ -99,7 +100,7 @@ function auras:Load()
 			if time_left == 0 then
 				frame.time:SetText('')
 			else
-				frame.time:SetText(time_left)
+				frame.time:SetText(V.FormatTime(time_left))
 			end
 		end)
 

@@ -8,7 +8,7 @@ function V.CreateGuildPanel()
 	guild_panel:SetPoint("BOTTOMRIGHT", EUIChatFrame1, "TOP", -2, 3)
 	guild_panel:SetHeight(20)
 
-	guild_panel.text = guild_panel:CreateString("Guild", V.media.fonts.main, 12)
+	guild_panel.text = guild_panel:CreateString("Guild")
 	guild_panel.text:SetPoint("CENTER")
 
 	guild_panel:SetScript("OnEnter", function(self)

@@ -5,9 +5,9 @@ local M, S, V = unpack(select(2, ...))
 --[[ links to media for use in EUI. all media located in V.media ]]
 
 V.media = {
-	tex = { },
+	tex   = { },
 	icons = { },
-	fonts = { }
+	fonts = { },
 }
 
 local tex = V.media.tex
@@ -22,4 +22,4 @@ tex["norm"] = [[Interface\AddOns\EUI\media\textures\normTex.tga]]
 icons["mail"] = [[Interface\AddOns\EUI\media\icons\mail.tga]]
 
 ------------ Fonts -------------
-fonts["main"] = [[Interface\AddOns\EUI\media\fonts\HelveticaWorld-Regular.ttf]]
+fonts["mono"] = [[Interface\AddOns\EUI\media\fonts\Visitor.ttf]]

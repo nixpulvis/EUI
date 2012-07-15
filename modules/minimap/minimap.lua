@@ -81,7 +81,7 @@ function minimap:Load()
 	clock:SetPoint("TOP", EUIMinimap, "TOP", 0, -4)
 	clock:SetFrameStrata("MEDIUM")	
 
-	clock.text = clock:CreateString("", V.media.fonts.main, 12)
+	clock.text = clock:CreateString()
 	local displayFormat = string.join("", "%02d", ":%02d")
 	clock.text:SetPoint("CENTER")
 	
@@ -146,26 +146,27 @@ function minimap:Load()
 	zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
 	-- making a string to be put into th zone text frame
-	local zoneframe_text = zoneframe:CreateFontString("TukuiMinimapZoneText","Overlay")
-	zoneframe_text:SetFont(V.media.fonts.main, 12)
-	zoneframe_text:SetHeight(12)
-	zoneframe_text:SetWidth(zoneframe:GetWidth()-6)
-	zoneframe_text:SetPoint("CENTER", zoneframe, "CENTER")
+	zoneframe.text = zoneframe:CreateString(nil, V.media.fonts.mono, 10, "MONOCHROME, OUTLINE")
+	-- zoneframe.text = zoneframe:CreateFontString("TukuiMinimapZoneText","Overlay")
+	-- zoneframe.text:SetFont(V.media.fonts.main, 10)
+	-- zoneframe_text:SetHeight(12)
+	zoneframe.text:SetWidth(zoneframe:GetWidth()-6)
+	zoneframe.text:SetPoint("CENTER", zoneframe, "CENTER")
 	
 	-- this sets the text to the zone and colorizes it 
 	local function zone_Update()
 		local pvp = GetZonePVPInfo()
-		zoneframe_text:SetText(GetMinimapZoneText())
+		zoneframe.text:SetText(GetMinimapZoneText())
 		if pvp == "friendly" then
-			zoneframe_text:SetTextColor(0.1, 1.0, 0.1)
+			zoneframe.text:SetTextColor(0.1, 1.0, 0.1)
 		elseif pvp == "sanctuary" then
-			zoneframe_text:SetTextColor(0.41, 0.8, 0.94)
+			zoneframe.text:SetTextColor(0.41, 0.8, 0.94)
 		elseif pvp == "arena" or pvp == "hostile" then
-			zoneframe_text:SetTextColor(1.0, 0.1, 0.1)
+			zoneframe.text:SetTextColor(1.0, 0.1, 0.1)
 		elseif pvp == "contested" then
-			zoneframe_text:SetTextColor(1.0, 0.7, 0.0)
+			zoneframe.text:SetTextColor(1.0, 0.7, 0.0)
 		else
-			zoneframe_text:SetTextColor(1.0, 1.0, 1.0)
+			zoneframe.text:SetTextColor(1.0, 1.0, 1.0)
 		end
 	end
 	
