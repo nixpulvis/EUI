@@ -50,8 +50,14 @@ function auras:Load()
   		GameTooltip:Hide()
   	end)
 
+  	-- timer
+		buffs_frames[i].time = buffs_frames[i]:CreateString(nil, V.media.fonts.main, 12)
+		buffs_frames[i].time:SetPoint("TOP", buffs_frames[i], "BOTTOM", 0, -2)
+		buffs_frames[i].timer = V.Timer.Create(2)
+
 		-- click off action
-		buffs_frames[i]:SetAttribute("type", "macro")
+		buffs_frames[i]:RegisterForClicks("RightButtonUp")
+		buffs_frames[i]:SetAttribute("type2", "macro")
 		buffs_frames[i]:SetAttribute("macrotext", "/cancelaura "..i)
 	end
 	-- initialize debuff buttons 
@@ -77,11 +83,25 @@ function auras:Load()
   	debuffs_frames[i]:HookScript("OnLeave", function( self )
   		GameTooltip:Hide()
   	end)
+
+  	-- timer
+  	debuffs_frames[i].time = debuffs_frames[i]:CreateString(nil, V.media.fonts.main, 12)
+		debuffs_frames[i].time:SetPoint("TOP", debuffs_frames[i], "BOTTOM", 0, -2)
+		debuffs_frames[i].timer = V.Timer.Create(2)
 	end
 
 	local function update_aura( frame, index, filter )
 		name,_,icon,count,d_type,duration,exp_time,caster,is_stealable,consolidate,spell_id 
 		= UnitAura('player', index, filter)
+
+		local t = exp_time - GetTime()
+		frame.timer:Start(t, function( time_left )
+			if time_left == 0 then
+				frame.time:SetText('')
+			else
+				frame.time:SetText(time_left)
+			end
+		end)
 
 		frame.icon:SetTexture(icon)
 		frame:SetAlpha(1)
