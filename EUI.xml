@@ -30,6 +30,10 @@
 	<Script file="modules\unitframes\_player.lua"/>	
 	<Script file="modules\unitframes\unitframes.lua"/>	
 
+	<!-- Actionbars -->
+	<Script file="modules\actionbars\_hide.lua"/>
+	<Script file="modules\actionbars\actionbars.lua"/>
+
 	<!-- Chat Files -->
 	<Script file="modules\social\chat.lua"/>
 	<Script file="modules\social\friends.lua"/>
