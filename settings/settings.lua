@@ -20,5 +20,8 @@ S['minimap'] = {
 }
 
 S['unitframes'] = {
-	['health_text'] = 'percent',
+	['health'] = {
+		['color'] = 'class',			-- OPTIONS: 'class', 'gradient', 'FF0033'
+		['text'] = 'percent',
+	},
 }
