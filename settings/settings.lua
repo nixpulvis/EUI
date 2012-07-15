@@ -7,6 +7,14 @@ local M, S, V = unpack(select(2, ...))
 	 savedvar settings. ]]
 
 S['General'] = {
-	['background_color'] = { .075, .075, .075, .8 },	-- [used]
-	['border_color']     = { .25, .25, .25 },			-- [used]
+	['background_color'] = { .075, .075, .075, .8 },
+	['border_color']     = { 0, 0, 0 },
+}
+
+S['auras'] = {
+	['size'] = 35,
+}
+
+S['minimap'] = {
+	['size'] = 150,
 }

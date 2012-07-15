@@ -16,7 +16,7 @@ function V.style.Frame( frame, alpha )
   frame:SetBackdrop({ 
     bgFile = V.media.tex.blank, 
     edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
-    insets = { left = -1, right = -1, top = -1, bottom = -1 }
+    insets = { left = 1, right = 1, top = 1, bottom = 1 }
   })
   frame:SetBackdropColor(r, g, b, alpha)
   frame:SetBackdropBorderColor(unpack(S.General.border_color))
@@ -25,35 +25,22 @@ end
 -- :: Buttons :: ------------------------------------------------------
 -----------------------------------------------------------------------
 function V.style.Button( frame )
+  V.style.Frame(frame)
+
   local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
   local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
 
-  -- Set a variable for the state of the hover.
-  frame.hover = false;
-
   -- Texture for the overlay effect.
-  frame.overlay = frame:CreateTexture()
-  frame.overlay:SetAllPoints()
+  frame.overlay = frame:CreateTexture(nil, "HIGHLIGHT")
+  frame.overlay:SetPoint("TOPLEFT", 1, -1)
+  frame.overlay:SetPoint("BOTTOMRIGHT", -1, 1)
   frame.overlay:SetTexture(unpack(hover_color))
-  frame.overlay:Hide()
 
-  frame:SetScript("OnEnter", function(self) 
-    self.overlay:Show()
-    self.hover = true
+  frame:HookScript("OnMouseDown", function(self) 
+    self.overlay:SetTexture(unpack(mousedown_color))
   end)
-  frame:SetScript("OnLeave", function(self) 
-    self.overlay:Hide()
-    self.hover = false
-  end)
-  frame:SetScript("OnMouseDown", function(self) 
-    self.overlay:Hide()
-  end)
-  frame:SetScript("OnMouseUp", function(self) 
-    if self.hover then
-      self.overlay:Show()
-    else
-      self.overlay:Hide()
-    end
+  frame:HookScript("OnMouseUp", function(self) 
+    self.overlay:SetTexture(unpack(hover_color))
   end)
 end
 

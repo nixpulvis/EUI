@@ -82,8 +82,8 @@ function SlashCmdList.INSTALL( msg, editbox )
 	else
 		if M[msg] then	
 			if M[msg].install then
-				V.PrintCustom('/install', k..' [installing...]')
-				M[k]:install()
+				V.PrintCustom('/install', msg..' [installing...]')
+				M[msg]:install()
 			else
 				V.PrintCustom('/install', msg..' does not need to be installed')
 			end

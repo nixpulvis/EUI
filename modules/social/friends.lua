@@ -8,7 +8,7 @@ function V.CreateFriendsPanel()
 	friends_panel:SetPoint("BOTTOMLEFT", EUIChatFrame1, "TOP", 2, 3)
 	friends_panel:SetHeight(20)
 
-	friends_panel.text = friends_panel:CreateString("Friends", V.media.fonts.main, 12)
+	friends_panel.text = friends_panel:CreateString("Friends")
 	friends_panel.text:SetPoint("CENTER")
 
 	friends_panel:SetScript("OnEnter", function(self)
