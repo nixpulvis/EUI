@@ -8,5 +8,5 @@ local M, S, V = unpack(select(2, ...))
 
 S['General'] = {
 	['background_color'] = { .075, .075, .075, .8 },	-- [used]
-	['border_color']     = { .25, .25, .25 },			-- [used]
+	['border_color']     = { 0, 0, 0 },			-- [used]
 }

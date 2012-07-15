@@ -17,7 +17,7 @@ EUI:CreateElement
               element. use this function to setup the element.
     note    : Elements are the frames in charge of display settings.
 ]]
-function V.CreateElement(module, name, parent)
+function V.CreateElement( module, name, parent, inherits )
 	local element = { 
 		tier = 0
 	}
@@ -48,7 +48,7 @@ function V.CreateElement(module, name, parent)
 	end
 	
 	-- Making the frame
-	local frame = V.CreateFrame(name, parent)
+	local frame = V.CreateFrame(name, parent, nil, nil, inherits)
 	frame:EnableMouse(true)
 	element.frame = frame
 	

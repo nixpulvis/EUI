@@ -39,3 +39,4 @@ V.frame_types = {
 
 -- eui style constants
 V.euicolor = 'FF8C00'
+V.iconcrop = { .07, .93, .07, .93 }

@@ -22,6 +22,9 @@
 	<!-- System Files -->
 	<Script file="modules\tooltip\tooltip.lua"/>
 	
+	<!-- Auras -->
+	<Script file="modules\auras\auras.lua"/>
+
 	<!-- Chat Files -->
 	<Script file="modules\social\chat.lua"/>
 	<Script file="modules\social\friends.lua"/>
