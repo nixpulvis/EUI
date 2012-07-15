@@ -21,12 +21,28 @@ function V.Load_unitframes_player( module )
 		
 		-- health color
 		if s.health.color == 'class' then
-			health.colorClass = true
+			health.colorDisconnected = true
+			health.colorTapping      = true	
+			health.colorClass        = true
+			health.colorReaction     = true	
 		elseif s.health.color == 'gradient' then
 			health.colorSmooth = true
 		else
 			health:SetStatusBarColor(V.HexToColor(s.health.color))
 		end
+
+		local prediction = CreateFrame('StatusBar', nil, health)
+		prediction:SetPoint('TOPLEFT', health:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
+		prediction:SetPoint('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, 0)
+		prediction:SetWidth(250)
+		prediction:SetStatusBarTexture(V.media.tex.norm)
+		prediction:SetStatusBarColor(0, 1, 0.5, 0.25)
+		prediction:SetMinMaxValues(0,1)
+
+		self.HealPrediction = {
+			myBar = prediction,
+			maxOverflow = 1,
+		}
 
 		-- oUF health settings
 		health.Smooth = true
