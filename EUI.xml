@@ -25,6 +25,9 @@
 	<!-- Auras -->
 	<Script file="modules\auras\auras.lua"/>
 
+	<!-- Unitframes -->
+	<Script file="modules\unitframes\unitframes.lua"/>	
+
 	<!-- Chat Files -->
 	<Script file="modules\social\chat.lua"/>
 	<Script file="modules\social\friends.lua"/>
