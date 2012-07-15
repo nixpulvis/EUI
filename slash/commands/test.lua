@@ -4,12 +4,20 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 --[[ functionality for installing modules ]]
 
-local cmd = V.NewCommand('test', function(self, args)
-	if args then
-		for i,v in ipairs(args) do
-			self.Print(v)
-		end
-	else
-		self.Print('No Args')
+local cmd = V.Command.Create('test', function(self, args)
+	
+	if args[1] then
+		local first = args[1]
+		self:Print('main function '..first)
 	end
-end)
+
+end, 'prints things.')
+
+cmd:Switch('-d', function(self, args)
+
+	if args[1] then
+		local first = args[1]
+		self:Print('-d function '..first)
+	end
+
+end, 'does something.')
