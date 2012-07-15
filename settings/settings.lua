@@ -18,3 +18,7 @@ S['auras'] = {
 S['minimap'] = {
 	['size'] = 150,
 }
+
+S['unitframes'] = {
+	['health_text'] = 'percent',
+}
