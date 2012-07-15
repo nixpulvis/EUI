@@ -5,5 +5,11 @@ local M, S, V = unpack(select(2, ...))
 --[[ functionality for installing modules ]]
 
 local cmd = V.NewCommand('test', function(self, args)
-	self.Print('working')
+	if args then
+		for i,v in ipairs(args) do
+			self.Print(v)
+		end
+	else
+		self.Print('No Args')
+	end
 end)

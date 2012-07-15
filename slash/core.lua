@@ -10,14 +10,18 @@ V.commands = { }
 
 function V.NewCommand( name, func )
 	V.commands[name] = { }
-	
-	-- setup the proper function for blizz's sake
-	_G['SLASH_'..name.to_c..'1'] = '/'..name
-	function SlashCmdList[name]( msg, editbox )
-		-- parse args
-		args = msg.split(' ')
+	local self = V.commands[name]
 
-		func(self ,args)
+	_G["SLASH_"..strupper(name).."1"] = '/'..name
+	SlashCmdList[strupper(name)] = function( msg, editbox )
+		
+		-- parse args
+		local args
+		if strlen(msg) > 0 then
+			args = V.split(msg, ' ')
+		end
+
+		func(self, args)
 	end
 
 	-- helper functions for commands

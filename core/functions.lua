@@ -5,6 +5,28 @@ local M, S, V = unpack(select(2, ...))
 --[[ these are EUI's utilities, they provide somewhat abstracted
 	 functionality. All functions here are stored in V ]]
 
+-- string split efficient (http://www.userpixel.com/512)
+function V.split( str, sep )
+	local ret={}
+	local i=1
+	repeat
+		while str:find(sep,i,true)==i do i=i+sep:len() end
+		if i>=str:len() then break end
+
+		startPos=i
+		endPos=str:find(sep,i,true)
+		if endPos then
+			element=str:sub(startPos,endPos-1)
+			i=endPos
+		else
+			element=str:sub(startPos)
+		end
+		table.insert(ret,element)
+	until endPos==nil
+
+	return ret
+end
+
 -- table copying, many uses for this
 function V.tcopy( t )
   local copy = { }
