@@ -14,3 +14,7 @@ S['General'] = {
 S['auras'] = {
 	['size'] = 35,
 }
+
+S['minimap'] = {
+	['size'] = 150,
+}
