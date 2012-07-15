@@ -34,8 +34,7 @@
 	<Script file="modules\minimap\minimap.lua"/>
 	
 	<!-- Slash Commands -->
-	<Script file="slash\core.lua"/>
-	<Script file="slash\commands\test.lua"/>
+	<Include file="slash\commands.xml"/>
 
 	<Script file="core\dev.lua"/>
 </Ui>
