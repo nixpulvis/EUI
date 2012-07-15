@@ -38,5 +38,8 @@
 	<!-- Minimap Files -->
 	<Script file="modules\minimap\minimap.lua"/>
 	
+	<!-- Slash Commands -->
+	<Include file="slash\commands.xml"/>
+
 	<Script file="core\dev.lua"/>
 </Ui>
