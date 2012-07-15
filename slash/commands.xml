@@ -2,7 +2,6 @@
 
 
 	<Script file="core.lua"/>
-	<Script file="commands\test.lua"/>
 	<Script file="commands\module.lua"/>
 
 
