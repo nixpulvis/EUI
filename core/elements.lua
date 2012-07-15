@@ -52,7 +52,7 @@ function V.CreateElement( module, name, parent, inherits )
 	frame:EnableMouse(true)
 	element.frame = frame
 	
-	local mover = V.CreateFrame(name.."_Mover", element.frame)
+	local mover = V.CreateFrame(nil, element.frame)
 	mover:SetPoint("TOPRIGHT", element.frame, "TOPLEFT", -3, 0)
 	mover:SetPoint("BOTTOMRIGHT", element.frame, "BOTTOMLEFT", -3, 0)
 	mover:SetWidth(15)

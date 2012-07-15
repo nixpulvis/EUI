@@ -18,3 +18,10 @@ S['auras'] = {
 S['minimap'] = {
 	['size'] = 150,
 }
+
+S['unitframes'] = {
+	['health'] = {
+		['color'] = 'class',			-- OPTIONS: 'class', 'gradient', 'FF0033'
+		['text'] = 'percent',
+	},
+}

@@ -25,6 +25,11 @@
 	<!-- Auras -->
 	<Script file="modules\auras\auras.lua"/>
 
+	<!-- Unitframes -->
+	<Include file="lib\oUF\oUF.xml"/>
+	<Script file="modules\unitframes\_player.lua"/>	
+	<Script file="modules\unitframes\unitframes.lua"/>	
+
 	<!-- Chat Files -->
 	<Script file="modules\social\chat.lua"/>
 	<Script file="modules\social\friends.lua"/>

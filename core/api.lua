@@ -25,6 +25,11 @@ local function Kill( frame )
   _G[frame:GetName()] = nil
 end
 
+local function SetIn( frame, host )
+  frame:SetPoint("TOPLEFT", host, "TOPLEFT", 1, -1)
+  frame:SetPoint("BOTTOMRIGHT", host, "BOTTOMRIGHT", -1, 1)
+end
+
 -- remove all Textures from a frame. useful for stripping Blizz / Other addon's style.
 local function StripTextures( frame )
   for i=1, frame:GetNumRegions() do
@@ -50,6 +55,7 @@ local function AddFunctionsTo( frame )
   local meta = getmetatable(frame).__index
   meta.CreateString = CreateString  
   meta.Kill = Kill
+  meta.SetIn = SetIn
   meta.StripTextures = StripTextures
   meta.Style = Style
 end

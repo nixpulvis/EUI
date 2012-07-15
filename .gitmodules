@@ -1,0 +1,6 @@
+[submodule "lib/oUFs"]
+	path = lib/oUFs
+	url = git://github.com/haste/oUF.git
+[submodule "lib/oUF"]
+	path = lib/oUF
+	url = git://github.com/haste/oUF.git
