@@ -10,7 +10,7 @@ function minimap:Load()
 
 	local EUIMinimap = V.CreateElement(minimap, "EUIMinimap", UIParent)
 	EUIMinimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -20, -20)
-	EUIMinimap:SetSize(150,150)
+	EUIMinimap:SetSize(S.minimap.size,S.minimap.size)
 	EUIMinimap:SetFrameStrata("LOW")
 	
 	-- squarifies the map
@@ -22,7 +22,7 @@ function minimap:Load()
 	Minimap:ClearAllPoints()
 	Minimap:SetPoint("TOPLEFT", 2, -2)
 	Minimap:SetPoint("BOTTOMRIGHT", -2, 2)
-	Minimap:SetSize(150,150)
+	Minimap:SetSize(S.minimap.size,S.minimap.size)
 
 	-- :: Hiding :: --------------------------
 	------------------------------------------
