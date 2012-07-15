@@ -15,13 +15,13 @@ function V.Command.Create( name, func, description )
 	}
 	self.switches = {
 		['-h'] = function()
+			self.switch = nil
+			self:Print(self.help['main'], 'USAGE')
 			for k,v in pairs(self.help) do
-				if k == 'main' then
-					self.switch = nil
-				else
+				if k ~= 'main' then
 					self.switch = k
+					self:Print(v, '   ')
 				end
-				self:Print(v, 'USAGE')
 			end
 		end
 	}
