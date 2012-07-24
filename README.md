@@ -6,7 +6,7 @@ A World of Warcraft User Interface, written by Nathan Lilienthal (Epicgrim). The
 
 ---
 
-![EUI as it stands](http://cl.ly/image/120C3n3v41150a2K1V12)
+![EUI as it stands](http://f.cl.ly/items/0S3n0P1n2V0t1t1F2a2C/Screen%20Shot%202012-07-15%20at%205.11.57%20PM.png)
 
 ## Features
 This UI is all about minimalism, without sacrifice. As a hardcore WoW player myself I know very well what a competitive player needs and doesn't need. This means your UI will be full featured and yet compact and lightweight.
