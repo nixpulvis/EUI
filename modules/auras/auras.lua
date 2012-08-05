@@ -47,6 +47,11 @@ function auras:Load()
 	  		GameTooltip:Hide()
 	  	end)
 
+	  	-- stacks
+	  	buffs_frames[i].stacks = buffs_frames[i]:CreateString()
+	  	buffs_frames[i].stacks:SetPoint("BOTTOMRIGHT", buffs_frames[i], "BOTTOMRIGHT", -2, 2)
+
+
   		-- timer
 		buffs_frames[i].time = buffs_frames[i]:CreateString()
 		buffs_frames[i].time:SetPoint("TOP", buffs_frames[i], "BOTTOM", 0, -2)
@@ -91,6 +96,12 @@ function auras:Load()
 	local function update_aura( frame, index, filter )
 		name,_,icon,count,d_type,duration,exp_time,caster,is_stealable,consolidate,spell_id 
 		= UnitAura('player', index, filter)
+
+		if count > 1 then
+			frame.stacks:SetText(count)
+		else
+			frame.stacks:SetText('')
+		end
 
 		local t = exp_time - GetTime()
 		frame.timer:Start(t, function( time_left )
