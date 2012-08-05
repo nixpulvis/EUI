@@ -33,21 +33,26 @@ function auras:Load()
 		-- icon
 		buffs_frames[i].icon = buffs_frames[i]:CreateTexture("ARTWORK")
 		buffs_frames[i].icon:SetPoint("TOPLEFT", 1, -1)
-  	buffs_frames[i].icon:SetPoint("BOTTOMRIGHT", -1, 1)
-  	buffs_frames[i].icon:SetTexCoord(unpack(V.iconcrop))
+	  	buffs_frames[i].icon:SetPoint("BOTTOMRIGHT", -1, 1)
+	  	buffs_frames[i].icon:SetTexCoord(unpack(V.iconcrop))
 
-  	-- tooltip
-  	buffs_frames[i]:HookScript("OnEnter", function( self )
+  		-- tooltip
+  		buffs_frames[i]:HookScript("OnEnter", function( self )
   		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -S.auras.size, -5)
 			GameTooltip:ClearLines()
 			GameTooltip:SetUnitAura("player", i, 'HELPFUL')
 			GameTooltip:Show()
-  	end)
-  	buffs_frames[i]:HookScript("OnLeave", function( self )
-  		GameTooltip:Hide()
-  	end)
+  		end)
+	  	buffs_frames[i]:HookScript("OnLeave", function( self )
+	  		GameTooltip:Hide()
+	  	end)
 
-  	-- timer
+	  	-- stacks
+	  	buffs_frames[i].stacks = buffs_frames[i]:CreateString()
+	  	buffs_frames[i].stacks:SetPoint("BOTTOMRIGHT", buffs_frames[i], "BOTTOMRIGHT", -2, 2)
+
+
+  		-- timer
 		buffs_frames[i].time = buffs_frames[i]:CreateString()
 		buffs_frames[i].time:SetPoint("TOP", buffs_frames[i], "BOTTOM", 0, -2)
 		buffs_frames[i].timer = V.Timer.Create(2)
@@ -68,22 +73,22 @@ function auras:Load()
 		-- icon
 		debuffs_frames[i].icon = debuffs_frames[i]:CreateTexture("ARTWORK")
 		debuffs_frames[i].icon:SetPoint("TOPLEFT", 1, -1)
-  	debuffs_frames[i].icon:SetPoint("BOTTOMRIGHT", -1, 1)
-  	debuffs_frames[i].icon:SetTexCoord(unpack(V.iconcrop))
+	  	debuffs_frames[i].icon:SetPoint("BOTTOMRIGHT", -1, 1)
+	  	debuffs_frames[i].icon:SetTexCoord(unpack(V.iconcrop))
 
-  	-- tooltip
-  	debuffs_frames[i]:HookScript("OnEnter", function( self )
-  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -S.auras.size, -5)
-			GameTooltip:ClearLines()
-			GameTooltip:SetUnitAura("player", i, 'HARMFUL')
-			GameTooltip:Show()
-  	end)
-  	debuffs_frames[i]:HookScript("OnLeave", function( self )
-  		GameTooltip:Hide()
-  	end)
+	  	-- tooltip
+	  	debuffs_frames[i]:HookScript("OnEnter", function( self )
+	  		GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT", -S.auras.size, -5)
+				GameTooltip:ClearLines()
+				GameTooltip:SetUnitAura("player", i, 'HARMFUL')
+				GameTooltip:Show()
+	  	end)
+	  	debuffs_frames[i]:HookScript("OnLeave", function( self )
+	  		GameTooltip:Hide()
+	  	end)
 
-  	-- timer
-  	debuffs_frames[i].time = debuffs_frames[i]:CreateString()
+	  	-- timer
+	  	debuffs_frames[i].time = debuffs_frames[i]:CreateString()
 		debuffs_frames[i].time:SetPoint("TOP", debuffs_frames[i], "BOTTOM", 0, -2)
 		debuffs_frames[i].timer = V.Timer.Create(2)
 	end
@@ -91,6 +96,12 @@ function auras:Load()
 	local function update_aura( frame, index, filter )
 		name,_,icon,count,d_type,duration,exp_time,caster,is_stealable,consolidate,spell_id 
 		= UnitAura('player', index, filter)
+
+		if count > 1 then
+			frame.stacks:SetText(count)
+		else
+			frame.stacks:SetText('')
+		end
 
 		local t = exp_time - GetTime()
 		frame.timer:Start(t, function( time_left )
