@@ -146,10 +146,7 @@ function minimap:Load()
 	zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
 	zoneframe:SetFrameStrata("MEDIUM")
 	-- making a string to be put into th zone text frame
-	zoneframe.text = zoneframe:CreateString(nil, V.media.fonts.mono, 10, "MONOCHROME, OUTLINE")
-	-- zoneframe.text = zoneframe:CreateFontString("TukuiMinimapZoneText","Overlay")
-	-- zoneframe.text:SetFont(V.media.fonts.main, 10)
-	-- zoneframe_text:SetHeight(12)
+	zoneframe.text = zoneframe:CreateString()
 	zoneframe.text:SetWidth(zoneframe:GetWidth()-6)
 	zoneframe.text:SetPoint("CENTER", zoneframe, "CENTER")
 	

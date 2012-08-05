@@ -10,11 +10,12 @@ local M, S, V = unpack(select(2, ...))
 function CreateString( frame, string, font, height, flags )
   if not font then font = V.media.fonts.mono end
   if not height then height = 10 end
-  if not flags then flags = "MONOCHROME, OUTLINE" end
+  -- if not flags then flags = "MONOCHROME, OUTLINE" end
+  if not flags then flags = "OUTLINE" end
   local text = frame:CreateFontString(nil, "OVERLAY")
   text:SetFont(font, height, flags)
   text:SetText(string)
-  text:SetJustifyH("LEFT")
+  text:SetJustifyH("CENTER")
   text:SetShadowOffset(0, 0)
   return text
 end

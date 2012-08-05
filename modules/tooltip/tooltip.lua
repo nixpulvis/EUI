@@ -76,8 +76,14 @@ function t:Load()
 	local hp = GameTooltipStatusBar
 	hp:Style()
 	hp:ClearAllPoints()
-	hp:SetHeight(6)
+	hp:SetHeight(10)
 	hp:SetPoint("BOTTOMLEFT", hp:GetParent(), "TOPLEFT", 0, 3)
 	hp:SetPoint("BOTTOMRIGHT", hp:GetParent(), "TOPRIGHT", 0, 3)
 	hp:SetStatusBarTexture(V.media.tex.norm)
+
+	print(hp.texture)
+
+	-- local tex = hp:GetStatusBarTexture()
+	-- tex:ClearAllPoints()
+	-- tex:SetIn(hp)
 end
