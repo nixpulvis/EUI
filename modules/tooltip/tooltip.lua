@@ -72,18 +72,15 @@ function t:Load()
 	-- Position tooltip on update
 	GameTooltip:HookScript("OnUpdate", function(self) PositionTooltip(self) end)
 
-	-- Health bar skinning	
+	-- Health bar skinning
+	local hpBG = V.CreateFrame(nil, GameTooltip)
+	hpBG:SetHeight(10)
+	hpBG:SetPoint("BOTTOMLEFT", hpBG:GetParent(), "TOPLEFT", 0, 3)
+	hpBG:SetPoint("BOTTOMRIGHT", hpBG:GetParent(), "TOPRIGHT", 0, 3)
+
 	local hp = GameTooltipStatusBar
-	hp:Style()
 	hp:ClearAllPoints()
-	hp:SetHeight(10)
-	hp:SetPoint("BOTTOMLEFT", hp:GetParent(), "TOPLEFT", 0, 3)
-	hp:SetPoint("BOTTOMRIGHT", hp:GetParent(), "TOPRIGHT", 0, 3)
+	hp:SetIn(hpBG)
 	hp:SetStatusBarTexture(V.media.tex.norm)
 
-	print(hp.texture)
-
-	-- local tex = hp:GetStatusBarTexture()
-	-- tex:ClearAllPoints()
-	-- tex:SetIn(hp)
 end
