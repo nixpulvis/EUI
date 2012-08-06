@@ -10,13 +10,46 @@ local s = S.unitframes
 function V.Load_unitframes_player( module )
 	oUF:RegisterStyle('EUI_Player', function( self, unit )
 		
+		-- :: Background :: ----------------------
+		------------------------------------------
 		local background = V.CreateElement(module, nil, self)
 		background:SetAllPoints()
+
+		-- divider
+		background.div = V.CreateFrame(nil, background)
+
+		-- :: Power :: ---------------------------
+		------------------------------------------
+		local power = CreateFrame('StatusBar', nil, self)
+		power:SetPoint('BOTTOMRIGHT', -1, 1)
+		power:SetPoint('BOTTOMLEFT', 1, 1)
+		power:SetHeight(16)
+		power:SetStatusBarTexture(V.media.tex.norm)
+
+		-- set divider position
+		background.div:SetPoint('LEFT', power, 'TOPLEFT')
+		background.div:SetPoint('RIGHT', power, 'TOPRIGHT')
+		background.div:SetHeight(1)
+
+		power.bg = power:CreateTexture('nil', 'BORDER')
+		power.bg:SetAllPoints()
+		power.bg:SetTexture(1,1,1)
+		power.bg.multiplier = .2
+
+		-- oUF power settings
+		power.smooth = true
+		power.frequentUpdates = true
+		power.colorPower = true
+		power.colorClass = true
+
+		self.Power = power
+		self.Power.bg = power.bg
 
 		-- :: Health :: --------------------------
 		------------------------------------------
 		local health = CreateFrame('StatusBar', nil, self)
-		health:SetIn(background)
+		health:SetPoint('TOPLEFT', 1, -1)
+		health:SetPoint('BOTTOMRIGHT', -1, power:GetHeight()+1)
 		health:SetStatusBarTexture(V.media.tex.norm)
 		
 		-- health color
@@ -45,7 +78,7 @@ function V.Load_unitframes_player( module )
 		}
 
 		-- oUF health settings
-		health.Smooth = true
+		health.smooth = true
 		health.frequentUpdates = true
 
 		health.bg = health:CreateTexture('nil', 'BORDER')
@@ -56,6 +89,5 @@ function V.Load_unitframes_player( module )
 
 		self.Health = health
 		self.Health.bg = health.bg
-
 	end)
 end

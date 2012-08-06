@@ -15,8 +15,7 @@ function V.style.Frame( frame, alpha )
   if not alpha then alpha = a end
   frame:SetBackdrop({ 
     bgFile = V.media.tex.blank, 
-    edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1, 
-    insets = { left = 1, right = 1, top = 1, bottom = 1 }
+    edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1,
   })
   frame:SetBackdropColor(r, g, b, alpha)
   frame:SetBackdropBorderColor(unpack(S.General.border_color))

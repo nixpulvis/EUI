@@ -15,10 +15,10 @@ function unitframes:Load()
 	-- spawn player and target
 	oUF:SetActiveStyle("EUI_Player")
 	local player = oUF:Spawn('player', "EUIPlayer")
-	player:SetSize(150, 35)
+	player:SetSize(150, 36)
 	player:SetPoint("CENTER", -300, 0)
 	local target = oUF:Spawn('target', "EUITarget")
-	target:SetSize(150, 35)
+	target:SetSize(150, 36)
 	target:SetPoint("CENTER", 300, 0)
 
 end
