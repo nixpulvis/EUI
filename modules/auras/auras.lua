@@ -87,6 +87,10 @@ function auras:Load()
 	  		GameTooltip:Hide()
 	  	end)
 
+		-- stacks
+	  	debuffs_frames[i].stacks = debuffs_frames[i]:CreateString()
+	  	debuffs_frames[i].stacks:SetPoint("BOTTOMRIGHT", debuffs_frames[i], "BOTTOMRIGHT", -2, 2)
+
 	  	-- timer
 	  	debuffs_frames[i].time = debuffs_frames[i]:CreateString()
 		debuffs_frames[i].time:SetPoint("TOP", debuffs_frames[i], "BOTTOM", 0, -2)
