@@ -8,33 +8,33 @@ We will be following a very common branching scheme, as illustrated below. This 
 
 ## develop
 
-	git checkout develop
-	
+  git checkout develop
+
 this is where we will fix bugs in previous features, add code that is not really a feature.
 
 ## feature branches
 
-	git checkout develop
-	git checkout -b somefeature
-	
+  git checkout develop
+  git checkout -b somefeature
+
 This will be where major features are developed. __Only branch new features off of develop__. Once your in a feature branch you will only be working off the code that was in develop at the time of the branch. Even if develop is updated.
 
 # Useful Git Stuff
 
 To avoid committing the wrong things to the wrong place this is good practice todo before every commit.
 
-	git branch
-	  *the_right_branch
-	  other_branches
-	
-	git status
-	  **to verify what files to add**
-	
-	git add **all_the_files_you_changed**
-	
-	git commit -m "some message"
-	
+  git branch
+    *the_right_branch
+    other_branches
+
+  git status
+    **to verify what files to add**
+
+  git add **all_the_files_you_changed**
+
+  git commit -m "some message"
+
 If you want to update the code in one of your branches to the version that is on Github do:
 
-	git pull origin branch_name
-	
+  git pull origin branch_name
+

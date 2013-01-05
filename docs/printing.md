@@ -11,9 +11,9 @@ When simple information needs to be displayed on screen this is the best way to 
 
 Examples:
 
-<code><span style='color:orange;'>EUI:</span> CONFIG MODE, press ok to save changes</code>  
-<code><span style='color:orange;'>EUI:</span> NAMEPLATES [Disabled]</code>  
-<code><span style='color:orange;'>EUI:</span> copied character settings to [Epicelement]</code>  
+<code><span style='color:orange;'>EUI:</span> CONFIG MODE, press ok to save changes</code>
+<code><span style='color:orange;'>EUI:</span> NAMEPLATES [Disabled]</code>
+<code><span style='color:orange;'>EUI:</span> copied character settings to [Epicelement]</code>
 
 ### Block Style Information
 When it is needed to display more information to the user. These messages should be displayed has blocks, with headers. Common uses for these type of messages are slash command help.
@@ -22,7 +22,7 @@ Example:
 
 <pre><span style='color:orange;'>/eui:</span> <span style='color:tan;'>EUI configuration</span>
   /eui    : toggle EUI's configuration
-  /eui -h : show this documentation 
+  /eui -h : show this documentation
   /eui -m : move-only
   /eui -reset : reset to default positions
 </pre>
@@ -32,8 +32,8 @@ Unlike errors and warnings to developers, users to can experience intended warni
 
 Examples:
 
-<code><span style='color:red;'>EUI ERROR:</span> Cannot do /eui in combat</code>  
-<code><span style='color:red;'>EUI ERROR:</span> Not a valid Spellid [sid23]</code>  
+<code><span style='color:red;'>EUI ERROR:</span> Cannot do /eui in combat</code>
+<code><span style='color:red;'>EUI ERROR:</span> Not a valid Spellid [sid23]</code>
 
-<code><span style='color:orange;'>EUI WARNING:</span> Gear condition at 20%</code>  
-<code><span style='color:orange;'>EUI WARNING:</span> Symbiosis faded from [Kione]</code>  
+<code><span style='color:orange;'>EUI WARNING:</span> Gear condition at 20%</code>
+<code><span style='color:orange;'>EUI WARNING:</span> Symbiosis faded from [Kione]</code>

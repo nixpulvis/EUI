@@ -5,9 +5,9 @@ local M, S, V = unpack(select(2, ...))
 --[[ links to media for use in EUI. all media located in V.media ]]
 
 V.media = {
-	tex   = { },
-	icons = { },
-	fonts = { },
+  tex   = { },
+  icons = { },
+  fonts = { },
 }
 
 local tex = V.media.tex

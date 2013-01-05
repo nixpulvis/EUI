@@ -1,49 +1,49 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 
-	<Script file="init\init.lua"/>
-	<Script file="init\constants.lua"/>
-	<Script file="init\savedvars.lua"/>
-	
-	<Script file="media\media.lua"/>
-	
-	<Script file="settings\settings.lua"/>	
+  <Script file="init\init.lua"/>
+  <Script file="init\constants.lua"/>
+  <Script file="init\savedvars.lua"/>
 
-	<Script file="core\printing.lua"/>
-	<Script file="core\events.lua"/>
-	<Script file="core\style.lua"/>
-	<Script file="core\api.lua"/>	
-	<Script file="core\functions.lua"/>
-	<Script file="core\frames.lua"/>
-	<Script file="core\elements.lua"/>
-	<Script file="core\modules.lua"/>
-	<Script file="core\install.lua"/> 
-	<Script file="core\config.lua"/> -->
-	
-	<!-- System Files -->
-	<Script file="modules\tooltip\tooltip.lua"/>
-	
-	<!-- Auras -->
-	<Script file="modules\auras\auras.lua"/>
+  <Script file="media\media.lua"/>
 
-	<!-- Unitframes -->
-	<Include file="lib\oUF\oUF.xml"/>
-	<Script file="modules\unitframes\_player.lua"/>	
-	<Script file="modules\unitframes\unitframes.lua"/>	
+  <Script file="settings\settings.lua"/>
 
-	<!-- Actionbars -->
-	<Script file="modules\actionbars\_hide.lua"/>
-	<Script file="modules\actionbars\actionbars.lua"/>
+  <Script file="core\printing.lua"/>
+  <Script file="core\events.lua"/>
+  <Script file="core\style.lua"/>
+  <Script file="core\api.lua"/>
+  <Script file="core\functions.lua"/>
+  <Script file="core\frames.lua"/>
+  <Script file="core\elements.lua"/>
+  <Script file="core\modules.lua"/>
+  <Script file="core\install.lua"/>
+  <Script file="core\config.lua"/> -->
 
-	<!-- Chat Files -->
-	<Script file="modules\social\chat.lua"/>
-	<Script file="modules\social\friends.lua"/>
-	<Script file="modules\social\guild.lua"/>
-	
-	<!-- Minimap Files -->
-	<Script file="modules\minimap\minimap.lua"/>
-	
-	<!-- Slash Commands -->
-	<Include file="slash\commands.xml"/>
+  <!-- System Files -->
+  <Script file="modules\tooltip\tooltip.lua"/>
 
-	<Script file="core\dev.lua"/>
+  <!-- Auras -->
+  <Script file="modules\auras\auras.lua"/>
+
+  <!-- Unitframes -->
+  <Include file="lib\oUF\oUF.xml"/>
+  <Script file="modules\unitframes\_player.lua"/>
+  <Script file="modules\unitframes\unitframes.lua"/>
+
+  <!-- Actionbars -->
+  <Script file="modules\actionbars\_hide.lua"/>
+  <Script file="modules\actionbars\actionbars.lua"/>
+
+  <!-- Chat Files -->
+  <Script file="modules\social\chat.lua"/>
+  <Script file="modules\social\friends.lua"/>
+  <Script file="modules\social\guild.lua"/>
+
+  <!-- Minimap Files -->
+  <Script file="modules\minimap\minimap.lua"/>
+
+  <!-- Slash Commands -->
+  <Include file="slash\commands.xml"/>
+
+  <Script file="core\dev.lua"/>
 </Ui>

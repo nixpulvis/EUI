@@ -9,12 +9,12 @@ Function naming will be descriptive of the task the function will perform. This 
 
 A good example might help, lets say I want to make some ramen.
 
-	function MakeRamen()
-		-- fill pot with 2 cups of water
-		pot = FillPot( 2 )
-		-- cook for 1.5 min
-		Cook( pot, 1.5 )
-	end
+  function MakeRamen()
+    -- fill pot with 2 cups of water
+    pot = FillPot( 2 )
+    -- cook for 1.5 min
+    Cook( pot, 1.5 )
+  end
 
 | Scope     | Case  | Space Char | Example                          |
 |:----------|:------|:-----------|:---------------------------------|
@@ -36,13 +36,13 @@ To help keep variables scope, and use organized and readable I'll follow these n
 *note:* EUI doesn't actually store any variables in _G except, global frame names, and EUI addon name-space.
 
 ### Frames
-Frames are all named according to what they represent, prefixed with `EUI_`. The actual name is camel-cased. 
+Frames are all named according to what they represent, prefixed with `EUI_`. The actual name is camel-cased.
 
 #### Examples:
-	EUI_ChatFrame 
-	EUI_Minimap  
-	EUI_PlayerBuffs  
-	EUI_RecountSkin  
+  EUI_ChatFrame
+  EUI_Minimap
+  EUI_PlayerBuffs
+  EUI_RecountSkin
 
 ### Files
 Files names are lowercase connected by `_`. Files with general functionality will be plural, this is because functionality should be applicable more then once. Files with singular naming are implementations, these files contain actual setup and display of features.
@@ -55,11 +55,11 @@ Each file will have a header describing the goal of that file. It will contain i
 
 Example:
 
-	-----------------------------------------------------------------------
-	-- EUI Event Handler
-	-----------------------------------------------------------------------
-	--[[ this is designed to make updating information possible without the 
-		 need to make a frame just for event handling. ]]
+  -----------------------------------------------------------------------
+  -- EUI Event Handler
+  -----------------------------------------------------------------------
+  --[[ this is designed to make updating information possible without the
+     need to make a frame just for event handling. ]]
 
 Notice that the "title" of the file is surrounded by horizontal lines each 72 chars long. The file title should include EUI in the name, and the first letter of each word should be capitalized. Following the title should be a block comment for the description. The description should be no more then 3-4 lines, lowercase.
 
@@ -68,7 +68,7 @@ These are the most important part of commenting. The comments that are put into 
 
 Example:
 
-	-- binds the functions in V.events to the event-handler.
+  -- binds the functions in V.events to the event-handler.
 
 This is an example of a good comment in EUI. It clearly explains what the code will do. It starts with a lower case and ends with appropriate punctuation.
 
@@ -77,8 +77,8 @@ Many files have a few somewhat distinct sections, in some cases these could be b
 
 Example:
 
-	-- :: Style :: --------------------------------------------------------
-	-----------------------------------------------------------------------
+  -- :: Style :: --------------------------------------------------------
+  -----------------------------------------------------------------------
 
 This defines a new section of the file. The lines should also be 72 chars long, consistent with the file header.
 
@@ -92,13 +92,13 @@ Some functions, generally ones that implement major functionality, need more inf
 
 Example:
 
-	--[[
-	EUI:CreateElement
-		returns : Frame
-		param   : name   - the name of the frame being created.
-				  module - the module this is a member of.
-				  parent - the frame this new frame will be parented to
-		use     : every display item as part of a module should part of a containing
-				  element. use this function to setup the element.
-		note    : Elements are the frames in charge of display settings.
-	]]
+  --[[
+  EUI:CreateElement
+    returns : Frame
+    param   : name   - the name of the frame being created.
+          module - the module this is a member of.
+          parent - the frame this new frame will be parented to
+    use     : every display item as part of a module should part of a containing
+          element. use this function to setup the element.
+    note    : Elements are the frames in charge of display settings.
+  ]]

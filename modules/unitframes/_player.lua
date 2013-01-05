@@ -8,86 +8,86 @@ local oUF = select(2, ...).oUF
 local s = S.unitframes
 
 function V.Load_unitframes_player( module )
-	oUF:RegisterStyle('EUI_Player', function( self, unit )
-		
-		-- :: Background :: ----------------------
-		------------------------------------------
-		local background = V.CreateElement(module, nil, self)
-		background:SetAllPoints()
+  oUF:RegisterStyle('EUI_Player', function( self, unit )
 
-		-- divider
-		background.div = V.CreateFrame(nil, background)
+    -- :: Background :: ----------------------
+    ------------------------------------------
+    local background = V.CreateElement(module, nil, self)
+    background:SetAllPoints()
 
-		-- :: Power :: ---------------------------
-		------------------------------------------
-		local power = CreateFrame('StatusBar', nil, self)
-		power:SetPoint('BOTTOMRIGHT', -1, 1)
-		power:SetPoint('BOTTOMLEFT', 1, 1)
-		power:SetHeight(16)
-		power:SetStatusBarTexture(V.media.tex.norm)
+    -- divider
+    background.div = V.CreateFrame(nil, background)
 
-		-- set divider position
-		background.div:SetPoint('LEFT', power, 'TOPLEFT')
-		background.div:SetPoint('RIGHT', power, 'TOPRIGHT')
-		background.div:SetHeight(1)
+    -- :: Power :: ---------------------------
+    ------------------------------------------
+    local power = CreateFrame('StatusBar', nil, self)
+    power:SetPoint('BOTTOMRIGHT', -1, 1)
+    power:SetPoint('BOTTOMLEFT', 1, 1)
+    power:SetHeight(16)
+    power:SetStatusBarTexture(V.media.tex.norm)
 
-		power.bg = power:CreateTexture('nil', 'BORDER')
-		power.bg:SetAllPoints()
-		power.bg:SetTexture(1,1,1)
-		power.bg.multiplier = .2
+    -- set divider position
+    background.div:SetPoint('LEFT', power, 'TOPLEFT')
+    background.div:SetPoint('RIGHT', power, 'TOPRIGHT')
+    background.div:SetHeight(1)
 
-		-- oUF power settings
-		power.smooth = true
-		power.frequentUpdates = true
-		power.colorPower = true
-		power.colorClass = true
+    power.bg = power:CreateTexture('nil', 'BORDER')
+    power.bg:SetAllPoints()
+    power.bg:SetTexture(1,1,1)
+    power.bg.multiplier = .2
 
-		self.Power = power
-		self.Power.bg = power.bg
+    -- oUF power settings
+    power.smooth = true
+    power.frequentUpdates = true
+    power.colorPower = true
+    power.colorClass = true
 
-		-- :: Health :: --------------------------
-		------------------------------------------
-		local health = CreateFrame('StatusBar', nil, self)
-		health:SetPoint('TOPLEFT', 1, -1)
-		health:SetPoint('BOTTOMRIGHT', -1, power:GetHeight()+1)
-		health:SetStatusBarTexture(V.media.tex.norm)
-		
-		-- health color
-		if s.health.color == 'class' then
-			health.colorDisconnected = true
-			health.colorTapping      = true	
-			health.colorClass        = true
-			health.colorReaction     = true	
-		elseif s.health.color == 'gradient' then
-			health.colorSmooth = true
-		else
-			health:SetStatusBarColor(V.HexToColor(s.health.color))
-		end
+    self.Power = power
+    self.Power.bg = power.bg
 
-		local prediction = CreateFrame('StatusBar', nil, health)
-		prediction:SetPoint('TOPLEFT', health:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
-		prediction:SetPoint('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, 0)
-		prediction:SetWidth(250)
-		prediction:SetStatusBarTexture(V.media.tex.norm)
-		prediction:SetStatusBarColor(0, 1, 0.5, 0.25)
-		prediction:SetMinMaxValues(0,1)
+    -- :: Health :: --------------------------
+    ------------------------------------------
+    local health = CreateFrame('StatusBar', nil, self)
+    health:SetPoint('TOPLEFT', 1, -1)
+    health:SetPoint('BOTTOMRIGHT', -1, power:GetHeight()+1)
+    health:SetStatusBarTexture(V.media.tex.norm)
 
-		self.HealPrediction = {
-			myBar = prediction,
-			maxOverflow = 1,
-		}
+    -- health color
+    if s.health.color == 'class' then
+      health.colorDisconnected = true
+      health.colorTapping      = true
+      health.colorClass        = true
+      health.colorReaction     = true
+    elseif s.health.color == 'gradient' then
+      health.colorSmooth = true
+    else
+      health:SetStatusBarColor(V.HexToColor(s.health.color))
+    end
 
-		-- oUF health settings
-		health.smooth = true
-		health.frequentUpdates = true
+    local prediction = CreateFrame('StatusBar', nil, health)
+    prediction:SetPoint('TOPLEFT', health:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
+    prediction:SetPoint('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, 0)
+    prediction:SetWidth(250)
+    prediction:SetStatusBarTexture(V.media.tex.norm)
+    prediction:SetStatusBarColor(0, 1, 0.5, 0.25)
+    prediction:SetMinMaxValues(0,1)
 
-		health.bg = health:CreateTexture('nil', 'BORDER')
-		health.bg:SetAllPoints()
-		health.bg:SetTexture(1,1,1)
-		health.bg.multiplier = .2
-		
+    self.HealPrediction = {
+      myBar = prediction,
+      maxOverflow = 1,
+    }
 
-		self.Health = health
-		self.Health.bg = health.bg
-	end)
+    -- oUF health settings
+    health.smooth = true
+    health.frequentUpdates = true
+
+    health.bg = health:CreateTexture('nil', 'BORDER')
+    health.bg:SetAllPoints()
+    health.bg:SetTexture(1,1,1)
+    health.bg.multiplier = .2
+
+
+    self.Health = health
+    self.Health.bg = health.bg
+  end)
 end

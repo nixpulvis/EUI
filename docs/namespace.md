@@ -1,7 +1,7 @@
 # Namespace
 EUI contains variables for colors, metadata, config settings, users data... This data is organized into 3 logical subsection of the EUI namespace.
 
-	local M, S, V = unpack(select(2, ...))
+  local M, S, V = unpack(select(2, ...))
 
 ## Modules
 This is where all EUI's modules are stored, this includes the frames along with data that they need to operate. When a module is created it creates a table in `M` for this data.

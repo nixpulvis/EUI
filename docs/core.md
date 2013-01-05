@@ -7,21 +7,21 @@ These EUI's functions added to all frames. These functions are generalized to be
 Usage: `Frame:Function( frame, args... )`
 
 Example:
-	
-	local frame = CreateFrame("Frame")
-	frame:CreateString('hi', helvetica, 12)
+
+  local frame = CreateFrame("Frame")
+  frame:CreateString('hi', helvetica, 12)
 
 
 ### :CreateString
 Creates a FontString for the frame. It needs a value for the text, and the font style. After creation this text field needs to be positioned. Updates to the text value should be done with `:SetText()`
 
 Usage:
-	
-	frame:CreateString('hi', helvetica, 12, 'MONOCHROME')
+
+  frame:CreateString('hi', helvetica, 12, 'MONOCHROME')
 
 Added Fields:
 
-	frame.text
+  frame.text
 
 
 ### :Kill
@@ -29,11 +29,11 @@ Completely remove the frame, this function should be used with caution. It hides
 
 Usage:
 
-	frame:Kill()
+  frame:Kill()
 
 Added Fields:
 
-	none
+  none
 
 
 ### :Skin
@@ -41,18 +41,18 @@ Skins the frame according to it's type, this function can be provided an optiona
 
 Usage:
 
-	frame:Style()
-	frame2:Style(.5)
+  frame:Style()
+  frame2:Style(.5)
 
 Added Fields:
 
-	TBD
+  TBD
 
 ## M.E.F (Module, Element, Frame) System
-EUI is comprised of a collection of modules. These modules are encapsulated such that any of the modules could run without any other module. This allows for better user customization, and better code reliability. 
+EUI is comprised of a collection of modules. These modules are encapsulated such that any of the modules could run without any other module. This allows for better user customization, and better code reliability.
 
 ### Modules
-A module is the high level container for a functional UI piece. Things like the Chat, Minimap, and Unitframes, are all modules. Modules can have multiple detached elements, but must have at least one. 
+A module is the high level container for a functional UI piece. Things like the Chat, Minimap, and Unitframes, are all modules. Modules can have multiple detached elements, but must have at least one.
 
 Modules have their own namespace, and act as much like a complete addon. The namespace is the table that is returned by `V:NewModule`
 
@@ -60,14 +60,14 @@ Use `V:NewModule` to define a new module, this function should be near the top o
 
 Usage:
 
-	local chat = V:NewModule("chat")
+  local chat = V:NewModule("chat")
 
 In this example `chat` is this modules namespace and `chat:load()` will be called on AddonLoaded. Every module needs a load function in order to be enabled.
 
 ### Elements
 An element is what the user would think of as a panel, it's a collection of frames that makes up a functional element. It's frames are generally all positioned on or around the main element frame. Examples of elements are: PlayerFrame, Minimap, Chatframes.
 
-Elements are all also able to be moved and hidden based on combat state. When an element is created it is given a mover frame, this frame is in charge of handling the positioning and display settings. 
+Elements are all also able to be moved and hidden based on combat state. When an element is created it is given a mover frame, this frame is in charge of handling the positioning and display settings.
 
 ### Frames
 Frames are just standard blizz frames, however `V:CreateFrame()` is advised to be used since it will create a styled frame. This is completely optional however. It's worth mentioning again, elements ARE frames themselves and can be operated on like any other frame.
@@ -77,26 +77,26 @@ EUI provides a clean way to deal with events that are not directly related to an
 
 Usage:
 
-	V.AddEventListener(function, event)
-	V.RemoveEventLisener(function, event)
+  V.AddEventListener(function, event)
+  V.RemoveEventLisener(function, event)
 
 Example:
-	
-	local lvl = UnitLevel('player')
 
-	local function update_level()
-		  lvl = UnitLevel('player')
-	end
+  local lvl = UnitLevel('player')
 
-	V.AddEventListener(update_level, "PLAYER_LEVEL_UP")
+  local function update_level()
+      lvl = UnitLevel('player')
+  end
+
+  V.AddEventListener(update_level, "PLAYER_LEVEL_UP")
 
 Some events provide arguments. To use these arguments, simply add arguments to the function ad follows.
 
-	local function get_auras(self, uid)
-		print(uid)
-	end
+  local function get_auras(self, uid)
+    print(uid)
+  end
 
-	V.AddEventListener(get_auras, "UNIT_AURA")
+  V.AddEventListener(get_auras, "UNIT_AURA")
 
 Notice the first argument is self, this is a reference to the event handler.
 

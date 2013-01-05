@@ -29,7 +29,7 @@ Placeholder text
 Placeholder text
 
 ## Installation
-Simply click the "Download EUI x.x" on this page. This will download the latest stable version of the UI as a zip. The zip will contain the EUI folder, simply move that folder into your Addons folder. (even easier install available, once I get a web-server up and running) 
+Simply click the "Download EUI x.x" on this page. This will download the latest stable version of the UI as a zip. The zip will contain the EUI folder, simply move that folder into your Addons folder. (even easier install available, once I get a web-server up and running)
 
 If you want you can also [download the git repositoryy](https://github.com/Epicgrim/EUI/zipball/develop) and use that. This has it's advantages and disadvantages. With this method you will have the absolute newest version I have committed, which means for you the newest features and bug fixes. It also means however that I have not tested it to my full liking, and it may have more issues then you would like. The choice is yours.
 

@@ -2,8 +2,8 @@ local M, S, V = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Style
 -----------------------------------------------------------------------
---[[ these are functions designed to be called from within 
-		 the EUI api ]]
+--[[ these are functions designed to be called from within
+     the EUI api ]]
 
 -- gorup these functions into a table
 V['style'] = { }
@@ -13,8 +13,8 @@ V['style'] = { }
 function V.style.Frame( frame, alpha )
   local r,g,b,a = unpack(S.General.background_color)
   if not alpha then alpha = a end
-  frame:SetBackdrop({ 
-    bgFile = V.media.tex.blank, 
+  frame:SetBackdrop({
+    bgFile = V.media.tex.blank,
     edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1,
   })
   frame:SetBackdropColor(r, g, b, alpha)
@@ -35,10 +35,10 @@ function V.style.Button( frame )
   frame.overlay:SetPoint("BOTTOMRIGHT", -1, 1)
   frame.overlay:SetTexture(unpack(hover_color))
 
-  frame:HookScript("OnMouseDown", function(self) 
+  frame:HookScript("OnMouseDown", function(self)
     self.overlay:SetTexture(unpack(mousedown_color))
   end)
-  frame:HookScript("OnMouseUp", function(self) 
+  frame:HookScript("OnMouseUp", function(self)
     self.overlay:SetTexture(unpack(hover_color))
   end)
 end
@@ -46,24 +46,24 @@ end
 -- :: StatusBar :: ----------------------------------------------------
 -----------------------------------------------------------------------
 function V.style.StatusBar( frame )
-	V.style.Frame(frame)
+  V.style.Frame(frame)
 end
 
 -- :: GameTooltip :: --------------------------------------------------
 -----------------------------------------------------------------------
 function V.style.GameTooltip( frame )
-	V.style.Frame(frame)
+  V.style.Frame(frame)
 end
 
 -- :: EditBox :: ----------------------------------------------------
 -----------------------------------------------------------------------
 function V.style.EditBox( frame )
-	V.style.Frame(frame)
+  V.style.Frame(frame)
 end
 
 -- :: Assure Complete Skin Set :: -------------------------------------
 -----------------------------------------------------------------------
 -- remove once passing, this is just for me
 -- for i,v in ipairs(V.frame_types) do
--- 	assert(V.style[v])
+--   assert(V.style[v])
 -- end

@@ -7,7 +7,7 @@ local M, S, V = unpack(select(2, ...))
      want to call like Frame:SomeFunction() ]]
 
 -- make a string on a frame
-function CreateString( frame, string, font, height, flags )
+local function CreateString( frame, string, font, height, flags )
   if not font then font = V.media.fonts.mono end
   if not height then height = 10 end
   -- if not flags then flags = "MONOCHROME, OUTLINE" end
@@ -20,7 +20,7 @@ function CreateString( frame, string, font, height, flags )
   return text
 end
 
--- remove a frame from the UI completely. 
+-- remove a frame from the UI completely.
 local function Kill( frame )
   frame:Hide()
   _G[frame:GetName()] = nil
@@ -38,7 +38,7 @@ local function StripTextures( frame )
     if region:GetObjectType() == "Texture" then
       region:SetTexture(nil)
     end
-  end   
+  end
 end
 
 -- style the frame to EUI according to it's type
@@ -54,7 +54,7 @@ end
 
 local function AddFunctionsTo( frame )
   local meta = getmetatable(frame).__index
-  meta.CreateString = CreateString  
+  meta.CreateString = CreateString
   meta.Kill = Kill
   meta.SetIn = SetIn
   meta.StripTextures = StripTextures
@@ -62,10 +62,10 @@ local function AddFunctionsTo( frame )
 end
 
 local temp = {}
--- add functions to frames 
+-- add functions to frames
 for i,v in ipairs(V.frame_types) do
-  temp[v] = CreateFrame(v, "Registration_"..v) 
-  AddFunctionsTo(temp[v]) 
+  temp[v] = CreateFrame(v, "Registration_"..v)
+  AddFunctionsTo(temp[v])
   -- remove this silly silly frame
   temp[v]:Hide()
   _G[temp[v]:GetName()] = nil
