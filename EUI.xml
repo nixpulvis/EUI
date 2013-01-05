@@ -4,43 +4,4 @@
   <Script file="init\constants.lua"/>
   <Script file="init\savedvars.lua"/>
 
-  <Script file="media\media.lua"/>
-
-  <Script file="settings\settings.lua"/>
-
-  <Script file="core\printing.lua"/>
-  <Script file="core\events.lua"/>
-  <Script file="core\style.lua"/>
-  <Script file="core\api.lua"/>
-  <Script file="core\functions.lua"/>
-  <Script file="core\frames.lua"/>
-  <Script file="core\elements.lua"/>
-  <Script file="core\modules.lua"/>
-  <Script file="core\install.lua"/>
-  <Script file="core\config.lua"/> -->
-
-  <!-- System Files -->
-  <Script file="modules\tooltip\tooltip.lua"/>
-
-  <!-- Auras -->
-  <Script file="modules\auras\auras.lua"/>
-
-  <!-- Unitframes -->
-  <Include file="lib\oUF\oUF.xml"/>
-  <Script file="modules\unitframes\_player.lua"/>
-  <Script file="modules\unitframes\unitframes.lua"/>
-
-  <!-- Actionbars -->
-  <Script file="modules\actionbars\_hide.lua"/>
-  <Script file="modules\actionbars\actionbars.lua"/>
-
-  <!-- Chat Files -->
-  <Script file="modules\social\chat.lua"/>
-  <Script file="modules\social\friends.lua"/>
-  <Script file="modules\social\guild.lua"/>
-
-  <!-- Minimap Files -->
-  <Script file="modules\minimap\minimap.lua"/>
-
-  <Script file="core\dev.lua"/>
 </Ui>

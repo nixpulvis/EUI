@@ -1,16 +1,17 @@
-local M, S, V = unpack(select(2, ...))
+local M, S, V, F = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Style
 -----------------------------------------------------------------------
---[[ these are functions designed to be called from within
-     the EUI api ]]
+--[[ Every frame-type that EUI can create needs a styling function.
+     To make dynamically calling these functions easier I'm going
+     to break convention and name the functions starting with a
+     capitol letter. ]]
 
--- gorup these functions into a table
-V['style'] = { }
+F.Style = { }
 
 -- :: Frames :: -------------------------------------------------------
 -----------------------------------------------------------------------
-function V.style.Frame( frame, alpha )
+function F.Style.Frame(frame, alpha)
   local r,g,b,a = unpack(S.General.background_color)
   if not alpha then alpha = a end
   frame:SetBackdrop({
@@ -23,8 +24,8 @@ end
 
 -- :: Buttons :: ------------------------------------------------------
 -----------------------------------------------------------------------
-function V.style.Button( frame )
-  V.style.Frame(frame)
+function F.Style.Button(frame, alpha)
+  F.Style.frame(frame, alpha)
 
   local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
   local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
@@ -42,28 +43,3 @@ function V.style.Button( frame )
     self.overlay:SetTexture(unpack(hover_color))
   end)
 end
-
--- :: StatusBar :: ----------------------------------------------------
------------------------------------------------------------------------
-function V.style.StatusBar( frame )
-  V.style.Frame(frame)
-end
-
--- :: GameTooltip :: --------------------------------------------------
------------------------------------------------------------------------
-function V.style.GameTooltip( frame )
-  V.style.Frame(frame)
-end
-
--- :: EditBox :: ----------------------------------------------------
------------------------------------------------------------------------
-function V.style.EditBox( frame )
-  V.style.Frame(frame)
-end
-
--- :: Assure Complete Skin Set :: -------------------------------------
------------------------------------------------------------------------
--- remove once passing, this is just for me
--- for i,v in ipairs(V.frame_types) do
---   assert(V.style[v])
--- end

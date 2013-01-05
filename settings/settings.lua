@@ -1,4 +1,4 @@
-local M, S, V = unpack(select(2, ...))
+local M, S, V, F = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Settings
 -----------------------------------------------------------------------
@@ -6,22 +6,15 @@ local M, S, V = unpack(select(2, ...))
    these values are only defaults. many of them will be overridden by
    savedvar settings. ]]
 
-S['General'] = {
+S.general = {
   ['background_color'] = { .075, .075, .075, .8 },
   ['border_color']     = { 0, 0, 0 },
 }
 
-S['auras'] = {
+S.auras = {
   ['size'] = 35,
 }
 
-S['minimap'] = {
+S.minimap = {
   ['size'] = 150,
-}
-
-S['unitframes'] = {
-  ['health'] = {
-    ['color'] = 'class',      -- OPTIONS: 'class', 'gradient', 'FF0033'
-    ['text'] = 'percent',
-  },
 }

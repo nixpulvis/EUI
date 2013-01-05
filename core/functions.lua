@@ -1,12 +1,12 @@
-local M, S, V = unpack(select(2, ...))
+local M, S, V, F = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Functions
 -----------------------------------------------------------------------
 --[[ these are EUI's utilities, they provide somewhat abstracted
-   functionality. All functions here are stored in V ]]
+   functionality. All functions here are stored in F ]]
 
 -- table copying, many uses for this
-function V.tcopy( t )
+function F.tcopy(t)
   local copy = { }
   for k,v in pairs(t) do
     copy[k] = v
@@ -15,13 +15,13 @@ function V.tcopy( t )
 end
 
 -- rounding numbers
-function V.round( num, decimals )
+function F.round(n, decimals)
   local mult = 10^(decimals or 0)
-  return math.floor(num * mult + 0.5) / mult
+  return math.floor(n * mult + 0.5) / mult
 end
 
 -- converts hex colors to 0-1 colors for use in EUI.
-function V.HexToColor( hex )
+function F.hextocolor(hex)
   local color = { }
   if strlen(hex) == 6 or strlength(hex) == 8 then
     for i = 1, 8, 2 do
@@ -36,7 +36,7 @@ function V.HexToColor( hex )
 end
 
 -- display seconds to min/hour/day (tukui <3)
-function V.FormatTime( string )
+function F.formattime(string)
   local day, hour, minute = 86400, 3600, 60
   if string >= day then
     return format("%dd", ceil(string / day))
@@ -50,28 +50,27 @@ function V.FormatTime( string )
   return '|cFFFF2222'..format("%.1f", string)..'|r'
 end
 
+-- merge the metatable of the given frame with the given metatable
+function F.extend(frame, meta)
+  setmetatable(V.TMerge(getmetatable(frame), meta))
+end
+
 -- a timer, with callbacks
-V.Timer = {
-  precision     = 2,    -- number of decimals
-   post_update   = nil,  -- function after each update
-   post_complete = nil,  -- function at end
-   time_initial  = nil,  -- initial time on timer
-   time_left     = nil,  -- current time left
-}
-function V.Timer.Create( precision )
-  local self     = V.tcopy(V.Timer)
-  self.precision = precision
+F.Timer = { }
+function F.Timer.create(precision)
+  local self     = V.tcopy(F.Timer)
+  self.precision = (precision or 2)
 
   -- the update frame
   self.engine = CreateFrame('Frame')
 
   return self
 end
-function V.Timer:Remove()
-  self.engine:Kill()
+function F.Timer:remove()
+  self.engine:kill()
   self = nil
 end
-function V.Timer:Start( time_left, post_update, post_complete )
+function F.Timer:start( time_left, post_update, post_complete )
     self.time_initial  = time_left
     self.time_left     = time_left
     self.post_update   = post_update
@@ -88,22 +87,6 @@ function V.Timer:Start( time_left, post_update, post_complete )
     self.time_left = self.time_left - elapsed
   end)
 end
-function V.Timer:Reset()
+function F.Timer:reset()
   self.time_left = self.time_initial
 end
-
--- :: Event Dependent :: ----------------------------------------------
------------------------------------------------------------------------
-
--- V.mylevel updated
-local function updateUnitLevel()
-  V.mylevel = UnitLevel("player")
-end
-V.AddEventListener(updateUnitLevel, "PLAYER_LEVEL_UP")
-
--- V.incombat updated
-local function updateCombatStatus()
-  V.incombat = UnitAffectingCombat("player")
-end
-V.AddEventListener(updateCombatStatus, "PLAYER_REGEN_ENABLED")
-V.AddEventListener(updateCombatStatus, "PLAYER_REGEN_DISABLED")

@@ -1,25 +1,19 @@
-local M, S, V = unpack(select(2, ...))
+local M, S, V, F = unpack(select(2, ...))
 -----------------------------------------------------------------------
 -- EUI Media
 -----------------------------------------------------------------------
---[[ links to media for use in EUI. all media located in V.media ]]
+--[[ links to media for use in EUI. ]]
 
-V.media = {
-  tex   = { },
-  icons = { },
-  fonts = { },
-}
-
-local tex = V.media.tex
-local icons = V.media.icons
-local fonts = V.media.fonts
+V.textures = { }
+V.icons    = { }
+V.fonts    = { }
 
 ---------- Textures -----------
-tex["blank"] = [[Interface\AddOns\EUI\media\textures\blank.tga]]
-tex["norm"] = [[Interface\AddOns\EUI\media\textures\normTex.tga]]
+V.textures.blank = [[Interface\AddOns\EUI\media\textures\blank.tga]]
+V.textures.norm  = [[Interface\AddOns\EUI\media\textures\normTex.tga]]
 
 ------------ Icons -------------
-icons["mail"] = [[Interface\AddOns\EUI\media\icons\mail.tga]]
+V.icons.mail = [[Interface\AddOns\EUI\media\icons\mail.tga]]
 
 ------------ Fonts -------------
-fonts["mono"] = [[Interface\AddOns\EUI\media\fonts\Visitor.ttf]]
+V.fonts.mono = [[Interface\AddOns\EUI\media\fonts\Visitor.ttf]]
