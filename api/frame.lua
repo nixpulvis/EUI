@@ -4,13 +4,16 @@ local M, S, V, F = unpack(select(2, ...))
 -----------------------------------------------------------------------
 --[[ these functions are to be added to all EUI frames in the UI. ]]
 
+-- Saving all functions to `V.meta.frame` to be referenced as the
+-- meta frame for EUI's frames.
+local meta = V.meta.frame
 
 -- :: Constructors :: -------------------------------------------------
 -----------------------------------------------------------------------
 
 function F.createframe(name, parent, width, height, inherits)
   local frame = CreateFrame("Frame", name, parent, inherits)
-  F.extend(frame, V.meta.frame) -- apply the API to this frame
+  F.extend(frame, meta) -- apply the API to this frame
 
   -- style the frame
   frame:Style()
@@ -25,7 +28,7 @@ end
 
 function F.createbutton(name, parent, inherits)
   local frame = CreateFrame("Button", name, parent, inherits)
-  V.meta.Apply(frame, V.meta.frame) -- apply the API to this frame
+  F.extend(frame, meta) -- apply the API to this frame
 
   -- style the button
   frame:Style()
@@ -38,10 +41,6 @@ end
 
 -- :: Functions :: ----------------------------------------------------
 -----------------------------------------------------------------------
-
--- Saving all functions to `V.meta.frame` to be referenced as the
--- meta frame for EUI's frames.
-local meta = V.meta.frame
 
 -- make a string on a frame
 function meta.createstring(self, string, font, height, flags)
