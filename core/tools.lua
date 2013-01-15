@@ -8,14 +8,22 @@ local M, S, V, F = unpack(select(2, ...))
 
 -- /rl <3
 SLASH_RELOAD1 = '/rl'
-function SlashCmdList.RELOAD( msg, editbox )
+function SlashCmdList.RELOAD(msg, editbox)
   ReloadUI()
 end
 
 -- Reset saved vars
 SLASH_RESET1 = '/resetvars'
-function SlashCmdList.RESET( msg, editbox )
+function SlashCmdList.RESET(msg, editbox)
   EUIData = {}
   EUIPerCharacterData = {}
   ReloadUI()
 end
+
+-- Prompt for confirmation first. This seems like the
+-- most elegent approach.
+-- F.Message.confirm("Are you sure?", function()
+--  EUIData = {}
+--  EUIPerCharacterData = {}
+--  ReloadUI()
+-- end)

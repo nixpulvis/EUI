@@ -5,7 +5,7 @@ local M, S, V, F = unpack(select(2, ...))
 --[[ these are EUI's utilities, they provide somewhat abstracted
    functionality. All functions here are stored in F ]]
 
--- table copying, many uses for this
+-- shallow table copy.
 function F.tcopy(t)
   local copy = { }
   for k,v in pairs(t) do
@@ -20,7 +20,7 @@ function F.round(n, decimals)
   return math.floor(n * mult + 0.5) / mult
 end
 
--- converts hex colors to 0-1 colors for use in EUI.
+-- converts hex colors to 0-1 colors
 function F.hextocolor(hex)
   local color = { }
   if strlen(hex) == 6 or strlength(hex) == 8 then
@@ -58,7 +58,7 @@ end
 -- a timer, with callbacks
 F.Timer = { }
 function F.Timer.create(precision)
-  local self     = V.tcopy(F.Timer)
+  local self     = F.tcopy(F.Timer)
   self.precision = (precision or 2)
 
   -- the update frame
@@ -71,12 +71,12 @@ function F.Timer:remove()
   self = nil
 end
 function F.Timer:start( time_left, post_update, post_complete )
-    self.time_initial  = time_left
-    self.time_left     = time_left
-    self.post_update   = post_update
-    self.post_complete = post_complete
+  self.time_initial  = time_left
+  self.time_left     = time_left
+  self.post_update   = post_update
+  self.post_complete = post_complete
 
-    self.engine:SetScript('OnUpdate', function(engine, elapsed)
+  self.engine:SetScript('OnUpdate', function(engine, elapsed)
     if self.time_left <= elapsed then
       if post_update then self.post_update(0) end
       if post_complete then self.post_complete() end
