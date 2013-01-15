@@ -30,7 +30,7 @@ end
 
 -- F.EventMachine:add : String, Function -> Number
 -- Returns the index of this function on a per event basis.
--- adds the given function to the given event. see :remove,
+-- Adds the given function to the given event. See :remove,
 -- for information on removing functions from events.
 function F.EventMachine:add(event, func)
   if self.events[event] == nil then
@@ -64,12 +64,20 @@ function F.EventMachine:remove(event, index)
   end
 end
 
+-- F.EventMachine:reset()
+-- Removes all functions from the event machines table, and unregesters all
+-- events on the event handler.
+function F.EventMachine:reset()
+  self.events = {} -- this is bad. we should dump the existing table.
+  self.eventhandler:UnregisterAllEvents()
+end
+
 -- start up the event machine, by binding it's OnEvent script
 function F.EventMachine:start()
   -- call every function of an event when the event occurs
   self.eventhandler:SetScript("OnEvent", function(handler, event, ...)
-    for i,v in ipairs(self.events[event]) do
-      v(handler, ...)
+    for _,func in ipairs(self.events[event]) do
+      func(handler, ...)
     end
   end)
 end
