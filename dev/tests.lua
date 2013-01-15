@@ -34,3 +34,9 @@ end
 if not F.EventMachine.eventhandler:IsEventRegistered("PLAYER_XP_UPDATE") then
   print("pass")
 end
+
+-- super simple spell alert
+F.EventMachine:add("COMBAT_LOG_EVENT_UNFILTERED", function(self, ...)
+  local spell = select(13, ...)
+  print(spell)
+end)
