@@ -1,11 +1,11 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 
   <Script file="init.lua"/>
-  <Script file="core\constants.lua"/>
-  <Script file="core\savedvars.lua"/>
-  <!-- Functions -->
-  <Script file="core\events.lua"/>
 
+  <Script file="core\constants.lua"/>
+  <Script file="core\functions.lua"/>
+  <Script file="core\events.lua"/>
+  <Script file="core\tools.lua"/>
 
   <!-- Tests are things we kinda have -->
   <Script file="dev\tests.lua"/>
