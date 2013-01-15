@@ -10,13 +10,13 @@ local M, S, V, F = unpack(select(2, ...))
 if not V.TEST then return end
 
 -- Event Testing
-local wooo = F.EventMachine:add("COMBAT_LOG_EVENT", function(self)
+local wooo = F.EventMachine:add("CURSOR_UPDATE", function(self)
   print("wooo")
 end)
-local boom = F.EventMachine:add("COMBAT_LOG_EVENT", function(self)
+local boom = F.EventMachine:add("CURSOR_UPDATE", function(self)
   print("boom")
 end)
-F.EventMachine:remove("COMBAT_LOG_EVENT", wooo)
+F.EventMachine:remove("CURSOR_UPDATE", wooo)
 
 local ding = F.EventMachine:add("PLAYER_XP_UPDATE", function(self, player)
   print("ding")
@@ -28,7 +28,7 @@ F.EventMachine:remove("PLAYER_XP_UPDATE", ding)
 F.EventMachine:remove("PLAYER_XP_UPDATE", zing)
 
 -- print tests
-if F.EventMachine.eventhandler:IsEventRegistered("COMBAT_LOG_EVENT") then
+if F.EventMachine.eventhandler:IsEventRegistered("CURSOR_UPDATE") then
   print("pass")
 end
 if not F.EventMachine.eventhandler:IsEventRegistered("PLAYER_XP_UPDATE") then
