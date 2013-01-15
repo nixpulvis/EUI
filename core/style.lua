@@ -11,24 +11,26 @@ F.Style = { }
 
 -- :: Frames :: -------------------------------------------------------
 -----------------------------------------------------------------------
-function F.Style.Frame(frame, alpha)
-  local r,g,b,a = unpack(S.General.background_color)
-  if not alpha then alpha = a end
+function F.Style.Frame(frame)
   frame:SetBackdrop({
-    bgFile = V.media.tex.blank,
-    edgeFile = V.media.tex.blank, tile = false, tileSize = 0, edgeSize = 1,
+    bgFile   = V.media.tex.blank,
+    edgeFile = V.media.tex.blank,
+    tile     = false,
+    tileSize = 0,
+    edgeSize = 1,
   })
-  frame:SetBackdropColor(r, g, b, alpha)
+  frame:SetBackdropColor(unpack(S.General.background_color))
   frame:SetBackdropBorderColor(unpack(S.General.border_color))
 end
 
 -- :: Buttons :: ------------------------------------------------------
 -----------------------------------------------------------------------
-function F.Style.Button(frame, alpha)
-  F.Style.frame(frame, alpha)
+function F.Style.Button(frame)
+  F.Style.frame(frame)
 
-  local hover_color = { .5, .5, .5, select(4, unpack(S.General.background_color)) }
-  local mousedown_color = { .3, .3, .3, select(4, unpack(S.General.background_color)) }
+  local alpha = select(4, unpack(S.General.background_color))
+  local hover_color     = { .5, .5, .5, alpha }
+  local mousedown_color = { .3, .3, .3, alpha }
 
   -- Texture for the overlay effect.
   frame.overlay = frame:CreateTexture(nil, "HIGHLIGHT")

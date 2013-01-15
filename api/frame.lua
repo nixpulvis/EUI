@@ -79,5 +79,5 @@ end
 -- style the frame to EUI according to it's type
 function meta.style(self, alpha)
   self:striptextures()
-  F.Style[self:GetObjectType()](self, alpha)
+  F.Style[self:GetObjectType()](self)
 end
