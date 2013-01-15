@@ -14,6 +14,7 @@ ns[2] = { }
 ns[3] = { }
 ns[4] = { }
 
-ns[3].DEBUG = true
+ns[3].DEBUG = true -- toggle EUI debugging, prints extra details in some cases
+ns[3].TEST  = true -- toggle EUI's testing, located in dev/tests.lua
 
 EUI = ... -- expose ourselves (dirty I know)

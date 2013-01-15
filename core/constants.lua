@@ -12,3 +12,6 @@ V.iconcrop = { .07, .93, .07, .93 }
 
 -- EUI's very own thematic color
 V.euicolor = 'FF8C00'
+
+-- No Op function
+V.noop = function() end

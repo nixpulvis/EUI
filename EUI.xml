@@ -6,4 +6,8 @@
   <!-- Functions -->
   <Script file="core\events.lua"/>
 
+
+  <!-- Tests are things we kinda have -->
+  <Script file="dev\tests.lua"/>
+
 </Ui>

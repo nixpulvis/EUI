@@ -18,6 +18,16 @@ F.EventMachine = {
   ['eventhandler'] = CreateFrame("Frame"),
 }
 
+-- size : Table -> Number
+-- Returns the size of this table, ignoring occurrences of V.noop.
+local function size(t)
+  local n = 0
+  for i,v in ipairs(t) do
+    if v ~= V.noop then n = n + 1 end
+  end
+  return n
+end
+
 -- F.EventMachine:add : String, Function -> Number
 -- Returns the index of this function on a per event basis.
 -- adds the given function to the given event. see :remove,
@@ -26,8 +36,21 @@ function F.EventMachine:add(event, func)
   if self.events[event] == nil then
     self.events[event] = {}
   end
-  tinsert(self.events[event], func)
+  -- Add the function to the first noop space in the table or at the end.
+  local index
+  for i,v in ipairs(self.events[event]) do
+    if v == V.noop then
+      index = i
+      break
+    end
+  end
+  if not index then
+    index = #self.events[event]+1
+  end
+  self.events[event][index] = func
+  -- Register the event.
   self.eventhandler:RegisterEvent(event)
+  return index
 end
 
 -- F.EventMachine:remove : String, Number -> Boolean
@@ -35,12 +58,9 @@ end
 -- given index, and it was removed from the event machine.
 -- The index is the number returned from :add.
 function F.EventMachine:remove(event, index)
-  --for i,v in ipairs(self.events[event]) do
-  --  if v == func then tremove(self.events[event], i) end
-  --end
-  if self.events[index] then self.events[index] = nil end
+  if self.events[event][index] then self.events[event][index] = V.noop end
   -- if the event doesn't have any functions unregister it.
-  if #self.events[event] == 0 then self.eventhandler:UnregisterEvent(event)
+  if size(self.events[event]) == 0 then self.eventhandler:UnregisterEvent(event)
   end
 end
 
@@ -58,3 +78,5 @@ end
 function F.EventMachine:stop()
   self.eventhandler:SetScript("OnEvent", nil)
 end
+
+F.EventMachine:start() -- and just like that the beast is alive
