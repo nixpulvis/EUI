@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 
-  <Script file="init\ns.lua"/>
-  <Script file="init\constants.lua"/>
-  <Script file="init\savedvars.lua"/>
+  <Script file="init.lua"/>
+  <Script file="core\constants.lua"/>
+  <Script file="core\savedvars.lua"/>
 
 </Ui>

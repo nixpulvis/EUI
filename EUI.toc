@@ -4,6 +4,6 @@
 ## Title: EUI - Complete User Interface
 ## Notes: EUI // Minimalistic UI tuned for High Level Raiding //
 ## SavedVariables: EUIData
-## SavedVariablesPerCharacter: EUIToonData
+## SavedVariablesPerCharacter: EUIPerCharacterData
 
 EUI.xml
