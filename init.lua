@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------
 -- EUI Initialization
 -----------------------------------------------------------------------
---[[ setup EUI's namespace, splitting it into 3 part
+--[[ setup EUI's namespace, splitting it into 4 part
    1 = M, for modules
    2 = S, for saved variables
    3 = V, for all other variables
