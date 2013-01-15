@@ -4,12 +4,12 @@ local M, S, V, F = unpack(select(2, ...))
 -----------------------------------------------------------------------
 --[[ this is designed to make updating information possible without the
    need to make a frame just for event handling.
-   
+
    Example Usage:
      F.EventMachine:add("PLAYER_LEVEL_UP", function()
        print("You leveled up")
      end)
-     
+
      As you can see this is useful for doing things on events
      that are not associated with a perticular frame. ]]
 
@@ -22,7 +22,7 @@ F.EventMachine = {
 -- Returns the index of this function on a per event basis.
 -- adds the given function to the given event. see :remove,
 -- for information on removing functions from events.
-function F.EventMachine:add(event, func).
+function F.EventMachine:add(event, func)
   if self.events[event] == nil then
     self.events[event] = {}
   end
