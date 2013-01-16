@@ -7,7 +7,10 @@
   <Script file="core\events.lua"/>
   <Script file="core\tools.lua"/>
 
-  <!-- Tests are things we kinda have -->
-  <Script file="dev\tests.lua"/>
+  <!-- Tests -->
+  <Script file="test\event_machine_test.lua"/>
+
+  <!-- Random Dev Shit -->
+  <Script file="dev\examples.lua"/>
 
 </Ui>

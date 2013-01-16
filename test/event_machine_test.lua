@@ -1,6 +1,6 @@
 local M, S, V, F = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- EUI Developer Testing File <:O:>
+-- EventMachine Test File <:O:>
 -----------------------------------------------------------------------
 --[[ Where everybody knows your name, and they're always glad you came.
      You wanna be where you can see, our troubles are all the same
@@ -35,8 +35,5 @@ if not F.EventMachine.eventhandler:IsEventRegistered("PLAYER_XP_UPDATE") then
   print("pass")
 end
 
--- super simple spell alert
-F.EventMachine:add("COMBAT_LOG_EVENT_UNFILTERED", function(self, ...)
-  local spell = select(13, ...)
-  print(spell)
-end)
+-- clean up
+F.EventMachine:remove("CURSOR_UPDATE", boom)
