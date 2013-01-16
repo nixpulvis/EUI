@@ -1,13 +1,11 @@
 local M, S, V, F = unpack(select(2, ...))
+if not V.TEST then return end
 -----------------------------------------------------------------------
 -- EventMachine Test File <:O:>
 -----------------------------------------------------------------------
 --[[ Where everybody knows your name, and they're always glad you came.
      You wanna be where you can see, our troubles are all the same
      You wanna be where everybody knows Your name. ]]
-
--- Make this file easy to toggle on and off
-if not V.TEST then return end
 
 -- Event Testing
 local wooo = F.EventMachine:add("CURSOR_UPDATE", function(self)
@@ -28,12 +26,9 @@ F.EventMachine:remove("PLAYER_XP_UPDATE", ding)
 F.EventMachine:remove("PLAYER_XP_UPDATE", zing)
 
 -- print tests
-if F.EventMachine.eventhandler:IsEventRegistered("CURSOR_UPDATE") then
-  print("pass")
-end
-if not F.EventMachine.eventhandler:IsEventRegistered("PLAYER_XP_UPDATE") then
-  print("pass")
-end
+F.Test:assert(F.EventMachine.eventhandler:IsEventRegistered("CURSOR_UPDATE"))
+F.Test:deny(F.EventMachine.eventhandler:IsEventRegistered("PLAYER_XP_UPDATE"))
+F.Test:report()
 
 -- clean up
 F.EventMachine:remove("CURSOR_UPDATE", boom)

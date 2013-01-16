@@ -8,6 +8,7 @@
   <Script file="core\tools.lua"/>
 
   <!-- Tests -->
+  <Script file="test\test_helper.lua"/>
   <Script file="test\event_machine_test.lua"/>
 
   <!-- Random Dev Shit -->
