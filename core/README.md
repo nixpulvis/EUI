@@ -1,7 +1,24 @@
 EUI API
 =======
 
-This document is intended to give detailed explanations and examples of every function in EUI's toolkit. I'm building this as I go to use personally. Functions parameters and return values are described as well as the funtions effects. There is a section on constants and settings, these are like environment variables, they don't change mid run.  See [this](http://wowprogramming.com/docs/api_types) for the base types infered from wow's api. Then there ar e
+This document is intended to give detailed explanations and examples of every function in EUI's toolkit, as well as the settings and types used. I'm building this as I go to use personally, and for others who wish to contribute.
+
+### Usage
+
+To use the API inside of EUI you'll notice that every file starts with the same line.
+
+```lua
+local E, S, M = unpack(select(2, ...))
+```
+
+This unpacks the three main parts of EUI's namespace. `E` is for all of EUI's functions and constants, `S` is where settings are saved, and `M` is where EUI's modules are stored. As far as the API is concerned you only need to deal with `E` and `S`.
+
+### Sections
+
+- [Types](#types)
+- [Constants](#constants--settings)
+- [Functions](#functions)
+- [Commands](#commands)
 
 ## Types
 
@@ -58,16 +75,42 @@ I'm not going to go into `userdata` here.
 - [standingID](http://wowprogramming.com/docs/api_types#standingID)
 - [unitID](http://wowprogramming.com/docs/api_types#unitID)
 
-## Frame Function
+## Constants / Settings
+
+These values are initialized once when EUI is loaded and then constant. Functions __should never__ change these values.
+
+##### `E.VERSIONNUMBER`  
+This is the current version of the EUI addon.
+
+##### `E.ICONCROP`
+Coordinates for cropping the blizzard border styles from in game icons.
+
+##### `E.NOOP`
+A function that does nothing. Using this is kind of a hack, and should be avoided. 
+
+## Functions
+
+### Frame 
 - [E.CreateFrame](#ecreateframe)
 - [E.CreateButton](#ecreatebutton)
 - [E.AddString](#eaddstring)
 - [E.Kill](#ekill)
 - [E.StripTextures](#estriptextures)
 
-## General Utilities
+### Utilities
 - [E.CopyTable](#ecopytable)
 - [E.Round](#eround)
 - [E.HexToColor](#ehextocolor)
 - [E.ColorToHex](#ecolortohex)
 - [E.FormatTime](#eformattime)
+
+
+## Commands
+
+Slash commands are a great way to interact with the user quickly and easily. EUI will be using them extensively.
+
+##### `/rl`
+A shortcut to reload the UI, because I'll be doing this __a lot__ during development.
+
+##### `/reset`
+Reset all settings to their defaults. This clears saved data.
