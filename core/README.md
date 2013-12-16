@@ -79,23 +79,30 @@ I'm not going to go into `userdata` here.
 
 These values are initialized once when EUI is loaded and then constant. Functions __should never__ change these values.
 
-##### `E.VERSIONNUMBER`  
+##### `E.VERSIONNUMBER`
 This is the current version of the EUI addon.
 
 ##### `E.ICONCROP`
 Coordinates for cropping the blizzard border styles from in game icons.
 
 ##### `E.NOOP`
-A function that does nothing. Using this is kind of a hack, and should be avoided. 
+A function that does nothing. Using this is kind of a hack, and should be avoided.
 
 ## Functions
 
-### Frame 
+### Frame
 - [E.CreateFrame](#ecreateframe)
 - [E.CreateButton](#ecreatebutton)
 - [E.AddString](#eaddstring)
 - [E.Kill](#ekill)
 - [E.StripTextures](#estriptextures)
+
+### Event Machine
+- [E.EventMachine.Add](#eeventmachineadd)
+- [E.EventMachine.Remove](#eeventmachineremove)
+- [E.EventMachine.Reset](#eeventmachinereset)
+- [E.EventMachine.Start](#eeventmachinestart)
+- [E.EventMachine.Stop](#eeventmachinestop)
 
 ### Utilities
 - [E.CopyTable](#ecopytable)
