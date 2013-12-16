@@ -1,6 +1,6 @@
 local E, S, M = unpack(select(2, ...))
 -----------------------------------------------------------------------
--- EUI Functions
+-- EUI Utility Functions
 -----------------------------------------------------------------------
 --[[ These are EUI's utilities, they provide somewhat abstracted
      functionality. ]]

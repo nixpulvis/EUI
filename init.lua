@@ -15,4 +15,4 @@ ns[3] = {}
 ns[1].DEBUG = true -- Toggle EUI debugging, prints extra details in some cases.
 ns[1].TEST = false -- Toggle EUI's testing, located in dev/tests.lua.
 
-EUI = ... -- Expose ourselves. (dirty I know)
+EUI = ns -- Expose ourselves. (dirty I know)
