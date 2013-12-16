@@ -6,4 +6,6 @@
 ## SavedVariables: EUIData
 ## SavedVariablesPerCharacter: EUIPerCharacterData
 
-EUI.xml
+init.lua
+core\load.xml
+dev\load.xml

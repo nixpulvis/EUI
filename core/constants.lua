@@ -9,6 +9,3 @@ E.VERSIONNUMBER = tonumber(GetAddOnMetadata("EUI", "Version"))
 
 -- values to crop icon's borders
 E.ICONCROP = { .07, .93, .07, .93 }
-
--- No Op function
-E.NOOP = function() end
