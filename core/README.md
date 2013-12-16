@@ -85,9 +85,6 @@ This is the current version of the EUI addon.
 ##### `E.ICONCROP`
 Coordinates for cropping the blizzard border styles from in game icons.
 
-##### `E.NOOP`
-A function that does nothing. Using this is kind of a hack, and should be avoided.
-
 ## Functions
 
 ### Frame
