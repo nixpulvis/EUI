@@ -1,0 +1,45 @@
+-- TODO
+-- -- making zone text frame
+-- local zoneframe = V.CreateFrame("EUIZoneframe", EUIMinimap, 150, 20)
+-- zoneframe:SetAlpha(0)
+-- zoneframe:SetPoint("BOTTOM", EUIMinimap, "BOTTOM", 0, 0)
+-- zoneframe:SetFrameStrata("MEDIUM")
+-- -- making a string to be put into th zone text frame
+-- zoneframe.text = zoneframe:CreateString()
+-- zoneframe.text:SetWidth(zoneframe:GetWidth()-6)
+-- zoneframe.text:SetPoint("CENTER", zoneframe, "CENTER")
+
+-- -- this sets the text to the zone and colorizes it
+-- local function zone_Update()
+--   local pvp = GetZonePVPInfo()
+--   zoneframe.text:SetText(GetMinimapZoneText())
+--   if pvp == "friendly" then
+--     zoneframe.text:SetTextColor(0.1, 1.0, 0.1)
+--   elseif pvp == "sanctuary" then
+--     zoneframe.text:SetTextColor(0.41, 0.8, 0.94)
+--   elseif pvp == "arena" or pvp == "hostile" then
+--     zoneframe.text:SetTextColor(1.0, 0.1, 0.1)
+--   elseif pvp == "contested" then
+--     zoneframe.text:SetTextColor(1.0, 0.7, 0.0)
+--   else
+--     zoneframe.text:SetTextColor(1.0, 1.0, 1.0)
+--   end
+-- end
+--
+-- zoneframe:RegisterEvent("PLAYER_ENTERING_WORLD")
+-- zoneframe:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+-- zoneframe:RegisterEvent("ZONE_CHANGED")
+-- zoneframe:RegisterEvent("ZONE_CHANGED_INDOORS")
+-- zoneframe:RegisterEvent("ADDON_LOADED")
+-- zoneframe:SetScript("OnEvent", zone_Update)
+--
+-- --event handling to hide zone unless mouse is in minimap
+-- Minimap:SetScript("OnEnter",function()
+--   zoneframe:SetAlpha(1)
+-- end)
+--
+-- Minimap:SetScript("OnLeave",function()
+--   zoneframe:SetAlpha(0)
+-- end)
+
+-- --click

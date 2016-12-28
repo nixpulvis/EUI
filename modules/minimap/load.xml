@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Script file='clock.lua'/>
+  <Script file='objective.lua'/>
+  <Script file='minimap.lua'/>
+  <Script file='init.lua'/>
+</Ui>

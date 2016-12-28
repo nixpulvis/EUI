@@ -1,3 +1,4 @@
+
 ## Interface: 50400
 ## Author: Epicgrim
 ## Version: 0.2.1
@@ -7,5 +8,8 @@
 ## SavedVariablesPerCharacter: EUIPerCharacterData
 
 init.lua
+media\init.lua
+
 core\load.xml
+modules\load.xml
 dev\load.xml

@@ -3,4 +3,5 @@
   <Script file='utilities.lua'/>
   <Script file='tools.lua'/>
   <Script file='event_machine.lua'/>
+  <Script file='module.lua'/>
 </Ui>
