@@ -1,7 +1,0 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/">
-  <Script file='constants.lua'/>
-  <Script file='utilities.lua'/>
-  <Script file='tools.lua'/>
-  <Script file='event_machine.lua'/>
-  <Script file='module.lua'/>
-</Ui>

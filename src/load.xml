@@ -1,0 +1,8 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Script file='init.lua'/>
+
+  <Include file='core\load.xml'/>
+  <!-- <Include file='media\load.xml'/> -->
+  <!-- <Include file='settings\load.xml'/> -->
+  <!-- <Include file='modules\load.xml'/> -->
+</Ui>

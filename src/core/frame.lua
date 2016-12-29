@@ -4,6 +4,9 @@ local E, S, M = unpack(select(2, ...))
 -----------------------------------------------------------------------
 --[[ these functions are to be added to all EUI frames in the UI. ]]
 
+-- TODO: This interface needs love.
+do return end
+
 -- Saving all functions to `V.meta.frame` to be referenced as the
 -- meta frame for EUI's frames.
 local meta = V.meta.frame

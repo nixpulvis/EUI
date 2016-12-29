@@ -6,14 +6,14 @@ local E, S, M = unpack(select(2, ...))
      need to make a frame just for event handling.
 
   Example Usage:
-    E.EventMachine:add("PLAYER_LEVEL_UP", function()
+    E.Event:add("PLAYER_LEVEL_UP", function()
       print("You leveled up")
     end)
 
   As you can see this is useful for doing things on events that are not
   associated with a perticular frame. ]]
 
-E.EventMachine = {
+E.Event = {
   ['events']       = {},
   ['eventhandler'] = CreateFrame("Frame"),
 }
@@ -36,11 +36,11 @@ local function nil_index(t)
   return index
 end
 
--- E.EventMachine:Add : string, function -> number
+-- E.Event:Add : string, function -> [string, number]
 -- Returns the index of this function on a per event basis.
 -- Adds the given function to the given event. See :remove,
 -- for information on removing functions from events.
-function E.EventMachine:Add(event, func)
+function E.Event:Add(event, func)
   if self.events[event] == nil then
     self.events[event] = {}
   end
@@ -49,14 +49,14 @@ function E.EventMachine:Add(event, func)
   self.events[event][index] = func
   -- Register the event.
   self.eventhandler:RegisterEvent(event)
-  return index
+  return event, index
 end
 
--- E.EventMachine:Remove : string, number -> boolean
+-- E.Event:Remove : [string, number] -> boolean
 -- Returns true if the given event had a function at the
 -- given index, and it was removed from the event machine.
 -- The index is the number returned from :add.
-function E.EventMachine:Remove(event, index)
+function E.Event:Remove(event, index)
   local before = #self.events[event]
   table.remove(self.events[event], index)
   local after = #self.events[event]
@@ -71,17 +71,17 @@ function E.EventMachine:Remove(event, index)
   end
 end
 
--- E.EventMachine:Reset()
+-- E.Event:Reset()
 -- Removes all functions from the event machines table, and unregesters all
 -- events on the event handler.
-function E.EventMachine:Reset()
+function E.Event:Reset()
   self.events = {} -- this is bad. we should dump the existing table.
   self.eventhandler:UnregisterAllEvents()
 end
 
--- E.EventMachine:Start()
+-- E.Event:Start()
 -- Start up the event machine, by binding it's OnEvent script
-function E.EventMachine:start()
+function E.Event:start()
   -- call every function of an event when the event occurs
   self.eventhandler:SetScript("OnEvent", function(handler, event, ...)
     for _,func in pairs(self.events[event]) do
@@ -90,10 +90,10 @@ function E.EventMachine:start()
   end)
 end
 
--- E.EventMachine:Stop()
+-- E.Event:Stop()
 -- Stop the event machine by setting the OnEvent script to nil.
-function E.EventMachine:stop()
+function E.Event:stop()
   self.eventhandler:SetScript("OnEvent", nil)
 end
 
-E.EventMachine:start() -- Just like that the beast is alive.
+E.Event:start() -- Just like that the beast is alive.

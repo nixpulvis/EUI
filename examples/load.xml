@@ -1,0 +1,4 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Script file="event_example.lua"/>
+  <Script file="module_example.lua"/>
+</Ui>
